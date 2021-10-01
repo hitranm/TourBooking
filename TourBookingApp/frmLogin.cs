@@ -33,10 +33,10 @@ namespace TourBookingApp
                     {
                         isAdmin = false
                     };
-                   
+                    this.Hide();
                     frm.ShowDialog();
                     isMem = true;
-                    this.Hide();
+                    this.Show();
                     break;
                 }
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text) && i.RoleId == 2)
@@ -45,10 +45,10 @@ namespace TourBookingApp
                     {
                         isAdmin = true
                     };
-                   
+                    this.Hide();
                     frm.ShowDialog();
                     isMem = true;
-                    this.Hide();
+                    this.Show();
                     break;
                 }
             }
