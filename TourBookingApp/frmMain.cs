@@ -20,8 +20,7 @@ namespace TourBookingApp
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin();
-            frm.Close();
+           
             if (isAdmin == false)
             {
                 textBox1.Text = "Tui là nhân viên";

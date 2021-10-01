@@ -36,7 +36,7 @@ namespace TourBookingApp
                    
                     frm.ShowDialog();
                     isMem = true;
-                  
+                    this.Hide();
                     break;
                 }
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text) && i.RoleId == 2)
@@ -48,7 +48,7 @@ namespace TourBookingApp
                    
                     frm.ShowDialog();
                     isMem = true;
-                   
+                    this.Hide();
                     break;
                 }
             }
