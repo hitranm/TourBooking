@@ -36,6 +36,7 @@ namespace TourBookingApp
                         isAdmin = false
                     };
                     this.Hide();
+                    
                     frm.ShowDialog();
                     
                     isMem = true;

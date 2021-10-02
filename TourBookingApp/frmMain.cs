@@ -30,11 +30,7 @@ namespace TourBookingApp
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (isAdmin == true)
-            {
-                txtTest.Text = "Toi la admin";
-            }
-            else txtTest.Text = "Toi la nhan vien";
+           
         }
     }
 }
