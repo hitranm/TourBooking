@@ -12,22 +12,29 @@ namespace TourBookingApp
 {
     public partial class frmMain : Form
     {
-        public bool isAdmin { get; set; }
+        public int m = 0;
+        public Boolean isAdmin { get; set; }
+        public frmLogin frm { get; set; }
         public frmMain()
         {
             InitializeComponent();
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            m = -1;
+            this.Close();
+
+           
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-           
-            if (isAdmin == false)
+            if (isAdmin == true)
             {
-                textBox1.Text = "Tui là nhân viên";
+                txtTest.Text = "Toi la admin";
             }
-            else
-                textBox1.Text = "Tui là admin";
-
+            else txtTest.Text = "Toi la nhan vien";
         }
     }
 }

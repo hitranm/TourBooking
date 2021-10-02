@@ -15,14 +15,16 @@ namespace TourBookingApp
     public partial class frmLogin : Form
     {
         private UserRepository userRepository = new UserRepository();
-        
+     
         public frmLogin()
         {
             InitializeComponent();
         }
+       
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+          
             bool isMem = false;
             var user = userRepository.GetUsers();
             foreach(var i in user)
@@ -35,8 +37,12 @@ namespace TourBookingApp
                     };
                     this.Hide();
                     frm.ShowDialog();
+                    
                     isMem = true;
-                    this.Show();
+
+                    if (frm.m < 0)
+                        this.Show();
+                    else this.Close();
                     break;
                 }
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text) && i.RoleId == 2)
@@ -48,7 +54,11 @@ namespace TourBookingApp
                     this.Hide();
                     frm.ShowDialog();
                     isMem = true;
-                    this.Show();
+
+                    if (frm.m < 0)
+                        this.Show();
+                    else this.Close();
+                   
                     break;
                 }
             }
