@@ -1,0 +1,220 @@
+﻿
+namespace TourBookingApp
+{
+    partial class frmTrip
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.lbTripName = new System.Windows.Forms.Label();
+            this.txtTripName = new System.Windows.Forms.TextBox();
+            this.nameOfTrip = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtStartTime = new System.Windows.Forms.TextBox();
+            this.txtEndTime = new System.Windows.Forms.TextBox();
+            this.txtCapacity = new System.Windows.Forms.TextBox();
+            this.txtAccomodation = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // lbTripName
+            // 
+            this.lbTripName.AutoSize = true;
+            this.lbTripName.Location = new System.Drawing.Point(101, 142);
+            this.lbTripName.Name = "lbTripName";
+            this.lbTripName.Size = new System.Drawing.Size(78, 20);
+            this.lbTripName.TabIndex = 0;
+            this.lbTripName.Text = "Trip Name";
+            this.lbTripName.Click += new System.EventHandler(this.lbTripName_Click);
+            // 
+            // txtTripName
+            // 
+            this.txtTripName.Location = new System.Drawing.Point(274, 135);
+            this.txtTripName.Name = "txtTripName";
+            this.txtTripName.Size = new System.Drawing.Size(289, 27);
+            this.txtTripName.TabIndex = 1;
+            // 
+            // nameOfTrip
+            // 
+            this.nameOfTrip.AutoSize = true;
+            this.nameOfTrip.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nameOfTrip.Location = new System.Drawing.Point(579, 30);
+            this.nameOfTrip.Name = "nameOfTrip";
+            this.nameOfTrip.Size = new System.Drawing.Size(189, 38);
+            this.nameOfTrip.TabIndex = 2;
+            this.nameOfTrip.Text = "NameOFTour";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(101, 194);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Start time";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(101, 252);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "End Time";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(101, 300);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Capacity";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(101, 351);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Accomodation";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(101, 408);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Description";
+            // 
+            // txtStartTime
+            // 
+            this.txtStartTime.Location = new System.Drawing.Point(274, 187);
+            this.txtStartTime.Name = "txtStartTime";
+            this.txtStartTime.Size = new System.Drawing.Size(289, 27);
+            this.txtStartTime.TabIndex = 8;
+            // 
+            // txtEndTime
+            // 
+            this.txtEndTime.Location = new System.Drawing.Point(274, 245);
+            this.txtEndTime.Name = "txtEndTime";
+            this.txtEndTime.Size = new System.Drawing.Size(289, 27);
+            this.txtEndTime.TabIndex = 9;
+            // 
+            // txtCapacity
+            // 
+            this.txtCapacity.Location = new System.Drawing.Point(274, 293);
+            this.txtCapacity.Name = "txtCapacity";
+            this.txtCapacity.Size = new System.Drawing.Size(289, 27);
+            this.txtCapacity.TabIndex = 10;
+            // 
+            // txtAccomodation
+            // 
+            this.txtAccomodation.Location = new System.Drawing.Point(274, 348);
+            this.txtAccomodation.Name = "txtAccomodation";
+            this.txtAccomodation.Size = new System.Drawing.Size(289, 27);
+            this.txtAccomodation.TabIndex = 11;
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(274, 401);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(289, 27);
+            this.txtDescription.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(579, 526);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(730, 526);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // frmTrip
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(923, 613);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtAccomodation);
+            this.Controls.Add(this.txtCapacity);
+            this.Controls.Add(this.txtEndTime);
+            this.Controls.Add(this.txtStartTime);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nameOfTrip);
+            this.Controls.Add(this.txtTripName);
+            this.Controls.Add(this.lbTripName);
+            this.Name = "frmTrip";
+            this.Text = "frmTrip";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lbTripName;
+        private System.Windows.Forms.TextBox txtTripName;
+        private System.Windows.Forms.Label nameOfTrip;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtStartTime;
+        private System.Windows.Forms.TextBox txtEndTime;
+        private System.Windows.Forms.TextBox txtCapacity;
+        private System.Windows.Forms.TextBox txtAccomodation;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+    }
+}
