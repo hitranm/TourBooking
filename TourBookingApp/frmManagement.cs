@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace TourBookingApp
 {
-    public partial class frmTourAndTripManagement : Form
+    public partial class frmManagement : Form
     {
-        public frmTourAndTripManagement()
+        public frmManagement()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
