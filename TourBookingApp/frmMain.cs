@@ -19,7 +19,16 @@ namespace TourBookingApp
         {
             InitializeComponent();
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            LoadTourList();
 
+        }
+
+        public void LoadTourList()
+        {
+            var tours= tour
+        }
         private void btnLogout_Click(object sender, EventArgs e)
         {
             m = -1;
@@ -28,9 +37,6 @@ namespace TourBookingApp
            
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-           
-        }
+        
     }
 }
