@@ -37,13 +37,14 @@ namespace TourBookingApp
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtStartTime = new System.Windows.Forms.TextBox();
-            this.txtEndTime = new System.Windows.Forms.TextBox();
-            this.txtCapacity = new System.Windows.Forms.TextBox();
             this.txtAccomodation = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTripName
@@ -58,7 +59,7 @@ namespace TourBookingApp
             // 
             // txtTripName
             // 
-            this.txtTripName.Location = new System.Drawing.Point(274, 135);
+            this.txtTripName.Location = new System.Drawing.Point(271, 135);
             this.txtTripName.Name = "txtTripName";
             this.txtTripName.Size = new System.Drawing.Size(289, 27);
             this.txtTripName.TabIndex = 1;
@@ -67,7 +68,7 @@ namespace TourBookingApp
             // 
             this.nameOfTrip.AutoSize = true;
             this.nameOfTrip.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nameOfTrip.Location = new System.Drawing.Point(579, 30);
+            this.nameOfTrip.Location = new System.Drawing.Point(274, 29);
             this.nameOfTrip.Name = "nameOfTrip";
             this.nameOfTrip.Size = new System.Drawing.Size(189, 38);
             this.nameOfTrip.TabIndex = 2;
@@ -118,27 +119,6 @@ namespace TourBookingApp
             this.label5.TabIndex = 7;
             this.label5.Text = "Description";
             // 
-            // txtStartTime
-            // 
-            this.txtStartTime.Location = new System.Drawing.Point(274, 187);
-            this.txtStartTime.Name = "txtStartTime";
-            this.txtStartTime.Size = new System.Drawing.Size(289, 27);
-            this.txtStartTime.TabIndex = 8;
-            // 
-            // txtEndTime
-            // 
-            this.txtEndTime.Location = new System.Drawing.Point(274, 245);
-            this.txtEndTime.Name = "txtEndTime";
-            this.txtEndTime.Size = new System.Drawing.Size(289, 27);
-            this.txtEndTime.TabIndex = 9;
-            // 
-            // txtCapacity
-            // 
-            this.txtCapacity.Location = new System.Drawing.Point(274, 293);
-            this.txtCapacity.Name = "txtCapacity";
-            this.txtCapacity.Size = new System.Drawing.Size(289, 27);
-            this.txtCapacity.TabIndex = 10;
-            // 
             // txtAccomodation
             // 
             this.txtAccomodation.Location = new System.Drawing.Point(274, 348);
@@ -148,14 +128,16 @@ namespace TourBookingApp
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(274, 401);
+            this.txtDescription.Location = new System.Drawing.Point(271, 401);
+            this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(289, 27);
+            this.txtDescription.Size = new System.Drawing.Size(289, 88);
             this.txtDescription.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(579, 526);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(302, 535);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 13;
@@ -165,25 +147,57 @@ namespace TourBookingApp
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(730, 526);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(417, 535);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 29);
             this.button2.TabIndex = 14;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(274, 189);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(289, 27);
+            this.dateTimePicker1.TabIndex = 15;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(274, 245);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(289, 27);
+            this.dateTimePicker2.TabIndex = 16;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(274, 293);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(289, 27);
+            this.numericUpDown1.TabIndex = 17;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmTrip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 613);
+            this.ClientSize = new System.Drawing.Size(632, 603);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtAccomodation);
-            this.Controls.Add(this.txtCapacity);
-            this.Controls.Add(this.txtEndTime);
-            this.Controls.Add(this.txtStartTime);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -192,8 +206,11 @@ namespace TourBookingApp
             this.Controls.Add(this.nameOfTrip);
             this.Controls.Add(this.txtTripName);
             this.Controls.Add(this.lbTripName);
+            this.MaximumSize = new System.Drawing.Size(650, 650);
+            this.MinimumSize = new System.Drawing.Size(650, 650);
             this.Name = "frmTrip";
             this.Text = "frmTrip";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,12 +226,12 @@ namespace TourBookingApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtStartTime;
-        private System.Windows.Forms.TextBox txtEndTime;
-        private System.Windows.Forms.TextBox txtCapacity;
         private System.Windows.Forms.TextBox txtAccomodation;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
