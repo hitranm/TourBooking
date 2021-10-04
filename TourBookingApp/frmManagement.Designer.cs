@@ -53,7 +53,7 @@ namespace TourBookingApp
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 450);
+            this.tabControl1.Size = new System.Drawing.Size(801, 471);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -67,7 +67,7 @@ namespace TourBookingApp
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 422);
+            this.tabPage1.Size = new System.Drawing.Size(793, 443);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tour";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@ namespace TourBookingApp
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 422);
+            this.tabPage2.Size = new System.Drawing.Size(790, 446);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Trip";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@ namespace TourBookingApp
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(792, 422);
+            this.tabPage3.Size = new System.Drawing.Size(790, 446);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Booking";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -148,10 +148,12 @@ namespace TourBookingApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(801, 471);
             this.Controls.Add(this.tabControl1);
+            this.MaximumSize = new System.Drawing.Size(817, 510);
+            this.MinimumSize = new System.Drawing.Size(817, 510);
             this.Name = "frmManagement";
-            this.Text = "frmManagement";
+            this.Text = "Management";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
