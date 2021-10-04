@@ -217,7 +217,7 @@ namespace TourBookingApp
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 28);
             this.btnSearch.TabIndex = 16;
-            this.btnSearch.Text = "&Search";
+            this.btnSearch.Text = "&Detail";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
