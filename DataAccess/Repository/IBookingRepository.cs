@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    class IBookingRepository
+    public interface IBookingRepository
     {
+        IEnumerable<TblBooking> GetBookings();
+        TblBooking GetBookingByID(int BookingID);
+        void InsertBooking(TblBooking booking);
+        void UpdateBooking(TblBooking booking);
+        void DeleteBooking(int BookingID);
     }
 }
