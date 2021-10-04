@@ -59,11 +59,11 @@ namespace TourBookingApp
                 if (tours.Count() == 0)
                 {
                     ClearText();
-                    btnSearch.Enabled = false;
+                    btnDetail.Enabled = false;
                 }
                 else
                 {
-                    btnSearch.Enabled = true;
+                    btnDetail.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -90,11 +90,29 @@ namespace TourBookingApp
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnDetail_Click(object sender, EventArgs e)
         {
             LoadTripList(int.Parse(txtTourID.Text));
         }
-
+        private void LoadOneTour(string name)
+        {
+            var tour = tourRepository.TourByName(name);
+            try
+            {
+                source = new BindingSource();
+                source.DataSource = tour;
+                dtgTourList.DataSource = null;
+                dtgTourList.DataSource = source;
+                if (tour == null)
+                {
+                    MessageBox.Show("No tour available", "Tour Error");
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Load tour");
+            }
+        }
         private void LoadTripList(int TourID)
         {
             var trips = tripRepository.GetTripByTourID(TourID);
@@ -115,13 +133,26 @@ namespace TourBookingApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Load tour list");
+                MessageBox.Show(ex.Message, "Load trip list");
             }
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadOneTour(txtTourName.Text);
+        }
+
+        private void txtSearchTour_TextChanged(object sender, EventArgs e)
+        {
+            if(txtTourName.Text== null)
+            {
+                LoadTourList();
+            }
         }
     }
 }

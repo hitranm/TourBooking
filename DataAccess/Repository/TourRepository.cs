@@ -13,6 +13,7 @@ namespace DataAccess.Repository
         public void InsertTour(TblTour tour) => TourDAO.Instance.AddNew(tour);
         public void DeleteTour(int TourId) => TourDAO.Instance.Remove(TourId);
         public void UpdateTour(TblTour tour) => TourDAO.Instance.Update(tour);
+        public TblTour TourByName(string name) => TourDAO.Instance.TourByName(name);
 
     }
 }

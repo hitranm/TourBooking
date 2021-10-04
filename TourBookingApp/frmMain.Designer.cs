@@ -44,8 +44,10 @@ namespace TourBookingApp
             this.lbDescript = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lbTourList = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.dtgTourList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).BeginInit();
             this.panel1.SuspendLayout();
@@ -211,22 +213,24 @@ namespace TourBookingApp
             this.lbTourList.Text = "Tour";
             this.lbTourList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnSearch
+            // btnDetail
             // 
-            this.btnSearch.Location = new System.Drawing.Point(436, 262);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 28);
-            this.btnSearch.TabIndex = 16;
-            this.btnSearch.Text = "&Detail";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnDetail.Location = new System.Drawing.Point(436, 262);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(94, 28);
+            this.btnDetail.TabIndex = 16;
+            this.btnDetail.Text = "&Detail";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.dtgTourList);
             this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.txtSearchTour);
+            this.panel1.Controls.Add(this.dtgTourList);
+            this.panel1.Controls.Add(this.btnDetail);
             this.panel1.Controls.Add(this.lbTourList);
             this.panel1.Controls.Add(this.txtDescription);
             this.panel1.Controls.Add(this.lbDescript);
@@ -242,6 +246,24 @@ namespace TourBookingApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 556);
             this.panel1.TabIndex = 2;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(323, 262);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.TabIndex = 18;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearchTour
+            // 
+            this.txtSearchTour.Location = new System.Drawing.Point(103, 263);
+            this.txtSearchTour.Name = "txtSearchTour";
+            this.txtSearchTour.Size = new System.Drawing.Size(197, 27);
+            this.txtSearchTour.TabIndex = 17;
+            this.txtSearchTour.TextChanged += new System.EventHandler(this.txtSearchTour_TextChanged);
             // 
             // dtgTourList
             // 
@@ -300,8 +322,10 @@ namespace TourBookingApp
         private System.Windows.Forms.TextBox txtDescription;
 
         private System.Windows.Forms.Label lbTourList;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dtgTourList;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearchTour;
     }
 }

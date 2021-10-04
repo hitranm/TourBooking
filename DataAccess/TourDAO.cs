@@ -43,6 +43,20 @@ namespace DataAccess
 
         }
 
+        public TblTour TourByName(string Name)
+        {
+            TblTour tour = null;
+            try
+            {
+                using var context = new TourContext();
+                tour = context.TblTours.SingleOrDefault(c => c.TourName== Name);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return tour;
+        }
         public TblTour GetTourByID(int TourID)
         {
             TblTour tour = null;
