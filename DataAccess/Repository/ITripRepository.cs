@@ -10,7 +10,7 @@ namespace DataAccess.Repository
     {
         IEnumerable<TblTrip> GetTrips();
         TblTrip GetTripByID(int TripID);
-        TblTrip GetTripByTourID(int TourID);
+        IEnumerable<TblTrip> GetTripByTourID(int TourID);
         void InsertTrip(TblTrip trip);
         void DeleteTrip(int TripID);
         void UpdateTrip(TblTrip trip);

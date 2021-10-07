@@ -13,6 +13,6 @@ namespace DataAccess.Repository
         void InsertTour(TblTour tour);
         void DeleteTour(int TourID);
         void UpdateTour(TblTour tour);
-        TblTour TourByName(string name);
+       
     }
 }
