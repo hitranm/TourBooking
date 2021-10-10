@@ -33,7 +33,9 @@ namespace TourBookingApp
                 {
                     frmMain frm = new frmMain
                     {
-                        isAdmin = false
+                        isAdmin = false,
+                        currentID = i.UserId
+                        
                     };
                     this.Hide();
                     
@@ -50,7 +52,8 @@ namespace TourBookingApp
                 {
                     frmMain frm = new frmMain
                     {
-                        isAdmin = true
+                        isAdmin = true,
+                        currentID = i.UserId
                     };
                     this.Hide();
                     frm.ShowDialog();

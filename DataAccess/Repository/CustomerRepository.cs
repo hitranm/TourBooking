@@ -14,5 +14,6 @@ namespace DataAccess.Repository
         public void InsertCustomer(TblCustomer customer) => CustomerDAO.Instance.AddNew(customer);
         public void UpdateCustomer(TblCustomer customer) => CustomerDAO.Instance.Update(customer);
         public void DeleteCustomer(int customerID) => CustomerDAO.Instance.Remove(customerID);
+        public TblCustomer SearchCustomer(string phoneNo) => CustomerDAO.Instance.SearchCustomer(phoneNo);
     }
 }

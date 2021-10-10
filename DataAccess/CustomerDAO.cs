@@ -116,5 +116,19 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
+        public TblCustomer SearchCustomer(string phoneNum)
+        {
+            TblCustomer customer = null;
+            try
+            {
+                using var context = new TourContext();
+                customer = context.TblCustomers.SingleOrDefault(c => c.PhoneNo == phoneNum);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return customer;
+        }
     }
 }

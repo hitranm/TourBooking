@@ -30,10 +30,16 @@ namespace TourBookingApp
         private void InitializeComponent()
         {
             this.pnlTrip = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbTotal = new System.Windows.Forms.Label();
+            this.lbStartInfo = new System.Windows.Forms.Label();
+            this.lbEndInfo = new System.Windows.Forms.Label();
+            this.lbAccInfo = new System.Windows.Forms.Label();
+            this.lbDesInfo = new System.Windows.Forms.Label();
+            this.lbPriceInfo = new System.Windows.Forms.Label();
+            this.lbTourInfo = new System.Windows.Forms.Label();
+            this.lbTotalInfo = new System.Windows.Forms.Label();
             this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.lbQuantity = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbAccommodation = new System.Windows.Forms.Label();
@@ -41,6 +47,7 @@ namespace TourBookingApp
             this.lbEndDate = new System.Windows.Forms.Label();
             this.lbTour = new System.Windows.Forms.Label();
             this.lbBooking = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlCustomer = new System.Windows.Forms.Panel();
             this.btSearch = new System.Windows.Forms.Button();
             this.cbSex = new System.Windows.Forms.ComboBox();
@@ -56,13 +63,6 @@ namespace TourBookingApp
             this.lbCustomer = new System.Windows.Forms.Label();
             this.btConfirm = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.lbTotalInfo = new System.Windows.Forms.Label();
-            this.lbTourInfo = new System.Windows.Forms.Label();
-            this.lbPriceInfo = new System.Windows.Forms.Label();
-            this.lbDesInfo = new System.Windows.Forms.Label();
-            this.lbAccInfo = new System.Windows.Forms.Label();
-            this.lbEndInfo = new System.Windows.Forms.Label();
-            this.lbStartInfo = new System.Windows.Forms.Label();
             this.pnlTrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.pnlCustomer.SuspendLayout();
@@ -92,27 +92,78 @@ namespace TourBookingApp
             this.pnlTrip.Size = new System.Drawing.Size(397, 270);
             this.pnlTrip.TabIndex = 0;
             // 
-            // label2
+            // lbStartInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(203, 295);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 15);
-            this.label2.TabIndex = 10;
+            this.lbStartInfo.AutoSize = true;
+            this.lbStartInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbStartInfo.Location = new System.Drawing.Point(112, 58);
+            this.lbStartInfo.Name = "lbStartInfo";
+            this.lbStartInfo.Size = new System.Drawing.Size(53, 15);
+            this.lbStartInfo.TabIndex = 21;
+            this.lbStartInfo.Text = "startdate";
             // 
-            // lbTotal
+            // lbEndInfo
             // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTotal.Location = new System.Drawing.Point(183, 250);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(46, 20);
-            this.lbTotal.TabIndex = 9;
-            this.lbTotal.Text = "Total:";
+            this.lbEndInfo.AutoSize = true;
+            this.lbEndInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbEndInfo.Location = new System.Drawing.Point(112, 84);
+            this.lbEndInfo.Name = "lbEndInfo";
+            this.lbEndInfo.Size = new System.Drawing.Size(50, 15);
+            this.lbEndInfo.TabIndex = 20;
+            this.lbEndInfo.Text = "enddate";
+            // 
+            // lbAccInfo
+            // 
+            this.lbAccInfo.AutoSize = true;
+            this.lbAccInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbAccInfo.Location = new System.Drawing.Point(112, 108);
+            this.lbAccInfo.Name = "lbAccInfo";
+            this.lbAccInfo.Size = new System.Drawing.Size(95, 15);
+            this.lbAccInfo.TabIndex = 19;
+            this.lbAccInfo.Text = "accommodation";
+            // 
+            // lbDesInfo
+            // 
+            this.lbDesInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDesInfo.Location = new System.Drawing.Point(112, 136);
+            this.lbDesInfo.Name = "lbDesInfo";
+            this.lbDesInfo.Size = new System.Drawing.Size(272, 69);
+            this.lbDesInfo.TabIndex = 18;
+            this.lbDesInfo.Text = "description";
+            // 
+            // lbPriceInfo
+            // 
+            this.lbPriceInfo.AutoSize = true;
+            this.lbPriceInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbPriceInfo.Location = new System.Drawing.Point(112, 205);
+            this.lbPriceInfo.Name = "lbPriceInfo";
+            this.lbPriceInfo.Size = new System.Drawing.Size(33, 15);
+            this.lbPriceInfo.TabIndex = 17;
+            this.lbPriceInfo.Text = "price";
+            // 
+            // lbTourInfo
+            // 
+            this.lbTourInfo.AutoSize = true;
+            this.lbTourInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbTourInfo.Location = new System.Drawing.Point(112, 34);
+            this.lbTourInfo.Name = "lbTourInfo";
+            this.lbTourInfo.Size = new System.Drawing.Size(50, 15);
+            this.lbTourInfo.TabIndex = 16;
+            this.lbTourInfo.Text = "tourinfo";
+            // 
+            // lbTotalInfo
+            // 
+            this.lbTotalInfo.AutoSize = true;
+            this.lbTotalInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbTotalInfo.Location = new System.Drawing.Point(288, 250);
+            this.lbTotalInfo.Name = "lbTotalInfo";
+            this.lbTotalInfo.Size = new System.Drawing.Size(87, 20);
+            this.lbTotalInfo.TabIndex = 10;
+            this.lbTotalInfo.Text = "totalmoney";
             // 
             // numQuantity
             // 
-            this.numQuantity.Location = new System.Drawing.Point(70, 192);
+            this.numQuantity.Location = new System.Drawing.Point(112, 225);
             this.numQuantity.Maximum = new decimal(new int[] {
             10,
             0,
@@ -131,20 +182,31 @@ namespace TourBookingApp
             0,
             0,
             0});
+            this.numQuantity.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // lbQuantity
             // 
             this.lbQuantity.AutoSize = true;
-            this.lbQuantity.Location = new System.Drawing.Point(8, 194);
+            this.lbQuantity.Location = new System.Drawing.Point(8, 227);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(56, 15);
             this.lbQuantity.TabIndex = 7;
             this.lbQuantity.Text = "Quantity:";
             // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbTotal.Location = new System.Drawing.Point(236, 250);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(46, 20);
+            this.lbTotal.TabIndex = 9;
+            this.lbTotal.Text = "Total:";
+            // 
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
-            this.lbPrice.Location = new System.Drawing.Point(8, 165);
+            this.lbPrice.Location = new System.Drawing.Point(8, 205);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(36, 15);
             this.lbPrice.TabIndex = 6;
@@ -206,6 +268,14 @@ namespace TourBookingApp
             this.lbBooking.Text = "Trip Information";
             this.lbBooking.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(203, 295);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 15);
+            this.label2.TabIndex = 10;
+            // 
             // pnlCustomer
             // 
             this.pnlCustomer.Controls.Add(this.btSearch);
@@ -233,6 +303,7 @@ namespace TourBookingApp
             this.btSearch.TabIndex = 20;
             this.btSearch.Text = "Search";
             this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // cbSex
             // 
@@ -248,9 +319,11 @@ namespace TourBookingApp
             // dtpDOB
             // 
             this.dtpDOB.Location = new System.Drawing.Point(75, 159);
+            this.dtpDOB.MaxDate = new System.DateTime(3309, 12, 31, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(284, 23);
             this.dtpDOB.TabIndex = 18;
+            this.dtpDOB.Value = new System.DateTime(2021, 10, 9, 0, 0, 0, 0);
             // 
             // txtEmail
             // 
@@ -338,6 +411,7 @@ namespace TourBookingApp
             this.btConfirm.TabIndex = 2;
             this.btConfirm.Text = "Confirm";
             this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
             // 
             // btCancel
             // 
@@ -347,76 +421,7 @@ namespace TourBookingApp
             this.btCancel.TabIndex = 3;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
-            // 
-            // lbTotalInfo
-            // 
-            this.lbTotalInfo.AutoSize = true;
-            this.lbTotalInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTotalInfo.Location = new System.Drawing.Point(235, 250);
-            this.lbTotalInfo.Name = "lbTotalInfo";
-            this.lbTotalInfo.Size = new System.Drawing.Size(87, 20);
-            this.lbTotalInfo.TabIndex = 10;
-            this.lbTotalInfo.Text = "totalmoney";
-            // 
-            // lbTourInfo
-            // 
-            this.lbTourInfo.AutoSize = true;
-            this.lbTourInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbTourInfo.Location = new System.Drawing.Point(112, 34);
-            this.lbTourInfo.Name = "lbTourInfo";
-            this.lbTourInfo.Size = new System.Drawing.Size(50, 15);
-            this.lbTourInfo.TabIndex = 16;
-            this.lbTourInfo.Text = "tourinfo";
-            // 
-            // lbPriceInfo
-            // 
-            this.lbPriceInfo.AutoSize = true;
-            this.lbPriceInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbPriceInfo.Location = new System.Drawing.Point(112, 165);
-            this.lbPriceInfo.Name = "lbPriceInfo";
-            this.lbPriceInfo.Size = new System.Drawing.Size(33, 15);
-            this.lbPriceInfo.TabIndex = 17;
-            this.lbPriceInfo.Text = "price";
-            // 
-            // lbDesInfo
-            // 
-            this.lbDesInfo.AutoSize = true;
-            this.lbDesInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDesInfo.Location = new System.Drawing.Point(112, 136);
-            this.lbDesInfo.Name = "lbDesInfo";
-            this.lbDesInfo.Size = new System.Drawing.Size(66, 15);
-            this.lbDesInfo.TabIndex = 18;
-            this.lbDesInfo.Text = "description";
-            // 
-            // lbAccInfo
-            // 
-            this.lbAccInfo.AutoSize = true;
-            this.lbAccInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbAccInfo.Location = new System.Drawing.Point(112, 108);
-            this.lbAccInfo.Name = "lbAccInfo";
-            this.lbAccInfo.Size = new System.Drawing.Size(95, 15);
-            this.lbAccInfo.TabIndex = 19;
-            this.lbAccInfo.Text = "accommodation";
-            // 
-            // lbEndInfo
-            // 
-            this.lbEndInfo.AutoSize = true;
-            this.lbEndInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbEndInfo.Location = new System.Drawing.Point(112, 84);
-            this.lbEndInfo.Name = "lbEndInfo";
-            this.lbEndInfo.Size = new System.Drawing.Size(50, 15);
-            this.lbEndInfo.TabIndex = 20;
-            this.lbEndInfo.Text = "enddate";
-            // 
-            // lbStartInfo
-            // 
-            this.lbStartInfo.AutoSize = true;
-            this.lbStartInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbStartInfo.Location = new System.Drawing.Point(112, 58);
-            this.lbStartInfo.Name = "lbStartInfo";
-            this.lbStartInfo.Size = new System.Drawing.Size(53, 15);
-            this.lbStartInfo.TabIndex = 21;
-            this.lbStartInfo.Text = "startdate";
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // frmBooking
             // 
@@ -430,7 +435,9 @@ namespace TourBookingApp
             this.Controls.Add(this.pnlCustomer);
             this.Controls.Add(this.pnlTrip);
             this.Name = "frmBooking";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking Details";
+            this.Load += new System.EventHandler(this.frmBooking_Load);
             this.pnlTrip.ResumeLayout(false);
             this.pnlTrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();

@@ -14,5 +14,6 @@ namespace DataAccess.Repository
         void InsertCustomer(TblCustomer customer);
         void UpdateCustomer(TblCustomer customer);
         void DeleteCustomer(int customerID);
+        TblCustomer SearchCustomer(string phoneNo);
     }
 }
