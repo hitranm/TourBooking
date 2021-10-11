@@ -57,13 +57,20 @@ namespace DataAccess
             }
             return trip;
         }
-        public TblTrip GetTripByTourID(int TourID)
+
+        public IEnumerable<TblTrip> GetTripByTourID(int TourID)
         {
-            TblTrip trip = null;
+            var trip = new List<TblTrip>();
+            var trips = GetTripList();
             try
             {
-                using var context = new TourContext();
-                trip = context.TblTrips.SingleOrDefault(c => c.TourId == TourID);
+                foreach (var c in trips)
+                {
+                    if (c.TourId == TourID)
+                    {
+                        trip.Add(c);
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -81,7 +88,7 @@ namespace DataAccess
                 if (tri == null)
                 {
                     using var context = new TourContext();
-                    context.TblTrips.Add(tri);
+                    context.TblTrips.Add(trip);
                     context.SaveChanges();
                 }
                 else

@@ -21,7 +21,6 @@ namespace DataAccess.DataAccess
         public string Description { get; set; }
         public bool Status { get; set; }
         public int TourId { get; set; }
-
         public virtual TblTour Tour { get; set; }
         public virtual ICollection<TblBooking> TblBookings { get; set; }
     }
