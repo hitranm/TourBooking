@@ -82,7 +82,7 @@ namespace DataAccess
                 if (tou == null)
                 {
                     using var context = new TourContext();
-                    context.TblTours.Add(tou);
+                    context.TblTours.Add(tour);
                     context.SaveChanges();
                 }
                 else
@@ -102,7 +102,7 @@ namespace DataAccess
             try
             {
                 TblTour tou = GetTourByID(tour.TourId);
-                if (tou != null)
+                if (tou == null)
                 {
                     using var context = new TourContext();
                     context.TblTours.Update(tour);

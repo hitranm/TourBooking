@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess.Repository;
+using DataAccess.DataAccess;
 namespace TourBookingApp
 {
     public partial class frmMain : Form
@@ -96,21 +97,45 @@ namespace TourBookingApp
         }
         private void LoadOneTour(string name)
         {
-            var tour = tourRepository.TourByName(name);
+            bool hasTour = false;
+
+            var tour = new List<TblTour>();
+            var tours = tourRepository.GetTours();
             try
             {
+                foreach (var i in tours)
+                {
+                    if (i.TourName.Contains(txtSearchTour.Text))
+                    {
+                        hasTour = true;
+                        tour.Add(i);
+                    }
+                }
                 source = new BindingSource();
                 source.DataSource = tour;
+                txtTourID.DataBindings.Clear();
+                txtTourName.DataBindings.Clear();
+                txtDeparture.DataBindings.Clear();
+                txtDescription.DataBindings.Clear();
+                txtDestination.DataBindings.Clear();
+
+                txtTourID.DataBindings.Add("Text", source, "TourId");
+                txtTourName.DataBindings.Add("Text", source, "TourName");
+                txtDeparture.DataBindings.Add("Text", source, "Departure");
+                txtDescription.DataBindings.Add("Text", source, "Description");
+                txtDestination.DataBindings.Add("Text", source, "Destination");
+
                 dtgTourList.DataSource = null;
                 dtgTourList.DataSource = source;
-                if (tour == null)
-                {
-                    MessageBox.Show("No tour available", "Tour Error");
-                }
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Load tour");
+            }
+            if (hasTour == false)
+            {
+                MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void LoadTripList(int TourID)
@@ -139,7 +164,8 @@ namespace TourBookingApp
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-
+            frmManagement frm = new frmManagement();
+            frm.ShowDialog();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
