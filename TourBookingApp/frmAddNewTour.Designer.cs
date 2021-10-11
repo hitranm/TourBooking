@@ -29,42 +29,42 @@ namespace TourBookingApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.lbAddNewTour = new System.Windows.Forms.Label();
+            this.btnAddNewTour = new System.Windows.Forms.Button();
             this.txtTourName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbTourName = new System.Windows.Forms.Label();
+            this.lbDeparture = new System.Windows.Forms.Label();
+            this.lbDestination = new System.Windows.Forms.Label();
+            this.lbDescription = new System.Windows.Forms.Label();
             this.txtTourDeparture = new System.Windows.Forms.TextBox();
             this.txtTourDestination = new System.Windows.Forms.TextBox();
             this.txtTourDescription = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lbAddNewTour
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(247, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ADD NEW TOUR";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lbAddNewTour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbAddNewTour.AutoSize = true;
+            this.lbAddNewTour.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbAddNewTour.Location = new System.Drawing.Point(247, 74);
+            this.lbAddNewTour.Name = "lbAddNewTour";
+            this.lbAddNewTour.Size = new System.Drawing.Size(201, 32);
+            this.lbAddNewTour.TabIndex = 0;
+            this.lbAddNewTour.Text = "ADD NEW TOUR";
+          
             // 
-            // btnAdd
+            // btnAddNewTour
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(423, 558);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 39);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAddNewTour.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddNewTour.Location = new System.Drawing.Point(423, 558);
+            this.btnAddNewTour.Name = "btnAddNewTour";
+            this.btnAddNewTour.Size = new System.Drawing.Size(85, 39);
+            this.btnAddNewTour.TabIndex = 1;
+            this.btnAddNewTour.Text = "Add";
+            this.btnAddNewTour.UseVisualStyleBackColor = true;
             // 
             // txtTourName
             // 
@@ -74,49 +74,49 @@ namespace TourBookingApp
             this.txtTourName.Size = new System.Drawing.Size(268, 23);
             this.txtTourName.TabIndex = 2;
             // 
-            // label2
+            // lbTourName
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(92, 192);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tour name :";
+            this.lbTourName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTourName.AutoSize = true;
+            this.lbTourName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbTourName.Location = new System.Drawing.Point(92, 192);
+            this.lbTourName.Name = "lbTourName";
+            this.lbTourName.Size = new System.Drawing.Size(77, 17);
+            this.lbTourName.TabIndex = 3;
+            this.lbTourName.Text = "Tour name :";
             // 
-            // label3
+            // lbDeparture
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(92, 257);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Departure :";
+            this.lbDeparture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDeparture.AutoSize = true;
+            this.lbDeparture.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDeparture.Location = new System.Drawing.Point(92, 257);
+            this.lbDeparture.Name = "lbDeparture";
+            this.lbDeparture.Size = new System.Drawing.Size(74, 17);
+            this.lbDeparture.TabIndex = 4;
+            this.lbDeparture.Text = "Departure :";
             // 
-            // label4
+            // lbDestination
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(93, 311);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Destination :";
+            this.lbDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDestination.AutoSize = true;
+            this.lbDestination.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDestination.Location = new System.Drawing.Point(93, 311);
+            this.lbDestination.Name = "lbDestination";
+            this.lbDestination.Size = new System.Drawing.Size(80, 17);
+            this.lbDestination.TabIndex = 5;
+            this.lbDestination.Text = "Destination :";
             // 
-            // label5
+            // lbDescription
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(93, 368);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Description :";
+            this.lbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDescription.Location = new System.Drawing.Point(93, 368);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(81, 17);
+            this.lbDescription.TabIndex = 6;
+            this.lbDescription.Text = "Description :";
             // 
             // txtTourDeparture
             // 
@@ -153,52 +153,52 @@ namespace TourBookingApp
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // lbStatus
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(93, 472);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Status :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.lbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(93, 472);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(45, 15);
+            this.lbStatus.TabIndex = 11;
+            this.lbStatus.Text = "Status :";
+            
             // 
-            // checkBox1
+            // cbStatus
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(217, 471);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(67, 19);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Active ?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbStatus.AutoSize = true;
+            this.cbStatus.Location = new System.Drawing.Point(217, 471);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(67, 19);
+            this.cbStatus.TabIndex = 12;
+            this.cbStatus.Text = "Active ?";
+            this.cbStatus.UseVisualStyleBackColor = true;
             // 
             // frmAddNewTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 631);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cbStatus);
+            this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtTourDescription);
             this.Controls.Add(this.txtTourDestination);
             this.Controls.Add(this.txtTourDeparture);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbDescription);
+            this.Controls.Add(this.lbDestination);
+            this.Controls.Add(this.lbDeparture);
+            this.Controls.Add(this.lbTourName);
             this.Controls.Add(this.txtTourName);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAddNewTour);
+            this.Controls.Add(this.lbAddNewTour);
             this.MaximumSize = new System.Drawing.Size(670, 670);
             this.MinimumSize = new System.Drawing.Size(670, 670);
             this.Name = "frmAddNewTour";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddNewTour";
-            this.Load += new System.EventHandler(this.frmAddNewTour_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,18 +206,18 @@ namespace TourBookingApp
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lbAddNewTour;
+        private System.Windows.Forms.Button btnAddNewTour;
         private System.Windows.Forms.TextBox txtTourName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbTourName;
+        private System.Windows.Forms.Label lbDeparture;
+        private System.Windows.Forms.Label lbDestination;
+        private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.TextBox txtTourDeparture;
         private System.Windows.Forms.TextBox txtTourDestination;
         private System.Windows.Forms.TextBox txtTourDescription;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.CheckBox cbStatus;
     }
 }

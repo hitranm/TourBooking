@@ -30,22 +30,22 @@ namespace TourBookingApp
         private void InitializeComponent()
         {
             this.lbTripName = new System.Windows.Forms.Label();
-            this.nameOfTrip = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAccomodation = new System.Windows.Forms.TextBox();
+            this.lbAddNewTrip = new System.Windows.Forms.Label();
+            this.lbStartTime = new System.Windows.Forms.Label();
+            this.lbEndTime = new System.Windows.Forms.Label();
+            this.lbCapacity = new System.Windows.Forms.Label();
+            this.lbAccommodation = new System.Windows.Forms.Label();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.txtAccommodation = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAddTrip = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.DTPStartTime = new System.Windows.Forms.DateTimePicker();
             this.DTPEndTime = new System.Windows.Forms.DateTimePicker();
             this.NUDCapacity = new System.Windows.Forms.NumericUpDown();
             this.cbxListTourName = new System.Windows.Forms.ComboBox();
             this.btnLoadTourName = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbPrice = new System.Windows.Forms.Label();
             this.mtxtPrice = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NUDCapacity)).BeginInit();
             this.SuspendLayout();
@@ -58,71 +58,70 @@ namespace TourBookingApp
             this.lbTripName.Size = new System.Drawing.Size(36, 15);
             this.lbTripName.TabIndex = 0;
             this.lbTripName.Text = "Tour :";
-            this.lbTripName.Click += new System.EventHandler(this.lbTripName_Click);
             // 
-            // nameOfTrip
+            // lbAddNewTrip
             // 
-            this.nameOfTrip.AutoSize = true;
-            this.nameOfTrip.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nameOfTrip.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.nameOfTrip.Location = new System.Drawing.Point(240, 22);
-            this.nameOfTrip.Name = "nameOfTrip";
-            this.nameOfTrip.Size = new System.Drawing.Size(114, 30);
-            this.nameOfTrip.TabIndex = 2;
-            this.nameOfTrip.Text = "ADD TRIP";
+            this.lbAddNewTrip.AutoSize = true;
+            this.lbAddNewTrip.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbAddNewTrip.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbAddNewTrip.Location = new System.Drawing.Point(240, 22);
+            this.lbAddNewTrip.Name = "lbAddNewTrip";
+            this.lbAddNewTrip.Size = new System.Drawing.Size(114, 30);
+            this.lbAddNewTrip.TabIndex = 2;
+            this.lbAddNewTrip.Text = "ADD TRIP";
             // 
-            // label1
+            // lbStartTime
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(91, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Start time";
+            this.lbStartTime.AutoSize = true;
+            this.lbStartTime.Location = new System.Drawing.Point(91, 148);
+            this.lbStartTime.Name = "lbStartTime";
+            this.lbStartTime.Size = new System.Drawing.Size(58, 15);
+            this.lbStartTime.TabIndex = 3;
+            this.lbStartTime.Text = "Start time";
             // 
-            // label2
+            // lbEndTime
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(91, 190);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "End Time";
+            this.lbEndTime.AutoSize = true;
+            this.lbEndTime.Location = new System.Drawing.Point(91, 190);
+            this.lbEndTime.Name = "lbEndTime";
+            this.lbEndTime.Size = new System.Drawing.Size(56, 15);
+            this.lbEndTime.TabIndex = 4;
+            this.lbEndTime.Text = "End Time";
             // 
-            // label3
+            // lbCapacity
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(91, 275);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Capacity";
+            this.lbCapacity.AutoSize = true;
+            this.lbCapacity.Location = new System.Drawing.Point(91, 275);
+            this.lbCapacity.Name = "lbCapacity";
+            this.lbCapacity.Size = new System.Drawing.Size(53, 15);
+            this.lbCapacity.TabIndex = 5;
+            this.lbCapacity.Text = "Capacity";
             // 
-            // label4
+            // lbAccommodation
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(91, 323);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Accomodation";
+            this.lbAccommodation.AutoSize = true;
+            this.lbAccommodation.Location = new System.Drawing.Point(91, 323);
+            this.lbAccommodation.Name = "lbAccommodation";
+            this.lbAccommodation.Size = new System.Drawing.Size(97, 15);
+            this.lbAccommodation.TabIndex = 6;
+            this.lbAccommodation.Text = "Accommodation";
             // 
-            // label5
+            // lbDescription
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(91, 371);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Description";
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(91, 371);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(67, 15);
+            this.lbDescription.TabIndex = 7;
+            this.lbDescription.Text = "Description";
             // 
-            // txtAccomodation
+            // txtAccommodation
             // 
-            this.txtAccomodation.Location = new System.Drawing.Point(237, 320);
-            this.txtAccomodation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtAccomodation.Name = "txtAccomodation";
-            this.txtAccomodation.Size = new System.Drawing.Size(256, 23);
-            this.txtAccomodation.TabIndex = 11;
+            this.txtAccommodation.Location = new System.Drawing.Point(237, 320);
+            this.txtAccommodation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAccommodation.Name = "txtAccommodation";
+            this.txtAccommodation.Size = new System.Drawing.Size(256, 23);
+            this.txtAccommodation.TabIndex = 11;
             // 
             // txtDescription
             // 
@@ -133,17 +132,17 @@ namespace TourBookingApp
             this.txtDescription.Size = new System.Drawing.Size(256, 67);
             this.txtDescription.TabIndex = 12;
             // 
-            // btnSave
+            // btnAddTrip
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(272, 469);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(82, 22);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddTrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddTrip.Location = new System.Drawing.Point(272, 469);
+            this.btnAddTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddTrip.Name = "btnAddTrip";
+            this.btnAddTrip.Size = new System.Drawing.Size(82, 22);
+            this.btnAddTrip.TabIndex = 13;
+            this.btnAddTrip.Text = "Save";
+            this.btnAddTrip.UseVisualStyleBackColor = true;
+            this.btnAddTrip.Click += new System.EventHandler(this.btnAddTrip_Click);
             // 
             // btnCancel
             // 
@@ -198,7 +197,6 @@ namespace TourBookingApp
             this.cbxListTourName.Name = "cbxListTourName";
             this.cbxListTourName.Size = new System.Drawing.Size(253, 23);
             this.cbxListTourName.TabIndex = 18;
-            this.cbxListTourName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cbxListTourName.SelectedValueChanged += new System.EventHandler(this.cbxListTourName_SelectedValueChanged);
             // 
             // btnLoadTourName
@@ -211,14 +209,14 @@ namespace TourBookingApp
             this.btnLoadTourName.UseVisualStyleBackColor = true;
             this.btnLoadTourName.Click += new System.EventHandler(this.btnLoadTourName_Click);
             // 
-            // label6
+            // lbPrice
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(91, 230);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Price";
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Location = new System.Drawing.Point(91, 230);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(33, 15);
+            this.lbPrice.TabIndex = 20;
+            this.lbPrice.Text = "Price";
             // 
             // mtxtPrice
             // 
@@ -235,22 +233,22 @@ namespace TourBookingApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 511);
             this.Controls.Add(this.mtxtPrice);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.btnLoadTourName);
             this.Controls.Add(this.cbxListTourName);
             this.Controls.Add(this.NUDCapacity);
             this.Controls.Add(this.DTPEndTime);
             this.Controls.Add(this.DTPStartTime);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnAddTrip);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtAccomodation);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.nameOfTrip);
+            this.Controls.Add(this.txtAccommodation);
+            this.Controls.Add(this.lbDescription);
+            this.Controls.Add(this.lbAccommodation);
+            this.Controls.Add(this.lbCapacity);
+            this.Controls.Add(this.lbEndTime);
+            this.Controls.Add(this.lbStartTime);
+            this.Controls.Add(this.lbAddNewTrip);
             this.Controls.Add(this.lbTripName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(571, 550);
@@ -267,22 +265,22 @@ namespace TourBookingApp
         #endregion
 
         private System.Windows.Forms.Label lbTripName;
-        private System.Windows.Forms.Label nameOfTrip;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAccomodation;
+        private System.Windows.Forms.Label lbAddNewTrip;
+        private System.Windows.Forms.Label lbStartTime;
+        private System.Windows.Forms.Label lbEndTime;
+        private System.Windows.Forms.Label lbCapacity;
+        private System.Windows.Forms.Label lbAccommodation;
+        private System.Windows.Forms.Label lbDescription;
+        private System.Windows.Forms.TextBox txtAccommodation;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAddTrip;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker DTPStartTime;
         private System.Windows.Forms.DateTimePicker DTPEndTime;
         private System.Windows.Forms.NumericUpDown NUDCapacity;
         private System.Windows.Forms.ComboBox cbxListTourName;
         private System.Windows.Forms.Button btnLoadTourName;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.MaskedTextBox mtxtPrice;
     }
 }

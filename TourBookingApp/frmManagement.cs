@@ -25,20 +25,7 @@ namespace TourBookingApp
             LoadTripList();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         public void LoadTourList()
         {
             var tours = tourRepository.GetTours();
@@ -56,12 +43,6 @@ namespace TourBookingApp
             {
                 MessageBox.Show(ex.Message, "Load Tour list");
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frmAddNewTour frm = new frmAddNewTour();
-            frm.ShowDialog();
         }
 
         void LoadTripList()
@@ -95,9 +76,6 @@ namespace TourBookingApp
             LoadTripList();
         }
 
-        private void dtgTripList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }
