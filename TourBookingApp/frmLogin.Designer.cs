@@ -1,5 +1,4 @@
-﻿
-namespace TourBookingApp
+﻿namespace TourBookingApp
 {
     partial class frmLogin
     {
@@ -42,9 +41,9 @@ namespace TourBookingApp
             // 
             this.lbLogin.AutoSize = true;
             this.lbLogin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbLogin.Location = new System.Drawing.Point(158, 17);
+            this.lbLogin.Location = new System.Drawing.Point(181, 23);
             this.lbLogin.Name = "lbLogin";
-            this.lbLogin.Size = new System.Drawing.Size(70, 30);
+            this.lbLogin.Size = new System.Drawing.Size(90, 38);
             this.lbLogin.TabIndex = 0;
             this.lbLogin.Text = "Login";
             // 
@@ -52,9 +51,9 @@ namespace TourBookingApp
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbPassword.Location = new System.Drawing.Point(10, 169);
+            this.lbPassword.Location = new System.Drawing.Point(12, 225);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(59, 15);
+            this.lbPassword.Size = new System.Drawing.Size(76, 20);
             this.lbPassword.TabIndex = 1;
             this.lbPassword.Text = "Password";
             // 
@@ -62,35 +61,32 @@ namespace TourBookingApp
             // 
             this.lbUsername.AutoSize = true;
             this.lbUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbUsername.Location = new System.Drawing.Point(10, 98);
+            this.lbUsername.Location = new System.Drawing.Point(12, 131);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(67, 15);
+            this.lbUsername.Size = new System.Drawing.Size(84, 20);
             this.lbUsername.TabIndex = 2;
             this.lbUsername.Text = "User name";
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(108, 96);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUserName.Location = new System.Drawing.Point(123, 128);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(266, 23);
+            this.txtUserName.Size = new System.Drawing.Size(304, 27);
             this.txtUserName.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(108, 166);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Location = new System.Drawing.Point(123, 222);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(266, 23);
+            this.txtPassword.Size = new System.Drawing.Size(304, 27);
             this.txtPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(108, 224);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Location = new System.Drawing.Point(123, 299);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(82, 22);
+            this.btnLogin.Size = new System.Drawing.Size(94, 29);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -98,10 +94,9 @@ namespace TourBookingApp
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(291, 224);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Location = new System.Drawing.Point(333, 299);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 22);
+            this.btnCancel.Size = new System.Drawing.Size(94, 29);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -112,7 +107,8 @@ namespace TourBookingApp
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 267);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(462, 348);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -120,9 +116,8 @@ namespace TourBookingApp
             this.Controls.Add(this.lbUsername);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbLogin);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(422, 306);
-            this.MinimumSize = new System.Drawing.Size(422, 306);
+            this.MaximumSize = new System.Drawing.Size(480, 395);
+            this.MinimumSize = new System.Drawing.Size(480, 395);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Group 3";
@@ -142,4 +137,3 @@ namespace TourBookingApp
         private System.Windows.Forms.Button btnCancel;
     }
 }
-
