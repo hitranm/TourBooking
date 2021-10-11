@@ -45,11 +45,16 @@ namespace DataAccess
 
         public TblTrip GetTripByID(int TripID)
         {
+            var trips = GetTripList();
             TblTrip trip = null;
             try
             {
                 using var context = new TourContext();
-                trip = context.TblTrips.SingleOrDefault(c => c.TripId == TripID);
+                foreach (var c in trips)
+                {
+                    
+                    trip = context.TblTrips.SingleOrDefault(c => c.TripId == TripID);
+                }
             }
             catch (Exception e)
             {
@@ -57,7 +62,6 @@ namespace DataAccess
             }
             return trip;
         }
-
         public IEnumerable<TblTrip> GetTripByTourID(int TourID)
         {
             var trip = new List<TblTrip>();

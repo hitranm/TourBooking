@@ -29,10 +29,8 @@ namespace TourBookingApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogout = new System.Windows.Forms.Button();
             this.lbTripList = new System.Windows.Forms.Label();
             this.dtgTripList = new System.Windows.Forms.DataGridView();
-            this.btnManage = new System.Windows.Forms.Button();
             this.txtDestination = new System.Windows.Forms.TextBox();
             this.txtTourName = new System.Windows.Forms.TextBox();
             this.txtTourID = new System.Windows.Forms.TextBox();
@@ -44,34 +42,26 @@ namespace TourBookingApp
             this.lbDescript = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lbTourList = new System.Windows.Forms.Label();
-            this.btnDetail = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.dtgTourList = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTourList)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogout.Location = new System.Drawing.Point(1195, 384);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(91, 22);
-            this.btnLogout.TabIndex = 1;
-            this.btnLogout.Text = "&Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lbTripList
             // 
             this.lbTripList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbTripList.AutoSize = true;
             this.lbTripList.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTripList.Location = new System.Drawing.Point(874, 7);
+            this.lbTripList.Location = new System.Drawing.Point(992, 35);
             this.lbTripList.Name = "lbTripList";
             this.lbTripList.Size = new System.Drawing.Size(53, 30);
             this.lbTripList.TabIndex = 15;
@@ -83,26 +73,15 @@ namespace TourBookingApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTripList.Location = new System.Drawing.Point(513, 53);
-            this.dtgTripList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgTripList.Location = new System.Drawing.Point(586, 110);
             this.dtgTripList.Name = "dtgTripList";
+            this.dtgTripList.ReadOnly = true;
             this.dtgTripList.RowHeadersWidth = 51;
             this.dtgTripList.RowTemplate.Height = 29;
-            this.dtgTripList.Size = new System.Drawing.Size(774, 322);
+            this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgTripList.Size = new System.Drawing.Size(884, 429);
             this.dtgTripList.TabIndex = 16;
             this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
-            // 
-            // btnManage
-            // 
-            this.btnManage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnManage.Location = new System.Drawing.Point(1108, 384);
-            this.btnManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(82, 22);
-            this.btnManage.TabIndex = 15;
-            this.btnManage.Text = "&Manage";
-            this.btnManage.UseVisualStyleBackColor = true;
-            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // txtDestination
             // 
@@ -222,25 +201,14 @@ namespace TourBookingApp
             this.lbTourList.Text = "Tour";
             this.lbTourList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnDetail
-            // 
-            this.btnDetail.Location = new System.Drawing.Point(382, 196);
-            this.btnDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(82, 21);
-            this.btnDetail.TabIndex = 16;
-            this.btnDetail.Text = "&Detail";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.btnLoad);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtSearchTour);
             this.panel1.Controls.Add(this.dtgTourList);
-            this.panel1.Controls.Add(this.btnDetail);
             this.panel1.Controls.Add(this.lbTourList);
             this.panel1.Controls.Add(this.txtDescription);
             this.panel1.Controls.Add(this.lbDescript);
@@ -252,11 +220,20 @@ namespace TourBookingApp
             this.panel1.Controls.Add(this.txtTourID);
             this.panel1.Controls.Add(this.txtTourName);
             this.panel1.Controls.Add(this.txtDestination);
-            this.panel1.Location = new System.Drawing.Point(2, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(486, 417);
+            this.panel1.Size = new System.Drawing.Size(555, 524);
             this.panel1.TabIndex = 2;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(433, 263);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(94, 29);
+            this.btnLoad.TabIndex = 19;
+            this.btnLoad.Text = "&Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnSearch
             // 
@@ -288,25 +265,54 @@ namespace TourBookingApp
             this.dtgTourList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgTourList.MultiSelect = false;
             this.dtgTourList.Name = "dtgTourList";
+            this.dtgTourList.ReadOnly = true;
             this.dtgTourList.RowHeadersWidth = 51;
             this.dtgTourList.RowTemplate.Height = 29;
             this.dtgTourList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTourList.Size = new System.Drawing.Size(458, 174);
+            this.dtgTourList.Size = new System.Drawing.Size(524, 200);
             this.dtgTourList.TabIndex = 17;
+            this.dtgTourList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgTourList_CellMouseDoubleClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1482, 28);
+            this.menuStrip1.TabIndex = 17;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // manageToolStripMenuItem
+            // 
+            this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.manageToolStripMenuItem.Text = "Manage";
+            this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click_2);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click_2);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AcceptButton = this.btnSearch;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 415);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1482, 553);
             this.Controls.Add(this.dtgTripList);
-            this.Controls.Add(this.btnManage);
             this.Controls.Add(this.lbTripList);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnLogout);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1314, 460);
-            this.MinimumSize = new System.Drawing.Size(877, 385);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1500, 600);
+            this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Group 3";
@@ -315,16 +321,16 @@ namespace TourBookingApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTourList)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label lbTripList;
         private System.Windows.Forms.DataGridView dtgTripList;
-        private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.TextBox txtDestination;
         private System.Windows.Forms.TextBox txtTourName;
         private System.Windows.Forms.TextBox txtTourID;
@@ -337,10 +343,13 @@ namespace TourBookingApp
         private System.Windows.Forms.TextBox txtDescription;
 
         private System.Windows.Forms.Label lbTourList;
-        private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dtgTourList;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearchTour;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
