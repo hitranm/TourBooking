@@ -30,16 +30,16 @@ namespace TourBookingApp
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtTourName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtTourDeparture = new System.Windows.Forms.TextBox();
+            this.txtTourDestination = new System.Windows.Forms.TextBox();
+            this.txtTourDescription = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -56,23 +56,23 @@ namespace TourBookingApp
             this.label1.Text = "ADD NEW TOUR";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(423, 558);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 39);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Location = new System.Drawing.Point(423, 558);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(85, 39);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtTourName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(217, 191);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 23);
-            this.textBox1.TabIndex = 2;
+            this.txtTourName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTourName.Location = new System.Drawing.Point(217, 191);
+            this.txtTourName.Name = "txtTourName";
+            this.txtTourName.Size = new System.Drawing.Size(268, 23);
+            this.txtTourName.TabIndex = 2;
             // 
             // label2
             // 
@@ -118,40 +118,40 @@ namespace TourBookingApp
             this.label5.TabIndex = 6;
             this.label5.Text = "Description :";
             // 
-            // textBox2
+            // txtTourDeparture
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(217, 256);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(268, 23);
-            this.textBox2.TabIndex = 7;
+            this.txtTourDeparture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTourDeparture.Location = new System.Drawing.Point(217, 256);
+            this.txtTourDeparture.Name = "txtTourDeparture";
+            this.txtTourDeparture.Size = new System.Drawing.Size(268, 23);
+            this.txtTourDeparture.TabIndex = 7;
             // 
-            // textBox3
+            // txtTourDestination
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(217, 310);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(268, 23);
-            this.textBox3.TabIndex = 8;
+            this.txtTourDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTourDestination.Location = new System.Drawing.Point(217, 310);
+            this.txtTourDestination.Name = "txtTourDestination";
+            this.txtTourDestination.Size = new System.Drawing.Size(268, 23);
+            this.txtTourDestination.TabIndex = 8;
             // 
-            // textBox4
+            // txtTourDescription
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(217, 367);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(268, 80);
-            this.textBox4.TabIndex = 9;
+            this.txtTourDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTourDescription.Location = new System.Drawing.Point(217, 367);
+            this.txtTourDescription.Multiline = true;
+            this.txtTourDescription.Name = "txtTourDescription";
+            this.txtTourDescription.Size = new System.Drawing.Size(268, 80);
+            this.txtTourDescription.TabIndex = 9;
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(544, 558);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 39);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(544, 558);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(87, 39);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -182,20 +182,21 @@ namespace TourBookingApp
             this.ClientSize = new System.Drawing.Size(654, 631);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.txtTourDescription);
+            this.Controls.Add(this.txtTourDestination);
+            this.Controls.Add(this.txtTourDeparture);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtTourName);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(670, 670);
             this.MinimumSize = new System.Drawing.Size(670, 670);
             this.Name = "frmAddNewTour";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddNewTour";
             this.Load += new System.EventHandler(this.frmAddNewTour_Load);
             this.ResumeLayout(false);
@@ -206,16 +207,16 @@ namespace TourBookingApp
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtTourName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtTourDeparture;
+        private System.Windows.Forms.TextBox txtTourDestination;
+        private System.Windows.Forms.TextBox txtTourDescription;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox1;
     }

@@ -167,7 +167,8 @@ namespace TourBookingApp
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-
+            frmManagement frm = new frmManagement();
+            frm.ShowDialog();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
