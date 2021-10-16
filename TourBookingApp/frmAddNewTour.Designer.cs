@@ -30,7 +30,7 @@ namespace TourBookingApp
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtTourName = new System.Windows.Forms.TextBox();
             this.lbTourName = new System.Windows.Forms.Label();
             this.lbDeparture = new System.Windows.Forms.Label();
@@ -42,47 +42,43 @@ namespace TourBookingApp
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbStatus = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.CheckBox();
+            this.lbTourID = new System.Windows.Forms.Label();
+            this.txtTourID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(282, 99);
+            this.label1.Location = new System.Drawing.Point(409, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 41);
+            this.label1.Size = new System.Drawing.Size(0, 41);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ADD NEW TOUR";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnAdd
+            // btnSave
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(483, 744);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(97, 52);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnSave.Location = new System.Drawing.Point(79, 359);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(96, 35);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtTourName
             // 
-            this.txtTourName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTourName.Location = new System.Drawing.Point(248, 255);
+            this.txtTourName.Location = new System.Drawing.Point(166, 108);
             this.txtTourName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTourName.Name = "txtTourName";
-            this.txtTourName.Size = new System.Drawing.Size(306, 27);
+            this.txtTourName.Size = new System.Drawing.Size(217, 27);
             this.txtTourName.TabIndex = 2;
             // 
             // lbTourName
             // 
-            this.lbTourName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTourName.AutoSize = true;
             this.lbTourName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbTourName.Location = new System.Drawing.Point(105, 256);
+            this.lbTourName.Location = new System.Drawing.Point(28, 108);
             this.lbTourName.Name = "lbTourName";
             this.lbTourName.Size = new System.Drawing.Size(100, 23);
             this.lbTourName.TabIndex = 3;
@@ -90,10 +86,9 @@ namespace TourBookingApp
             // 
             // lbDeparture
             // 
-            this.lbDeparture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDeparture.AutoSize = true;
             this.lbDeparture.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDeparture.Location = new System.Drawing.Point(105, 343);
+            this.lbDeparture.Location = new System.Drawing.Point(28, 172);
             this.lbDeparture.Name = "lbDeparture";
             this.lbDeparture.Size = new System.Drawing.Size(96, 23);
             this.lbDeparture.TabIndex = 4;
@@ -101,10 +96,9 @@ namespace TourBookingApp
             // 
             // lbDestination
             // 
-            this.lbDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDestination.AutoSize = true;
             this.lbDestination.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDestination.Location = new System.Drawing.Point(106, 415);
+            this.lbDestination.Location = new System.Drawing.Point(409, 42);
             this.lbDestination.Name = "lbDestination";
             this.lbDestination.Size = new System.Drawing.Size(106, 23);
             this.lbDestination.TabIndex = 5;
@@ -112,10 +106,9 @@ namespace TourBookingApp
             // 
             // lbDescription
             // 
-            this.lbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDescription.AutoSize = true;
             this.lbDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDescription.Location = new System.Drawing.Point(106, 491);
+            this.lbDescription.Location = new System.Drawing.Point(410, 108);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(105, 23);
             this.lbDescription.TabIndex = 6;
@@ -123,39 +116,35 @@ namespace TourBookingApp
             // 
             // txtDeparture
             // 
-            this.txtDeparture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeparture.Location = new System.Drawing.Point(248, 341);
+            this.txtDeparture.Location = new System.Drawing.Point(166, 172);
             this.txtDeparture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDeparture.Name = "txtDeparture";
-            this.txtDeparture.Size = new System.Drawing.Size(306, 27);
+            this.txtDeparture.Size = new System.Drawing.Size(217, 27);
             this.txtDeparture.TabIndex = 7;
             // 
             // txtDestination
             // 
-            this.txtDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDestination.Location = new System.Drawing.Point(248, 413);
+            this.txtDestination.Location = new System.Drawing.Point(542, 40);
             this.txtDestination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDestination.Name = "txtDestination";
-            this.txtDestination.Size = new System.Drawing.Size(306, 27);
+            this.txtDestination.Size = new System.Drawing.Size(214, 27);
             this.txtDestination.TabIndex = 8;
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(248, 489);
+            this.txtDescription.Location = new System.Drawing.Point(542, 108);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(306, 105);
+            this.txtDescription.Size = new System.Drawing.Size(214, 105);
             this.txtDescription.TabIndex = 9;
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(622, 744);
+            this.btnCancel.Location = new System.Drawing.Point(566, 359);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(99, 52);
+            this.btnCancel.Size = new System.Drawing.Size(103, 43);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -163,20 +152,17 @@ namespace TourBookingApp
             // 
             // lbStatus
             // 
-            this.lbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(106, 629);
+            this.lbStatus.Location = new System.Drawing.Point(28, 252);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(56, 20);
             this.lbStatus.TabIndex = 11;
             this.lbStatus.Text = "Status :";
-            this.lbStatus.Click += new System.EventHandler(this.label6_Click);
             // 
             // cbStatus
             // 
-            this.cbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbStatus.AutoSize = true;
-            this.cbStatus.Location = new System.Drawing.Point(242, 629);
+            this.cbStatus.Location = new System.Drawing.Point(166, 248);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(83, 24);
@@ -184,11 +170,32 @@ namespace TourBookingApp
             this.cbStatus.Text = "Active ?";
             this.cbStatus.UseVisualStyleBackColor = true;
             // 
+            // lbTourID
+            // 
+            this.lbTourID.AutoSize = true;
+            this.lbTourID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbTourID.Location = new System.Drawing.Point(28, 44);
+            this.lbTourID.Name = "lbTourID";
+            this.lbTourID.Size = new System.Drawing.Size(74, 23);
+            this.lbTourID.TabIndex = 13;
+            this.lbTourID.Text = "Tour ID :";
+            // 
+            // txtTourID
+            // 
+            this.txtTourID.Location = new System.Drawing.Point(166, 40);
+            this.txtTourID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTourID.Name = "txtTourID";
+            this.txtTourID.ReadOnly = true;
+            this.txtTourID.Size = new System.Drawing.Size(217, 27);
+            this.txtTourID.TabIndex = 14;
+            // 
             // frmAddNewTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 831);
+            this.ClientSize = new System.Drawing.Size(802, 418);
+            this.Controls.Add(this.txtTourID);
+            this.Controls.Add(this.lbTourID);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.btnCancel);
@@ -200,13 +207,11 @@ namespace TourBookingApp
             this.Controls.Add(this.lbDeparture);
             this.Controls.Add(this.lbTourName);
             this.Controls.Add(this.txtTourName);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(763, 878);
-            this.MinimumSize = new System.Drawing.Size(763, 878);
             this.Name = "frmAddNewTour";
-            this.Text = "frmAddNewTour";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmAddNewTour_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,7 +221,7 @@ namespace TourBookingApp
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtTourName;
         private System.Windows.Forms.Label lbTourName;
         private System.Windows.Forms.Label lbDeparture;
@@ -228,5 +233,7 @@ namespace TourBookingApp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.CheckBox cbStatus;
+        private System.Windows.Forms.Label lbTourID;
+        private System.Windows.Forms.TextBox txtTourID;
     }
 }

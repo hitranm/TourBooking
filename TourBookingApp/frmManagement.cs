@@ -17,6 +17,7 @@ namespace TourBookingApp
     {
         ITourRepository tourRepository = new TourRepository();
         BindingSource source;
+       
         public frmManagement()
         {
             InitializeComponent();
@@ -75,16 +76,29 @@ namespace TourBookingApp
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
         }
+      
         
         
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddNewTour frm = new frmAddNewTour();
-            frm.ShowDialog();
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Add tour",
+                InsertOrUpdate = false,
+                tourRepository = tourRepository
+
+            };
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
+           
+
         }
+     
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -98,17 +112,21 @@ namespace TourBookingApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            LoadTours();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+           
+        }
+        private void LoadTours()
+        {
             var tour = tourRepository.GetTours();
             source = new BindingSource();
             source.DataSource = tour;
             dgvTour.DataSource = null;
             dgvTour.DataSource = source;
 
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void frmManagement_Load(object sender, EventArgs e)
@@ -118,6 +136,35 @@ namespace TourBookingApp
             source.DataSource = tour;
             dgvTour.DataSource = null;
             dgvTour.DataSource = source;
+        }
+      
+
+
+        private void dgvTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var tour = new TblTour
+            {
+                TourId = int.Parse(dgvTour[dgvTour.Columns["TourID"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+                TourName = (dgvTour[dgvTour.Columns["TourName"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+                Departure = (dgvTour[dgvTour.Columns["Departure"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+                Destination = (dgvTour[dgvTour.Columns["Destination"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+                Description = (dgvTour[dgvTour.Columns["Description"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+                Status = bool.Parse(dgvTour[dgvTour.Columns["Status"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
+            };
+
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Update Tour",
+                InsertOrUpdate = true,
+                TourInfo = tour,
+                tourRepository=tourRepository
+
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
         }
     }
 }

@@ -108,8 +108,10 @@ namespace TourBookingApp
             this.dgvTour.Name = "dgvTour";
             this.dgvTour.RowHeadersWidth = 51;
             this.dgvTour.RowTemplate.Height = 25;
-            this.dgvTour.Size = new System.Drawing.Size(831, 336);
+            this.dgvTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTour.Size = new System.Drawing.Size(831, 283);
             this.dgvTour.TabIndex = 18;
+            this.dgvTour.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTour_CellDoubleClick);
             // 
             // btnDelete
             // 
@@ -331,5 +333,6 @@ namespace TourBookingApp
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
