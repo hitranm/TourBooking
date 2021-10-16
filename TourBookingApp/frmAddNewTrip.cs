@@ -51,7 +51,7 @@ namespace TourBookingApp
 
                 if (AddOrUpdate == false)
                 {
-                    var tripB = new TblTrip
+                    var tripA = new TblTrip
                     {
                         StartTime = DTPStartTime.Value,
                         Endtime = DTPEndTime.Value,
@@ -63,17 +63,17 @@ namespace TourBookingApp
                     };
                     if (cbTripStatus.CheckState == CheckState.Checked)
                     {
-                        tripB.Status = true;
+                        tripA.Status = true;
                     }
                     else
                     {
-                        tripB.Status = false;
+                        tripA.Status = false;
                     }
                     DialogResult result = MessageBox.Show("Bạn có chắc muốn thêm trip này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        tripRepository.InsertTrip(tripB);
+                        tripRepository.InsertTrip(tripA);
                         DialogResult result2 = MessageBox.Show("Đã thêm, bạn có muốn thêm trip nào khác ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                         MessageBoxDefaultButton.Button1);
                         if (result2 == DialogResult.No)
@@ -96,7 +96,7 @@ namespace TourBookingApp
                 else
                 {
                     //cbTripStatus.Enabled = true;
-                    var tripA = new TblTrip
+                    var tripU = new TblTrip
                     {
                         TripId = int.Parse(txtTripID.Text.ToString()),
                         StartTime = DTPStartTime.Value,
@@ -109,16 +109,16 @@ namespace TourBookingApp
                     };
                     if (cbTripStatus.CheckState == CheckState.Checked)
                     {
-                        tripA.Status = true;
+                        tripU.Status = true;
                     }
                     else
                     {
-                        tripA.Status = false;
+                        tripU.Status = false;
                     }
                     try
                     {
-                        tripRepository.UpdateTrip(tripA);
-                        var tri = tripRepository.GetTripByID(tripA.TripId);
+                        tripRepository.UpdateTrip(tripU);
+                        var tri = tripRepository.GetTripByID(tripU.TripId);
                         if (tri != null)
                         {
                             MessageBox.Show("Update successfully");
@@ -156,6 +156,14 @@ namespace TourBookingApp
                 NUDCapacity.Value = trip.Capacity;
                 txtAccommodation.Text = trip.Accommodation.ToString();
                 txtDescription.Text = trip.Description.ToString();
+                if (trip.Status == true)
+                {
+                    cbTripStatus.Checked = true;
+                }
+                else
+                {
+                    cbTripStatus.Checked = false;
+                }
             }
         }
 

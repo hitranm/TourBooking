@@ -56,7 +56,7 @@ namespace TourBookingApp
             // lbTripName
             // 
             this.lbTripName.AutoSize = true;
-            this.lbTripName.Location = new System.Drawing.Point(96, 88);
+            this.lbTripName.Location = new System.Drawing.Point(83, 129);
             this.lbTripName.Name = "lbTripName";
             this.lbTripName.Size = new System.Drawing.Size(36, 15);
             this.lbTripName.TabIndex = 0;
@@ -76,7 +76,7 @@ namespace TourBookingApp
             // lbStartTime
             // 
             this.lbStartTime.AutoSize = true;
-            this.lbStartTime.Location = new System.Drawing.Point(96, 126);
+            this.lbStartTime.Location = new System.Drawing.Point(83, 167);
             this.lbStartTime.Name = "lbStartTime";
             this.lbStartTime.Size = new System.Drawing.Size(58, 15);
             this.lbStartTime.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace TourBookingApp
             // lbEndTime
             // 
             this.lbEndTime.AutoSize = true;
-            this.lbEndTime.Location = new System.Drawing.Point(96, 168);
+            this.lbEndTime.Location = new System.Drawing.Point(83, 209);
             this.lbEndTime.Name = "lbEndTime";
             this.lbEndTime.Size = new System.Drawing.Size(56, 15);
             this.lbEndTime.TabIndex = 4;
@@ -94,7 +94,7 @@ namespace TourBookingApp
             // lbCapacity
             // 
             this.lbCapacity.AutoSize = true;
-            this.lbCapacity.Location = new System.Drawing.Point(96, 253);
+            this.lbCapacity.Location = new System.Drawing.Point(83, 294);
             this.lbCapacity.Name = "lbCapacity";
             this.lbCapacity.Size = new System.Drawing.Size(53, 15);
             this.lbCapacity.TabIndex = 5;
@@ -103,7 +103,7 @@ namespace TourBookingApp
             // lbAccommodation
             // 
             this.lbAccommodation.AutoSize = true;
-            this.lbAccommodation.Location = new System.Drawing.Point(96, 301);
+            this.lbAccommodation.Location = new System.Drawing.Point(83, 342);
             this.lbAccommodation.Name = "lbAccommodation";
             this.lbAccommodation.Size = new System.Drawing.Size(97, 15);
             this.lbAccommodation.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace TourBookingApp
             // lbDescription
             // 
             this.lbDescription.AutoSize = true;
-            this.lbDescription.Location = new System.Drawing.Point(96, 349);
+            this.lbDescription.Location = new System.Drawing.Point(83, 390);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(67, 15);
             this.lbDescription.TabIndex = 7;
@@ -120,7 +120,7 @@ namespace TourBookingApp
             // 
             // txtAccommodation
             // 
-            this.txtAccommodation.Location = new System.Drawing.Point(242, 298);
+            this.txtAccommodation.Location = new System.Drawing.Point(229, 339);
             this.txtAccommodation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccommodation.Name = "txtAccommodation";
             this.txtAccommodation.Size = new System.Drawing.Size(256, 23);
@@ -128,7 +128,7 @@ namespace TourBookingApp
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(242, 346);
+            this.txtDescription.Location = new System.Drawing.Point(229, 387);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
@@ -138,7 +138,7 @@ namespace TourBookingApp
             // btnAddTrip
             // 
             this.btnAddTrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddTrip.Location = new System.Drawing.Point(272, 469);
+            this.btnAddTrip.Location = new System.Drawing.Point(272, 519);
             this.btnAddTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTrip.Name = "btnAddTrip";
             this.btnAddTrip.Size = new System.Drawing.Size(82, 22);
@@ -150,7 +150,7 @@ namespace TourBookingApp
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(381, 469);
+            this.btnCancel.Location = new System.Drawing.Point(381, 519);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 22);
@@ -161,7 +161,7 @@ namespace TourBookingApp
             // 
             // DTPStartTime
             // 
-            this.DTPStartTime.Location = new System.Drawing.Point(242, 120);
+            this.DTPStartTime.Location = new System.Drawing.Point(229, 161);
             this.DTPStartTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DTPStartTime.Name = "DTPStartTime";
             this.DTPStartTime.Size = new System.Drawing.Size(256, 23);
@@ -169,7 +169,7 @@ namespace TourBookingApp
             // 
             // DTPEndTime
             // 
-            this.DTPEndTime.Location = new System.Drawing.Point(242, 162);
+            this.DTPEndTime.Location = new System.Drawing.Point(229, 203);
             this.DTPEndTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DTPEndTime.Name = "DTPEndTime";
             this.DTPEndTime.Size = new System.Drawing.Size(256, 23);
@@ -177,7 +177,7 @@ namespace TourBookingApp
             // 
             // NUDCapacity
             // 
-            this.NUDCapacity.Location = new System.Drawing.Point(242, 251);
+            this.NUDCapacity.Location = new System.Drawing.Point(229, 292);
             this.NUDCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NUDCapacity.Minimum = new decimal(new int[] {
             1,
@@ -196,7 +196,7 @@ namespace TourBookingApp
             // cbxListTourName
             // 
             this.cbxListTourName.FormattingEnabled = true;
-            this.cbxListTourName.Location = new System.Drawing.Point(242, 80);
+            this.cbxListTourName.Location = new System.Drawing.Point(229, 121);
             this.cbxListTourName.Name = "cbxListTourName";
             this.cbxListTourName.Size = new System.Drawing.Size(256, 23);
             this.cbxListTourName.TabIndex = 18;
@@ -205,7 +205,7 @@ namespace TourBookingApp
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
-            this.lbPrice.Location = new System.Drawing.Point(96, 208);
+            this.lbPrice.Location = new System.Drawing.Point(83, 249);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(33, 15);
             this.lbPrice.TabIndex = 20;
@@ -213,7 +213,7 @@ namespace TourBookingApp
             // 
             // mtxtPrice
             // 
-            this.mtxtPrice.Location = new System.Drawing.Point(242, 208);
+            this.mtxtPrice.Location = new System.Drawing.Point(229, 249);
             this.mtxtPrice.Mask = "0000000000";
             this.mtxtPrice.Name = "mtxtPrice";
             this.mtxtPrice.Size = new System.Drawing.Size(256, 23);
@@ -223,7 +223,7 @@ namespace TourBookingApp
             // lbTripId
             // 
             this.lbTripId.AutoSize = true;
-            this.lbTripId.Location = new System.Drawing.Point(96, 52);
+            this.lbTripId.Location = new System.Drawing.Point(83, 87);
             this.lbTripId.Name = "lbTripId";
             this.lbTripId.Size = new System.Drawing.Size(24, 15);
             this.lbTripId.TabIndex = 22;
@@ -232,7 +232,7 @@ namespace TourBookingApp
             // txtTripID
             // 
             this.txtTripID.Enabled = false;
-            this.txtTripID.Location = new System.Drawing.Point(242, 44);
+            this.txtTripID.Location = new System.Drawing.Point(229, 79);
             this.txtTripID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTripID.Name = "txtTripID";
             this.txtTripID.Size = new System.Drawing.Size(256, 23);
@@ -241,7 +241,7 @@ namespace TourBookingApp
             // cbTripStatus
             // 
             this.cbTripStatus.AutoSize = true;
-            this.cbTripStatus.Location = new System.Drawing.Point(242, 428);
+            this.cbTripStatus.Location = new System.Drawing.Point(229, 469);
             this.cbTripStatus.Name = "cbTripStatus";
             this.cbTripStatus.Size = new System.Drawing.Size(67, 19);
             this.cbTripStatus.TabIndex = 24;
@@ -251,7 +251,7 @@ namespace TourBookingApp
             // lbTripStatus
             // 
             this.lbTripStatus.AutoSize = true;
-            this.lbTripStatus.Location = new System.Drawing.Point(96, 429);
+            this.lbTripStatus.Location = new System.Drawing.Point(83, 470);
             this.lbTripStatus.Name = "lbTripStatus";
             this.lbTripStatus.Size = new System.Drawing.Size(39, 15);
             this.lbTripStatus.TabIndex = 25;
@@ -261,7 +261,7 @@ namespace TourBookingApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 511);
+            this.ClientSize = new System.Drawing.Size(555, 561);
             this.Controls.Add(this.lbTripStatus);
             this.Controls.Add(this.cbTripStatus);
             this.Controls.Add(this.txtTripID);
@@ -284,7 +284,7 @@ namespace TourBookingApp
             this.Controls.Add(this.lbAddNewTrip);
             this.Controls.Add(this.lbTripName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(571, 550);
+            this.MaximumSize = new System.Drawing.Size(580, 600);
             this.MinimumSize = new System.Drawing.Size(571, 497);
             this.Name = "frmAddNewTrip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

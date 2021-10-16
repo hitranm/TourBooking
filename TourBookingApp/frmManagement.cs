@@ -113,6 +113,17 @@ namespace TourBookingApp
             return trip;
         }
 
+ 
+        //private void btnDeleteTrip_Click(object sender, EventArgs e)
+        //{
+           
+        //}
 
+        //private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+          //  var trip = new TblTrip();
+          //  trip = GetTripInfor(e);
+       // }
+       
     }
 }
