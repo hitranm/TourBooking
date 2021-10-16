@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess.DataAccess;
 using DataAccess.Repository;
-using DataAccess.DataAccess;
 namespace TourBookingApp
 {
     public partial class frmMain : Form
@@ -272,10 +271,8 @@ namespace TourBookingApp
             };
             if (frmBooking.ShowDialog() == DialogResult.OK)
             {
-
+                MessageBox.Show("Book trip successfully");
             }
-
-
         }
     }
 }

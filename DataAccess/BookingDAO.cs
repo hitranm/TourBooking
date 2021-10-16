@@ -54,6 +54,36 @@ namespace DataAccess
             }
             return booking;
         }
+
+        public IEnumerable<TblBooking> GetBookingByCustomerID(int customerID)
+        {
+            var bookings = new List<TblBooking>();
+            try
+            {
+                using var context = new TourContext();
+                bookings = context.TblBookings.Where(c => c.CustomerId == customerID).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return bookings;
+        }
+        public IEnumerable<TblBooking> GetBookingByTripID(int tripId)
+        {
+            var bookings = new List<TblBooking>();
+            try
+            {
+                using var context = new TourContext();
+                bookings = context.TblBookings.Where(c => c.TripId == tripId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return bookings;
+        }
+
         public void AddNew(TblBooking booking)
         {
             try

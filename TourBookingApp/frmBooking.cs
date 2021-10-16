@@ -196,6 +196,7 @@ namespace TourBookingApp
                         TourId = TripInfo.TourId
                     };
                     TripRepository.UpdateTrip(trip);
+                    this.Close();
                 }
             }
             catch (Exception ex)
