@@ -28,9 +28,9 @@ namespace TourBookingApp
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadTourList();
-           
-           
-          
+
+
+
             if (isAdmin == false)
             {
                 manageToolStripMenuItem.Enabled = false;
@@ -54,6 +54,7 @@ namespace TourBookingApp
             var tours = tourRepository.GetTours();
             try
             {
+
                 source = new BindingSource();
                 source.DataSource = tours;
                 txtTourName.DataBindings.Clear();
@@ -68,13 +69,23 @@ namespace TourBookingApp
                 txtDestination.DataBindings.Add("Text", source, "Destination");
                 txtDescription.DataBindings.Add("Text", source, "Description");
 
-                
+
                 dtgTourList.DataSource = null;
                 dtgTourList.DataSource = source;
-                dtgTourList.Columns[6].Visible=false;
+
+                bool isvisible;
+                for (int i = 1; i < dtgTourList.RowCount - 1; i++)
+                {
+                    isvisible = bool.Parse(dtgTourList[dtgTourList.Columns["Status"].Index, i].Value.ToString());
+                    if (isvisible == false)
+                    {
+                        dtgTourList.Rows[i].Visible = false;
+                    }
+                }
+                dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
 
-                
+
             }
             catch (Exception ex)
             {
@@ -92,9 +103,9 @@ namespace TourBookingApp
             txtDeparture.Text = string.Empty;
 
         }
-  
 
-      
+
+
         private void LoadOneTour()
         {
             bool hasTour = false;
@@ -103,9 +114,9 @@ namespace TourBookingApp
             var tours = tourRepository.GetTours();
             try
             {
-               foreach(var i in tours)
+                foreach (var i in tours)
                 {
-                    if (i.TourName.Contains(txtSearchTour.Text))
+                    if (i.TourName.Contains(txtSearchTour.Text) && i.Status == true)
                     {
                         hasTour = true;
                         tour.Add(i);
@@ -128,6 +139,7 @@ namespace TourBookingApp
                 dtgTourList.DataSource = null;
                 dtgTourList.DataSource = source;
 
+
             }
             catch (Exception e)
             {
@@ -135,12 +147,16 @@ namespace TourBookingApp
             }
             if (hasTour == false)
             {
-                MessageBox.Show("There are no tours", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void LoadTripList(int TourID)
         {
             var trips = tripRepository.GetTripByTourID(TourID);
+            if (trips == null)
+            {
+                MessageBox.Show("No trip available", "Trip Error");
+            }
             try
             {
                 source = new BindingSource();
@@ -155,9 +171,14 @@ namespace TourBookingApp
                 dtgTripList.Columns[9].Visible = false;
                 dtgTripList.Columns[10].Visible = false;
 
-                if (trips == null)
+                bool isvisible;
+                for (int i = 1; i < dtgTripList.RowCount - 1; i++)
                 {
-                    MessageBox.Show("No trip available", "Trip Error");
+                    isvisible = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, i].Value.ToString());
+                    if (isvisible == false || DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString()).Date.Day + 3 > DateTime.Now.Day)
+                    {
+                        dtgTripList.Rows[i].Visible = false;
+                    }
                 }
 
             }
@@ -181,9 +202,9 @@ namespace TourBookingApp
                     Accommodation = dtgTripList[dtgTripList.Columns["Accommodation"].Index, rowIndex].Value.ToString(),
                     Description = dtgTripList[dtgTripList.Columns["Description"].Index, rowIndex].Value.ToString(),
                     Price = decimal.Parse(dtgTripList[dtgTripList.Columns["Price"].Index, rowIndex].Value.ToString()),
-                    Capacity = int.Parse(dtgTripList[dtgTripList.Columns["Capacity"].Index,rowIndex].Value.ToString()),
-                    Status = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index,rowIndex].Value.ToString()),
-                    TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index,rowIndex].Value.ToString())
+                    Capacity = int.Parse(dtgTripList[dtgTripList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
+                    Status = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, rowIndex].Value.ToString()),
+                    TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index, rowIndex].Value.ToString())
                 };
             }
             catch (Exception ex)
@@ -193,7 +214,7 @@ namespace TourBookingApp
             return trip;
         }
 
- 
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -229,7 +250,7 @@ namespace TourBookingApp
             }
         }
 
-       
+
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
@@ -249,12 +270,12 @@ namespace TourBookingApp
                 TripInfo = GetTrip(e),
                 userID = this.currentID
             };
-            if (frmBooking.ShowDialog()== DialogResult.OK)
+            if (frmBooking.ShowDialog() == DialogResult.OK)
             {
 
             }
 
-            
+
         }
     }
 }
