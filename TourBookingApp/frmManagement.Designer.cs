@@ -81,7 +81,6 @@ namespace TourBookingApp
             this.TourManage.TabIndex = 0;
             this.TourManage.Text = "Tour";
             this.TourManage.UseVisualStyleBackColor = true;
-           
             // 
             // dtgListTour
             // 
@@ -177,7 +176,7 @@ namespace TourBookingApp
             this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgTripList.Size = new System.Drawing.Size(727, 305);
             this.dtgTripList.TabIndex = 21;
-            
+            this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
             // 
             // button6
             // 
@@ -208,7 +207,6 @@ namespace TourBookingApp
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 21);
             this.label5.TabIndex = 14;
-            
             // 
             // label4
             // 
@@ -219,7 +217,6 @@ namespace TourBookingApp
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 30);
             this.label4.TabIndex = 2;
-            
             // 
             // label3
             // 
