@@ -68,7 +68,7 @@ namespace DataAccess
                 if (tou == null)
                 {
                     using var context = new TourContext();
-                    context.TblTours.Add(tou);
+                    context.TblTours.Add(tour);
                     context.SaveChanges();
                 }
                 else

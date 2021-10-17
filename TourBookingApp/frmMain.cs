@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataAccess.DataAccess;
 using DataAccess.Repository;
 using DataAccess.DataAccess;
 namespace TourBookingApp
@@ -143,7 +142,7 @@ namespace TourBookingApp
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Load tour");
+                MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (hasTour == false)
             {
