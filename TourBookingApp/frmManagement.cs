@@ -1,6 +1,7 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Repository;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 
@@ -131,13 +132,17 @@ namespace TourBookingApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void btnAddTrip_Click(object sender, EventArgs e)
+        {
             frmAddNewTrip frm = new frmAddNewTrip
             {
                 Text = "Add Trip",
                 AddOrUpdate = false,
             };
             frm.ShowDialog();
-            LoadOneTour(txtSearch.Text);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -172,7 +177,7 @@ namespace TourBookingApp
             dgvTour.DataSource = null;
             dgvTour.DataSource = source;
         }
-      
+
 
 
         private void dgvTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -192,7 +197,7 @@ namespace TourBookingApp
                 Text = "Update Tour",
                 InsertOrUpdate = true,
                 TourInfo = tour,
-                tourRepository=tourRepository
+                tourRepository = tourRepository
 
             };
             if (frm.ShowDialog() == DialogResult.OK)
@@ -200,6 +205,7 @@ namespace TourBookingApp
                 LoadTours();
                 source.Position = source.Count - 1;
             }
+        }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadTripList();
@@ -386,5 +392,3 @@ namespace TourBookingApp
           //  trip = GetTripInfor(e);
        // }
        
-    }
-}
