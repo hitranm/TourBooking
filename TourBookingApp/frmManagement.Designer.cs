@@ -57,6 +57,9 @@ namespace TourBookingApp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvBooking = new System.Windows.Forms.DataGridView();
+            this.dgvSelectList = new System.Windows.Forms.DataGridView();
+            this.cboSelect = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTour)).BeginInit();
@@ -66,6 +69,9 @@ namespace TourBookingApp
             ((System.ComponentModel.ISupportInitialize)(this.dtgListTour)).BeginInit();
             this.TripManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectList)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -404,14 +410,53 @@ namespace TourBookingApp
             // 
             // tabPage3
             // 
-            this.tabPage3.Size = new System.Drawing.Size(800, 438);
-            this.tabPage3.Size = new System.Drawing.Size(915, 588);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage3.Controls.Add(this.dgvBooking);
+            this.tabPage3.Controls.Add(this.dgvSelectList);
+            this.tabPage3.Controls.Add(this.cboSelect);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(792, 422);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Booking";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvBooking
+            // 
+            this.dgvBooking.AllowUserToAddRows = false;
+            this.dgvBooking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBooking.Location = new System.Drawing.Point(319, 48);
+            this.dgvBooking.Name = "dgvBooking";
+            this.dgvBooking.ReadOnly = true;
+            this.dgvBooking.RowTemplate.Height = 25;
+            this.dgvBooking.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBooking.Size = new System.Drawing.Size(473, 382);
+            this.dgvBooking.TabIndex = 2;
+            // 
+            // dgvSelectList
+            // 
+            this.dgvSelectList.AllowUserToAddRows = false;
+            this.dgvSelectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectList.Location = new System.Drawing.Point(8, 48);
+            this.dgvSelectList.Name = "dgvSelectList";
+            this.dgvSelectList.ReadOnly = true;
+            this.dgvSelectList.RowTemplate.Height = 25;
+            this.dgvSelectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSelectList.Size = new System.Drawing.Size(305, 382);
+            this.dgvSelectList.TabIndex = 1;
+            this.dgvSelectList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectList_CellDoubleClick);
+            // 
+            // cboSelect
+            // 
+            this.cboSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSelect.FormattingEnabled = true;
+            this.cboSelect.Items.AddRange(new object[] {
+            "Customer",
+            "Trip"});
+            this.cboSelect.Location = new System.Drawing.Point(8, 19);
+            this.cboSelect.Name = "cboSelect";
+            this.cboSelect.Size = new System.Drawing.Size(203, 23);
+            this.cboSelect.TabIndex = 0;
+            this.cboSelect.SelectedValueChanged += new System.EventHandler(this.cboSelect_SelectedValueChanged);
             // 
             // frmManagement
             // 
@@ -437,6 +482,9 @@ namespace TourBookingApp
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -478,5 +526,8 @@ namespace TourBookingApp
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dgvBooking;
+        private System.Windows.Forms.DataGridView dgvSelectList;
+        private System.Windows.Forms.ComboBox cboSelect;
     }
 }

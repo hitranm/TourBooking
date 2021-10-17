@@ -14,5 +14,7 @@ namespace DataAccess.Repository
         void InsertBooking(TblBooking booking);
         void UpdateBooking(TblBooking booking);
         void DeleteBooking(int BookingID);
+        IEnumerable<TblBooking> GetBookingsByCustomerId(int customerId);
+        IEnumerable<TblBooking> GetBookingsByTripId(int tripId);
     }
 }
