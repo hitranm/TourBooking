@@ -138,7 +138,7 @@ namespace DataAccess
                 TblTrip tri = GetTripByID(TripID);
                 if (tri != null)
                 {
-                    using var context = new TourContext();
+                    using var context = new TourContext();                    
                     context.TblTrips.Remove(tri);
                     context.SaveChanges();
                 }

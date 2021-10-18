@@ -170,10 +170,10 @@ namespace TourBookingApp
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(29, 34);
+            this.btnRefresh.Location = new System.Drawing.Point(65, 59);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(66, 27);
+            this.btnRefresh.Size = new System.Drawing.Size(66, 52);
             this.btnRefresh.TabIndex = 22;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -182,33 +182,35 @@ namespace TourBookingApp
             // dtgTripList
             // 
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTripList.Location = new System.Drawing.Point(8, 75);
+            this.dtgTripList.Location = new System.Drawing.Point(65, 115);
             this.dtgTripList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgTripList.Name = "dtgTripList";
             this.dtgTripList.ReadOnly = true;
             this.dtgTripList.RowHeadersWidth = 51;
             this.dtgTripList.RowTemplate.Height = 25;
             this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTripList.Size = new System.Drawing.Size(784, 356);
+            this.dtgTripList.Size = new System.Drawing.Size(1015, 356);
             this.dtgTripList.TabIndex = 21;
+            this.dtgTripList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellClick);
             this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
             // 
             // btnDeleteTrip
             // 
-            this.btnDeleteTrip.Location = new System.Drawing.Point(528, 32);
+            this.btnDeleteTrip.Location = new System.Drawing.Point(849, 48);
             this.btnDeleteTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteTrip.Name = "btnDeleteTrip";
-            this.btnDeleteTrip.Size = new System.Drawing.Size(70, 29);
+            this.btnDeleteTrip.Size = new System.Drawing.Size(102, 52);
             this.btnDeleteTrip.TabIndex = 20;
             this.btnDeleteTrip.Text = "Delete";
             this.btnDeleteTrip.UseVisualStyleBackColor = true;
+            this.btnDeleteTrip.Click += new System.EventHandler(this.btnDeleteTrip_Click);
             // 
             // btnAddTrip
             // 
-            this.btnAddTrip.Location = new System.Drawing.Point(379, 32);
+            this.btnAddTrip.Location = new System.Drawing.Point(674, 48);
             this.btnAddTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTrip.Name = "btnAddTrip";
-            this.btnAddTrip.Size = new System.Drawing.Size(72, 29);
+            this.btnAddTrip.Size = new System.Drawing.Size(102, 52);
             this.btnAddTrip.TabIndex = 19;
             this.btnAddTrip.Text = "Add";
             this.btnAddTrip.UseVisualStyleBackColor = true;

@@ -69,12 +69,12 @@ namespace TourBookingApp
                     {
                         tripA.Status = false;
                     }
-                    DialogResult result = MessageBox.Show("Bạn có chắc muốn thêm trip này ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    DialogResult result = MessageBox.Show("Are you sure want to add this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
                         tripRepository.InsertTrip(tripA);
-                        DialogResult result2 = MessageBox.Show("Đã thêm, bạn có muốn thêm trip nào khác ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        DialogResult result2 = MessageBox.Show("Trip added, Do you want to add another one ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                         MessageBoxDefaultButton.Button1);
                         if (result2 == DialogResult.No)
                         {
@@ -148,7 +148,7 @@ namespace TourBookingApp
         {
             if (AddOrUpdate == true)
             {
-                //cbxListTourName.SelectedValue = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();               
                 txtTripID.Text = trip.TripId.ToString();
                 DTPStartTime.Value = trip.StartTime;
                 DTPEndTime.Value = trip.Endtime;

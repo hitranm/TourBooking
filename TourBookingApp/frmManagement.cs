@@ -14,6 +14,7 @@ namespace TourBookingApp
         ICustomerRepository customerRepository = new CustomerRepository();
         IBookingRepository bookingRepository = new BookingRepository();
         BindingSource source;
+        public int tripID;
 
         public frmManagement()
         {
@@ -91,8 +92,8 @@ namespace TourBookingApp
 
                 dtgTripList.DataSource = null;
                 dtgTripList.DataSource = source;
-                dtgTripList.Columns[7].Visible = false;
-                dtgTripList.Columns[8].Visible = false;
+                //dtgTripList.Columns[7].Visible = false;
+                //dtgTripList.Columns[8].Visible = false;
                 dtgTripList.Columns[9].Visible = false;
                 dtgTripList.Columns[10].Visible = false;
 
@@ -130,10 +131,6 @@ namespace TourBookingApp
         }
      
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void btnAddTrip_Click(object sender, EventArgs e)
         {
@@ -253,6 +250,7 @@ namespace TourBookingApp
                     Price = decimal.Parse(dtgTripList[dtgTripList.Columns["Price"].Index, rowIndex].Value.ToString()),
                     Capacity = int.Parse(dtgTripList[dtgTripList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
                     Status = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, rowIndex].Value.ToString()),
+                    TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index, rowIndex].Value.ToString()),
                 };
             }
             catch (Exception ex)
@@ -377,18 +375,40 @@ namespace TourBookingApp
             }
             return customer;
         }
+
+        
+
+        private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
+        }
+
+
+        private void btnDeleteTrip_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure want to delete this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    var tri = tripRepository.GetTripByID(tripID);
+                    if (tri != null)
+                    {
+                        tri.Status = false;
+                        tripRepository.UpdateTrip(tri);
+                        MessageBox.Show("Delete successfully");
+                    }
+                }            
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Trip");
+            }
+        }
     }
 }
 
  
-        //private void btnDeleteTrip_Click(object sender, EventArgs e)
-        //{
-           
-        //}
-
-        //private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-          //  var trip = new TblTrip();
-          //  trip = GetTripInfor(e);
-       // }
+        
        
