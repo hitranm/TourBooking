@@ -15,6 +15,7 @@ namespace TourBookingApp
         IBookingRepository bookingRepository = new BookingRepository();
         BindingSource source;
         public int tripID;
+        public int tourID;
 
         public frmManagement()
         {
@@ -406,7 +407,25 @@ namespace TourBookingApp
 
         private void btnDeleteTour_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure want to delete this tour ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    var tou = tourRepository.GetTourByID(tourID);
+                    if (tou != null)
+                    {
+                        tou.Status = false;
+                        tourRepository.UpdateTour(tou);
+                        MessageBox.Show("Delete successfully");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Tour");
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -417,6 +436,12 @@ namespace TourBookingApp
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
             LoadTours();
+        }
+
+        private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
         }
     }
 }

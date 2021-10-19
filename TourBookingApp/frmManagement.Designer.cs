@@ -127,6 +127,7 @@ namespace TourBookingApp
             this.dtgListTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListTour.Size = new System.Drawing.Size(1081, 387);
             this.dtgListTour.TabIndex = 18;
+            this.dtgListTour.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListTour_CellClick);
             this.dtgListTour.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListTour_CellDoubleClick);
             // 
             // btnDeleteTour
@@ -349,7 +350,6 @@ namespace TourBookingApp
             this.dgvTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTour.Size = new System.Drawing.Size(831, 283);
             this.dgvTour.TabIndex = 18;
-            
             // 
             // btnDelete
             // 
