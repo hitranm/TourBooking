@@ -41,10 +41,10 @@ namespace TourBookingApp
                     }
                     source = new BindingSource();
                     source.DataSource = tour;
-                    
 
-                    dgvTour.DataSource = null;
-                    dgvTour.DataSource = source;
+
+                    dtgListTour.DataSource = null;
+                    dtgListTour.DataSource = source;
                 }
             }
             catch (Exception e)
@@ -56,11 +56,7 @@ namespace TourBookingApp
                 MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+    
         
         public void LoadTourList()
         {
@@ -105,11 +101,8 @@ namespace TourBookingApp
 
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-        }
-      
         
+           
         
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -142,27 +135,15 @@ namespace TourBookingApp
             frm.ShowDialog();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            LoadTours();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-           
-        }
+             
+       
         private void LoadTours()
         {
             var tour = tourRepository.GetTours();
             source = new BindingSource();
             source.DataSource = tour;
-            dgvTour.DataSource = null;
-            dgvTour.DataSource = source;
+            dtgListTour.DataSource = null;
+            dtgListTour.DataSource = source;
 
         }
 
@@ -171,38 +152,11 @@ namespace TourBookingApp
             var tour = tourRepository.GetTours();
             source = new BindingSource();
             source.DataSource = tour;
-            dgvTour.DataSource = null;
-            dgvTour.DataSource = source;
+            dtgListTour.DataSource = null;
+            dtgListTour.DataSource = source;
         }
 
-
-
-        private void dgvTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var tour = new TblTour
-            {
-                TourId = int.Parse(dgvTour[dgvTour.Columns["TourID"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-                TourName = (dgvTour[dgvTour.Columns["TourName"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-                Departure = (dgvTour[dgvTour.Columns["Departure"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-                Destination = (dgvTour[dgvTour.Columns["Destination"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-                Description = (dgvTour[dgvTour.Columns["Description"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-                Status = bool.Parse(dgvTour[dgvTour.Columns["Status"].Index, dgvTour.CurrentRow.Index].Value.ToString()),
-            };
-
-            frmAddNewTour frm = new frmAddNewTour
-            {
-                Text = "Update Tour",
-                InsertOrUpdate = true,
-                TourInfo = tour,
-                tourRepository = tourRepository
-
-            };
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadTours();
-                source.Position = source.Count - 1;
-            }
-        }
+       
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadTripList();
@@ -405,6 +359,64 @@ namespace TourBookingApp
             {
                 MessageBox.Show(ex.Message, "Delete Trip");
             }
+        }
+
+        private void dtgListTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var tour = new TblTour
+            {
+                TourId = int.Parse(dtgListTour[dtgListTour.Columns["TourId"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                TourName = (dtgListTour[dtgListTour.Columns["TourName"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Departure = (dtgListTour[dtgListTour.Columns["Departure"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Destination = (dtgListTour[dtgListTour.Columns["Destination"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Description = (dtgListTour[dtgListTour.Columns["Description"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Status = bool.Parse(dtgListTour[dtgListTour.Columns["Status"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+            };
+
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Update Tour",
+                InsertOrUpdate = true,
+                TourInfo = tour,
+                tourRepository = tourRepository
+
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void btnAddTour_Click(object sender, EventArgs e)
+        {
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Add tour",
+                InsertOrUpdate = false,
+                tourRepository = tourRepository
+
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void btnDeleteTour_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadOneTour(txtSearch.Text);
+        }
+
+        private void btnLoad_Click_1(object sender, EventArgs e)
+        {
+            LoadTours();
         }
     }
 }
