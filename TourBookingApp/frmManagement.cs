@@ -21,11 +21,108 @@ namespace TourBookingApp
         {
             InitializeComponent();
             
-        }
+        }       
         private void frmManagement_Load_1(object sender, EventArgs e)
         {
             LoadTourList();
             LoadTripList();
+        }
+
+        //*TOUR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        private void dtgListTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var tour = new TblTour
+            {
+                TourId = int.Parse(dtgListTour[dtgListTour.Columns["TourId"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                TourName = (dtgListTour[dtgListTour.Columns["TourName"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Departure = (dtgListTour[dtgListTour.Columns["Departure"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Destination = (dtgListTour[dtgListTour.Columns["Destination"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Description = (dtgListTour[dtgListTour.Columns["Description"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+                Status = bool.Parse(dtgListTour[dtgListTour.Columns["Status"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
+            };
+
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Update Tour",
+                InsertOrUpdate = true,
+                TourInfo = tour,
+                tourRepository = tourRepository
+
+            };
+            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void btnAddTour_Click(object sender, EventArgs e)
+        {
+            frmAddNewTour frm = new frmAddNewTour
+            {
+                Text = "Add tour",
+                InsertOrUpdate = false,
+                tourRepository = tourRepository
+
+            };
+            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTours();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void frmAddNewTour_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadTourList();
+        }
+
+        private void btnDeleteTour_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure want to delete this tour, All the trip " +
+                    "of this tour will be delete too ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    var tou = tourRepository.GetTourByID(tourID);
+                    if (tou != null)
+                    {
+                        tou.Status = false;
+                        tourRepository.UpdateTour(tou);
+                        MessageBox.Show("Delete successfully");
+                    }
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    listtrip = (List<TblTrip>)tripRepository.GetTripByTourID(tourID);
+                    foreach (var c in listtrip)
+                    {
+                        c.Status = false;
+                        tripRepository.UpdateTrip(c);
+                    }
+                }
+                LoadTourList();
+                LoadTripList();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Tour");
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadOneTour(txtSearch.Text);
+        }
+
+        private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
         }
 
         private void LoadOneTour(string name)
@@ -81,6 +178,19 @@ namespace TourBookingApp
             }
         }
 
+        private void LoadTours()
+        {
+            var tour = tourRepository.GetTours();
+            source = new BindingSource();
+            source.DataSource = tour;
+            dtgListTour.DataSource = null;
+            dtgListTour.DataSource = source;
+
+        }
+
+
+        //* TRIP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         void LoadTripList()
         {
             var trips = tripRepository.GetTrips();
@@ -105,24 +215,6 @@ namespace TourBookingApp
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            frmAddNewTour frm = new frmAddNewTour
-            {
-                Text = "Add tour",
-                InsertOrUpdate = false,
-                tourRepository = tourRepository
-
-            };
-            if(frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadTours();
-                source.Position = source.Count - 1;
-            }
-           
-
-        }
-     
         private void btnAddTrip_Click(object sender, EventArgs e)
         {
             frmAddNewTrip frm = new frmAddNewTrip
@@ -132,46 +224,12 @@ namespace TourBookingApp
             };
             frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
             frm.ShowDialog();
-            
+
         }
 
         private void frmAddNewTrip_FormClosing(object sender, FormClosingEventArgs e)
         {
             LoadTripList();
-        }
-        
-        private void LoadTours()
-        {
-            var tour = tourRepository.GetTours();
-            source = new BindingSource();
-            source.DataSource = tour;
-            dtgListTour.DataSource = null;
-            dtgListTour.DataSource = source;
-
-        }
-
-        private void frmManagement_Load(object sender, EventArgs e)
-        {
-            var tour = tourRepository.GetTours();
-            source = new BindingSource();
-            source.DataSource = tour;
-            dtgListTour.DataSource = null;
-            dtgListTour.DataSource = source;
-        }
-      
-        private void cboSelect_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-            if (cboSelect.SelectedItem.ToString() == "Customer")
-            {
-                dgvBooking.DataSource = null;
-                LoadCustomerList();
-            }
-            else
-            {
-                dgvBooking.DataSource = null;
-                LoadTripForBooking();
-            }
         }
 
         private void dtgTripList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -213,6 +271,56 @@ namespace TourBookingApp
             return trip;
         }
 
+        private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = e.RowIndex;
+            tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
+        }
+
+        private void btnDeleteTrip_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure want to delete this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    var tri = tripRepository.GetTripByID(tripID);
+                    if (tri != null)
+                    {
+                        tri.Status = false;
+                        tripRepository.UpdateTrip(tri);
+                        MessageBox.Show("Delete successfully");
+                    }
+                }
+                LoadTripList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Trip");
+            }
+        }
+
+
+
+        //* BOOKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+        private void cboSelect_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            if (cboSelect.SelectedItem.ToString() == "Customer")
+            {
+                dgvBooking.DataSource = null;
+                LoadCustomerList();
+            }
+            else
+            {
+                dgvBooking.DataSource = null;
+                LoadTripForBooking();
+            }
+        }
+  
         private void LoadCustomerList()
         {
             try
@@ -328,131 +436,7 @@ namespace TourBookingApp
             }
             return customer;
         }
-       
-        private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var rowIndex = e.RowIndex;
-            tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
-        }
-
-        private void btnDeleteTrip_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult result = MessageBox.Show("Are you sure want to delete this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
-                {
-                    var tri = tripRepository.GetTripByID(tripID);
-                    if (tri != null)
-                    {
-                        tri.Status = false;
-                        tripRepository.UpdateTrip(tri);
-                        MessageBox.Show("Delete successfully");
-                    }
-                }
-                LoadTripList();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Delete Trip");
-            }
-        }
-
-        private void dtgListTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var tour = new TblTour
-            {
-                TourId = int.Parse(dtgListTour[dtgListTour.Columns["TourId"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-                TourName = (dtgListTour[dtgListTour.Columns["TourName"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-                Departure = (dtgListTour[dtgListTour.Columns["Departure"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-                Destination = (dtgListTour[dtgListTour.Columns["Destination"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-                Description = (dtgListTour[dtgListTour.Columns["Description"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-                Status = bool.Parse(dtgListTour[dtgListTour.Columns["Status"].Index, dtgListTour.CurrentRow.Index].Value.ToString()),
-            };
-
-            frmAddNewTour frm = new frmAddNewTour
-            {
-                Text = "Update Tour",
-                InsertOrUpdate = true,
-                TourInfo = tour,
-                tourRepository = tourRepository
-
-            };
-            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadTours();
-                source.Position = source.Count - 1;
-            }
-        }
-
-        private void btnAddTour_Click(object sender, EventArgs e)
-        {
-            frmAddNewTour frm = new frmAddNewTour
-            {
-                Text = "Add tour",
-                InsertOrUpdate = false,
-                tourRepository = tourRepository
-
-            };
-            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadTours();
-                source.Position = source.Count - 1;
-            }
-        }
-
-        private void frmAddNewTour_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            LoadTourList();
-        }
-
-        private void btnDeleteTour_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult result = MessageBox.Show("Are you sure want to delete this tour ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
-                {
-                    var tou = tourRepository.GetTourByID(tourID);
-                    if (tou != null)
-                    {
-                        tou.Status = false;
-                        tourRepository.UpdateTour(tou);
-                        MessageBox.Show("Delete successfully");
-                    }
-                    List<TblTrip> listtrip = new List<TblTrip>();
-                    listtrip = (List<TblTrip>)tripRepository.GetTripByTourID(tourID);
-                    foreach(var c in listtrip)
-                    {
-                        c.Status = false;
-                        tripRepository.UpdateTrip(c);
-                    }
-                }
-                LoadTourList();
-                LoadTripList();
-            }
-            
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Delete Tour");
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            LoadOneTour(txtSearch.Text);
-        }
-
-        private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var rowIndex = e.RowIndex;
-            tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
-        }
-
-        
+             
     }
 }
 

@@ -107,14 +107,21 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         TourId = tourID
                     };
-                    if (cbTripStatus.CheckState == CheckState.Checked)
+                    if (tourRepository.GetTourByID(tourID).Status == false)
                     {
-                        tripU.Status = true;
+                        cbTripStatus.Enabled = false;
                     }
                     else
                     {
-                        tripU.Status = false;
-                    }
+                        if (cbTripStatus.CheckState == CheckState.Checked)
+                        {
+                            tripU.Status = true;
+                        }
+                        else
+                        {
+                            tripU.Status = false;
+                        }
+                    }                
                     try
                     {
                         tripRepository.UpdateTrip(tripU);
