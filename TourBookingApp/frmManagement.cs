@@ -20,6 +20,10 @@ namespace TourBookingApp
         public frmManagement()
         {
             InitializeComponent();
+            
+        }
+        private void frmManagement_Load_1(object sender, EventArgs e)
+        {
             LoadTourList();
             LoadTripList();
         }
@@ -57,8 +61,7 @@ namespace TourBookingApp
                 MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
-        
+           
         public void LoadTourList()
         {
             var tours = tourRepository.GetTours();
@@ -102,10 +105,6 @@ namespace TourBookingApp
 
         }
 
-        
-           
-        
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddNewTour frm = new frmAddNewTour
@@ -124,8 +123,6 @@ namespace TourBookingApp
 
         }
      
-
-
         private void btnAddTrip_Click(object sender, EventArgs e)
         {
             frmAddNewTrip frm = new frmAddNewTrip
@@ -133,11 +130,16 @@ namespace TourBookingApp
                 Text = "Add Trip",
                 AddOrUpdate = false,
             };
+            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
             frm.ShowDialog();
+            
         }
 
-             
-       
+        private void frmAddNewTrip_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadTripList();
+        }
+        
         private void LoadTours()
         {
             var tour = tourRepository.GetTours();
@@ -156,13 +158,7 @@ namespace TourBookingApp
             dtgListTour.DataSource = null;
             dtgListTour.DataSource = source;
         }
-
-       
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadTripList();
-        }
-
+      
         private void cboSelect_SelectedValueChanged(object sender, EventArgs e)
         {
 
@@ -186,9 +182,11 @@ namespace TourBookingApp
                 AddOrUpdate = true,
                 trip = GetTripInfor(e),
             };
+            frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
             frmDetails.ShowDialog();
 
         }
+
         private TblTrip GetTripInfor(DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
@@ -330,15 +328,12 @@ namespace TourBookingApp
             }
             return customer;
         }
-
-        
-
+       
         private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var rowIndex = e.RowIndex;
             tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
         }
-
 
         private void btnDeleteTrip_Click(object sender, EventArgs e)
         {
@@ -355,7 +350,8 @@ namespace TourBookingApp
                         tripRepository.UpdateTrip(tri);
                         MessageBox.Show("Delete successfully");
                     }
-                }            
+                }
+                LoadTripList();
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Delete Trip");
@@ -382,6 +378,7 @@ namespace TourBookingApp
                 tourRepository = tourRepository
 
             };
+            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 LoadTours();
@@ -398,11 +395,17 @@ namespace TourBookingApp
                 tourRepository = tourRepository
 
             };
+            frm.FormClosing += new FormClosingEventHandler(this.frmAddNewTour_FormClosing);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 LoadTours();
                 source.Position = source.Count - 1;
             }
+        }
+
+        private void frmAddNewTour_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadTourList();
         }
 
         private void btnDeleteTour_Click(object sender, EventArgs e)
@@ -420,8 +423,18 @@ namespace TourBookingApp
                         tourRepository.UpdateTour(tou);
                         MessageBox.Show("Delete successfully");
                     }
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    listtrip = (List<TblTrip>)tripRepository.GetTripByTourID(tourID);
+                    foreach(var c in listtrip)
+                    {
+                        c.Status = false;
+                        tripRepository.UpdateTrip(c);
+                    }
                 }
+                LoadTourList();
+                LoadTripList();
             }
+            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Delete Tour");
@@ -433,16 +446,13 @@ namespace TourBookingApp
             LoadOneTour(txtSearch.Text);
         }
 
-        private void btnLoad_Click_1(object sender, EventArgs e)
-        {
-            LoadTours();
-        }
-
         private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var rowIndex = e.RowIndex;
             tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
         }
+
+        
     }
 }
 

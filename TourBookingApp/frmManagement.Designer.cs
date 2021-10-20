@@ -34,14 +34,12 @@ namespace TourBookingApp
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TourManage = new System.Windows.Forms.TabPage();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.dtgListTour = new System.Windows.Forms.DataGridView();
             this.btnDeleteTour = new System.Windows.Forms.Button();
             this.btnAddTour = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.TripManage = new System.Windows.Forms.TabPage();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.dtgTripList = new System.Windows.Forms.DataGridView();
             this.btnDeleteTrip = new System.Windows.Forms.Button();
             this.btnAddTrip = new System.Windows.Forms.Button();
@@ -89,7 +87,6 @@ namespace TourBookingApp
             // 
             // TourManage
             // 
-            this.TourManage.Controls.Add(this.btnLoad);
             this.TourManage.Controls.Add(this.dtgListTour);
             this.TourManage.Controls.Add(this.btnDeleteTour);
             this.TourManage.Controls.Add(this.btnAddTour);
@@ -103,17 +100,6 @@ namespace TourBookingApp
             this.TourManage.TabIndex = 0;
             this.TourManage.Text = "Tour";
             this.TourManage.UseVisualStyleBackColor = true;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(29, 70);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(95, 40);
-            this.btnLoad.TabIndex = 20;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
             // 
             // dtgListTour
             // 
@@ -173,7 +159,6 @@ namespace TourBookingApp
             // 
             // TripManage
             // 
-            this.TripManage.Controls.Add(this.btnRefresh);
             this.TripManage.Controls.Add(this.dtgTripList);
             this.TripManage.Controls.Add(this.btnDeleteTrip);
             this.TripManage.Controls.Add(this.btnAddTrip);
@@ -185,17 +170,6 @@ namespace TourBookingApp
             this.TripManage.TabIndex = 1;
             this.TripManage.Text = "Trip";
             this.TripManage.UseVisualStyleBackColor = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(65, 59);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(66, 52);
-            this.btnRefresh.TabIndex = 22;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dtgTripList
             // 
@@ -426,6 +400,7 @@ namespace TourBookingApp
             this.Name = "frmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management";
+            this.Load += new System.EventHandler(this.frmManagement_Load_1);
             this.tabControl1.ResumeLayout(false);
             this.TourManage.ResumeLayout(false);
             this.TourManage.PerformLayout();
@@ -474,7 +449,6 @@ namespace TourBookingApp
         private System.Windows.Forms.DataGridView dtgTripList;
         private System.Windows.Forms.Button btnDeleteTrip;
         private System.Windows.Forms.Button btnAddTrip;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
@@ -484,7 +458,6 @@ namespace TourBookingApp
         private System.Windows.Forms.DataGridView dgvBooking;
         private System.Windows.Forms.DataGridView dgvSelectList;
         private System.Windows.Forms.ComboBox cboSelect;
-        private Button btnLoad;
     }
 }
 #endregion

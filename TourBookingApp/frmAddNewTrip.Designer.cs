@@ -289,6 +289,7 @@ namespace TourBookingApp
             this.Name = "frmAddNewTrip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Trip ";
+            
             this.Load += new System.EventHandler(this.frmAddNewTrip_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NUDCapacity)).EndInit();
             this.ResumeLayout(false);
