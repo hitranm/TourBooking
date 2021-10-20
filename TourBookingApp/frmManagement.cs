@@ -28,7 +28,11 @@ namespace TourBookingApp
             LoadTripList();
         }
 
+
+
         //*TOUR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
         private void dtgListTour_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -189,7 +193,10 @@ namespace TourBookingApp
         }
 
 
+
         //* TRIP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
         void LoadTripList()
         {
