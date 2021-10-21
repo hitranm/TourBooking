@@ -69,7 +69,8 @@ namespace TourBookingApp
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
                 currencyManager1.SuspendBinding();
                
-                bool isvisible;
+                bool isvisible=true;
+                bool isok = false;
                 for (int i = 0; i <= dtgTourList.RowCount - 1; i++)
                 {
                     isvisible = bool.Parse(dtgTourList[dtgTourList.Columns["Status"].Index, i].Value.ToString());
@@ -79,6 +80,20 @@ namespace TourBookingApp
                         currencyManager1.ResumeBinding();
                        
                     }
+                    else
+                    {
+                        isok = true;
+                    }
+                }
+                if (isok == false)
+                {
+                    ClearText();
+                    txtTourID.Enabled = false;
+                    txtTourName.Enabled = false;
+                    txtSearchTour.Enabled = false;
+                    txtDestination.Enabled = false;
+                    txtDescription.Enabled = false;
+                    txtDeparture.Enabled = false;
                 }
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
