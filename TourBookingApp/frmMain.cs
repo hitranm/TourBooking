@@ -63,17 +63,21 @@ namespace TourBookingApp
                 txtDestination.DataBindings.Add("Text", source, "Destination");
                 txtDescription.DataBindings.Add("Text", source, "Description");
 
-
                 dtgTourList.DataSource = null;
                 dtgTourList.DataSource = source;
 
+                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
+                currencyManager1.SuspendBinding();
+               
                 bool isvisible;
-                for (int i = 1; i < dtgTourList.RowCount - 1; i++)
+                for (int i = 0; i <= dtgTourList.RowCount - 1; i++)
                 {
                     isvisible = bool.Parse(dtgTourList[dtgTourList.Columns["Status"].Index, i].Value.ToString());
                     if (isvisible == false)
                     {
                         dtgTourList.Rows[i].Visible = false;
+                        currencyManager1.ResumeBinding();
+                       
                     }
                 }
                 dtgTourList.Columns[6].Visible = false;
