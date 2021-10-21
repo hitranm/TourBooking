@@ -22,7 +22,12 @@ namespace TourBookingApp
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadTourList();
-
+            txtTourID.Enabled = false;
+            txtTourName.Enabled = false;
+          
+            txtDestination.Enabled = false;
+            txtDescription.Enabled = false;
+            txtDeparture.Enabled = false;
 
 
             if (isAdmin == false)
@@ -87,15 +92,18 @@ namespace TourBookingApp
                 }
                 if (isok == false)
                 {
-                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+
                     ClearText();
                     txtTourID.Enabled = false;
                     txtTourName.Enabled = false;
-                    txtSearchTour.Enabled = false;
+                  
                     txtDestination.Enabled = false;
                     txtDescription.Enabled = false;
                     txtDeparture.Enabled = false;
+                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+               
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
 
