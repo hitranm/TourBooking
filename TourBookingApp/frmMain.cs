@@ -87,6 +87,7 @@ namespace TourBookingApp
                 }
                 if (isok == false)
                 {
+                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ClearText();
                     txtTourID.Enabled = false;
                     txtTourName.Enabled = false;
