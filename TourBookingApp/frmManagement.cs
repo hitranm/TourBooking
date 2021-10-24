@@ -86,6 +86,7 @@ namespace TourBookingApp
 
         private void btnDeleteTour_Click(object sender, EventArgs e)
         {
+
             try
             {
                 DialogResult result = MessageBox.Show("Are you sure want to delete this tour, All the trip " +
@@ -94,11 +95,19 @@ namespace TourBookingApp
                 if (result == DialogResult.Yes)
                 {
                     var tou = tourRepository.GetTourByID(tourID);
+
+
+
                     if (tou != null)
                     {
-                        tou.Status = false;
-                        tourRepository.UpdateTour(tou);
-                        MessageBox.Show("Delete successfully");
+                        if (tou.Status == false) { MessageBox.Show("Tour already deleted !!", "Notification", MessageBoxButtons.OK); }
+                        else
+                        {
+
+                            tou.Status = false;
+                            tourRepository.UpdateTour(tou);
+                            MessageBox.Show("Delete successfully","Notification");
+                        }
                     }
                     List<TblTrip> listtrip = new List<TblTrip>();
                     listtrip = (List<TblTrip>)tripRepository.GetTripByTourID(tourID);
@@ -107,16 +116,19 @@ namespace TourBookingApp
                         c.Status = false;
                         tripRepository.UpdateTrip(c);
                     }
+
+                    LoadTourList();
+                    LoadTripList();
                 }
-                LoadTourList();
-                LoadTripList();
+
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Delete Tour");
             }
-        }
+            }
+        
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -127,6 +139,7 @@ namespace TourBookingApp
         {
             var rowIndex = e.RowIndex;
             tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
+
         }
 
         private void LoadOneTour(string name)
@@ -151,6 +164,7 @@ namespace TourBookingApp
 
                     dtgListTour.DataSource = null;
                     dtgListTour.DataSource = source;
+
                 }
             }
             catch (Exception e)
@@ -174,6 +188,8 @@ namespace TourBookingApp
 
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
+                dtgListTour.Columns[6].Visible = false;
+
 
             }
             catch (Exception ex)
@@ -189,6 +205,7 @@ namespace TourBookingApp
             source.DataSource = tour;
             dtgListTour.DataSource = null;
             dtgListTour.DataSource = source;
+            
 
         }
 

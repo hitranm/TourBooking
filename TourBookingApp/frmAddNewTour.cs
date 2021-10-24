@@ -66,11 +66,12 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
-                    if (txtTourName.Text=="" ||txtDeparture.Text=="" || txtDescription.Text=="" || txtDestination.Text=="")
+                    if (txtTourName.Text == "" || txtDeparture.Text == "" || txtDescription.Text == "" || txtDestination.Text == "" )
                     {
                         MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         
                     }
+                    if ( txtTourName.Text.Length > 12 || txtDeparture.Text.Length>10 || txtDescription.Text.Length >100 || txtDestination.Text.Length >10) { MessageBox.Show("Wrong format !!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                     else {
                         tourRepository.InsertTour(touAdd);
                         MessageBox.Show("Tour Added!!", "Add Tour", MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -93,6 +94,7 @@ namespace TourBookingApp
                     {
                         MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    if (txtTourName.Text.Length > 12 || txtDeparture.Text.Length > 10 || txtDescription.Text.Length > 100 || txtDestination.Text.Length > 10) { MessageBox.Show("Wrong format !!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                     else {
                         tourRepository.UpdateTour(touUp);
                         MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -103,5 +105,7 @@ namespace TourBookingApp
                 MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a tour" : "Update a tour");
                 }
      }
+
+        
     }
 }

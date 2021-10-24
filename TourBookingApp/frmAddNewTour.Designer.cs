@@ -46,7 +46,7 @@ namespace TourBookingApp
             this.txtTourID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lbAddNewTour
+            // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -98,7 +98,7 @@ namespace TourBookingApp
             // 
             this.lbDestination.AutoSize = true;
             this.lbDestination.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDestination.Location = new System.Drawing.Point(409, 42);
+            this.lbDestination.Location = new System.Drawing.Point(410, 108);
             this.lbDestination.Name = "lbDestination";
             this.lbDestination.Size = new System.Drawing.Size(106, 23);
             this.lbDestination.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace TourBookingApp
             // 
             this.lbDescription.AutoSize = true;
             this.lbDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDescription.Location = new System.Drawing.Point(410, 108);
+            this.lbDescription.Location = new System.Drawing.Point(411, 172);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(105, 23);
             this.lbDescription.TabIndex = 6;
@@ -124,7 +124,7 @@ namespace TourBookingApp
             // 
             // txtDestination
             // 
-            this.txtDestination.Location = new System.Drawing.Point(542, 40);
+            this.txtDestination.Location = new System.Drawing.Point(542, 108);
             this.txtDestination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Size = new System.Drawing.Size(214, 27);
@@ -132,7 +132,7 @@ namespace TourBookingApp
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(542, 108);
+            this.txtDescription.Location = new System.Drawing.Point(542, 172);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
@@ -211,6 +211,7 @@ namespace TourBookingApp
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAddNewTour";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.frmAddNewTour_Load);
             this.ResumeLayout(false);
