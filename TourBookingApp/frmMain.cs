@@ -3,7 +3,6 @@ using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataAccess.Repository;
 namespace TourBookingApp
 {
     public partial class frmMain : Form
@@ -99,7 +98,6 @@ namespace TourBookingApp
             txtDestination.Text = string.Empty;
             txtDescription.Text = string.Empty;
             txtDeparture.Text = string.Empty;
-
         }
 
 

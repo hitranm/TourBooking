@@ -103,6 +103,7 @@ namespace TourBookingApp
             // 
             // dtgListTour
             // 
+            this.dtgListTour.AllowUserToAddRows = false;
             this.dtgListTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListTour.Location = new System.Drawing.Point(29, 114);
             this.dtgListTour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -173,6 +174,7 @@ namespace TourBookingApp
             // 
             // dtgTripList
             // 
+            this.dtgTripList.AllowUserToAddRows = false;
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgTripList.Location = new System.Drawing.Point(65, 115);
             this.dtgTripList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -344,7 +346,6 @@ namespace TourBookingApp
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add ";
             this.btnAdd.UseVisualStyleBackColor = true;
-            
             // 
             // txtSearch
             // 
