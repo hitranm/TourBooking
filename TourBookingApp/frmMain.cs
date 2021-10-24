@@ -161,7 +161,7 @@ namespace TourBookingApp
 
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -40,6 +40,8 @@ namespace TourBookingApp
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.TripManage = new System.Windows.Forms.TabPage();
+            this.lbTripFilter = new System.Windows.Forms.Label();
+            this.cbxTripFilter = new System.Windows.Forms.ComboBox();
             this.dtgTripList = new System.Windows.Forms.DataGridView();
             this.btnDeleteTrip = new System.Windows.Forms.Button();
             this.btnAddTrip = new System.Windows.Forms.Button();
@@ -160,6 +162,8 @@ namespace TourBookingApp
             // 
             // TripManage
             // 
+            this.TripManage.Controls.Add(this.lbTripFilter);
+            this.TripManage.Controls.Add(this.cbxTripFilter);
             this.TripManage.Controls.Add(this.dtgTripList);
             this.TripManage.Controls.Add(this.btnDeleteTrip);
             this.TripManage.Controls.Add(this.btnAddTrip);
@@ -171,6 +175,28 @@ namespace TourBookingApp
             this.TripManage.TabIndex = 1;
             this.TripManage.Text = "Trip";
             this.TripManage.UseVisualStyleBackColor = true;
+            // 
+            // lbTripFilter
+            // 
+            this.lbTripFilter.AutoSize = true;
+            this.lbTripFilter.Location = new System.Drawing.Point(65, 48);
+            this.lbTripFilter.Name = "lbTripFilter";
+            this.lbTripFilter.Size = new System.Drawing.Size(90, 15);
+            this.lbTripFilter.TabIndex = 23;
+            this.lbTripFilter.Text = "Filter by Status :";
+            // 
+            // cbxTripFilter
+            // 
+            this.cbxTripFilter.FormattingEnabled = true;
+            this.cbxTripFilter.Items.AddRange(new object[] {
+            "Both",
+            "Active",
+            "Unactive"});
+            this.cbxTripFilter.Location = new System.Drawing.Point(65, 77);
+            this.cbxTripFilter.Name = "cbxTripFilter";
+            this.cbxTripFilter.Size = new System.Drawing.Size(196, 23);
+            this.cbxTripFilter.TabIndex = 22;
+            this.cbxTripFilter.SelectedIndexChanged += new System.EventHandler(this.cbxTripFilter_SelectedIndexChanged);
             // 
             // dtgTripList
             // 
@@ -407,6 +433,7 @@ namespace TourBookingApp
             this.TourManage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListTour)).EndInit();
             this.TripManage.ResumeLayout(false);
+            this.TripManage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
@@ -436,12 +463,10 @@ namespace TourBookingApp
         private System.Windows.Forms.DataGridView dgvTour;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.TextBox txtSearch;
-        //private System.Windows.Forms.Label lbTourName;
+        private System.Windows.Forms.TextBox txtSearch;       
         private System.Windows.Forms.TabPage tabPage2;
         private DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -450,15 +475,12 @@ namespace TourBookingApp
         private System.Windows.Forms.DataGridView dtgTripList;
         private System.Windows.Forms.Button btnDeleteTrip;
         private System.Windows.Forms.Button btnAddTrip;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label6;
-        
-        private System.Windows.Forms.Button btnUpdate;
+
         private System.Windows.Forms.DataGridView dgvBooking;
         private System.Windows.Forms.DataGridView dgvSelectList;
         private System.Windows.Forms.ComboBox cboSelect;
+        private Label lbTripFilter;
+        private ComboBox cbxTripFilter;
     }
 }
 #endregion

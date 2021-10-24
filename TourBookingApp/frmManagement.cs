@@ -200,8 +200,7 @@ namespace TourBookingApp
 
         void LoadTripList()
         {
-            var trips = tripRepository.GetTrips();
-
+            var trips = tripRepository.GetTrips();            
             try
             {
                 source = new BindingSource();
@@ -308,7 +307,47 @@ namespace TourBookingApp
             }
         }
 
+        private void cbxTripFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxTripFilter.SelectedIndex == 0)
+            {
+                LoadTripList();
+            }
+            else if (cbxTripFilter.SelectedIndex == 1)
+            {
+                List<TblTrip> listtrip = new List<TblTrip>();
+                var trip = tripRepository.GetTrips();
+                foreach (var c in trip)
+                {
+                    if (c.Status == true)
+                    {
+                        listtrip.Add(c);
+                    }
+                }
+                source = new BindingSource();
+                source.DataSource = listtrip;
 
+                dtgTripList.DataSource = null;
+                dtgTripList.DataSource = source;
+            }
+            else
+            {
+                List<TblTrip> listtrip = new List<TblTrip>();
+                var trip = tripRepository.GetTrips();
+                foreach (var c in trip)
+                {
+                    if (c.Status == false)
+                    {
+                        listtrip.Add(c);
+                    }
+                }
+                source = new BindingSource();
+                source.DataSource = listtrip;
+
+                dtgTripList.DataSource = null;
+                dtgTripList.DataSource = source;
+            }
+        }
 
         //* BOOKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -443,7 +482,7 @@ namespace TourBookingApp
             }
             return customer;
         }
-             
+              
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -15,9 +16,13 @@ namespace DataAccess.DataAccess
         public int TripId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime Endtime { get; set; }
+        [Required]
         public decimal Price { get; set; }
+        [Required]
         public int Capacity { get; set; }
+        [Required]
         public string Accommodation { get; set; }
+        [Required]
         public string Description { get; set; }
         public bool Status { get; set; }
         public int TourId { get; set; }
