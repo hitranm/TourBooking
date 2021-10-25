@@ -62,11 +62,17 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         TourId = tourID,
                         Status=true
-                    };                    
+                    };                   
                     DialogResult result = MessageBox.Show("Are you sure want to add this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day + 7 && DTPEndTime.Value.Date.Day < DTPStartTime.Value.Date.Day)
+                        {
+                            MessageBox.Show("Please set the Start day beyond the present time at least 7 days and" +
+                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                         ValidationContext context = new ValidationContext(tripA, null, null);
                         IList<ValidationResult> errors = new List<ValidationResult>();
                         if (!Validator.TryValidateObject(tripA, context, errors, true))
@@ -125,6 +131,12 @@ namespace TourBookingApp
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day  && DTPEndTime.Value.Date.Day < DTPStartTime.Value.Date.Day)
+                        {
+                            MessageBox.Show("Please set the Start day beyond the present time and" +
+                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                         ValidationContext context = new ValidationContext(tripU, null, null);
                         IList<ValidationResult> errors = new List<ValidationResult>();
                         if (!Validator.TryValidateObject(tripU, context, errors, true))
@@ -157,9 +169,9 @@ namespace TourBookingApp
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, AddOrUpdate == false ? "Add new trip" : "Update a trip");
+                MessageBox.Show("The Price field is required", AddOrUpdate == false ? "Add new trip" : "Update a trip");
 
             }
         }
