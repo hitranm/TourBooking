@@ -19,9 +19,46 @@ namespace TourBookingApp
         public frmAddNewTrip()
         {
             InitializeComponent();
-            LoadTourlistInCbx();
+            
         }
 
+        private void frmAddNewTrip_Load(object sender, EventArgs e)
+        {
+            LoadTourlistInCbx();
+            if (AddOrUpdate == true)
+            {
+                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                cbxListTourName.Enabled = false;
+                txtTripID.Text = trip.TripId.ToString();
+                DTPStartTime.Value = trip.StartTime;
+                DTPEndTime.Value = trip.Endtime;
+                mtxtPrice.Text = trip.Price.ToString();
+                NUDCapacity.Value = trip.Capacity;
+                txtAccommodation.Text = trip.Accommodation.ToString();
+                txtDescription.Text = trip.Description.ToString();
+                if (trip.Status == true)
+                {
+                    cbTripStatus.Checked = true;
+                }
+                else
+                {
+                    cbTripStatus.Checked = false;
+                }
+                if (tourRepository.GetTourByID(trip.TourId).Status == false)
+                {
+                    cbTripStatus.Enabled = false;
+                }
+                else
+                {
+                    cbTripStatus.Enabled = true;
+                }
+            }
+            else
+            {
+                cbTripStatus.Checked = true;
+                cbTripStatus.Enabled = false;
+            }
+        }
 
         private void cbxListTourName_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -36,7 +73,15 @@ namespace TourBookingApp
         private void LoadTourlistInCbx()
         {
             var tours = tourRepository.GetTours();
-            cbxListTourName.DataSource = tours;
+            List<TblTour> listtour = new List<TblTour>();
+            foreach( var c in tours)
+            {
+                if(c.Status == true)
+                {
+                    listtour.Add(c);
+                }
+            }
+            cbxListTourName.DataSource = listtour;
             cbxListTourName.DisplayMember = "TourName";
         }
 
@@ -175,44 +220,6 @@ namespace TourBookingApp
 
             }
         }
-
-
-        private void frmAddNewTrip_Load(object sender, EventArgs e)
-        {
-            if (AddOrUpdate == true)
-            {
-                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();               
-                txtTripID.Text = trip.TripId.ToString();
-                DTPStartTime.Value = trip.StartTime;
-                DTPEndTime.Value = trip.Endtime;
-                mtxtPrice.Text = trip.Price.ToString();
-                NUDCapacity.Value = trip.Capacity;
-                txtAccommodation.Text = trip.Accommodation.ToString();
-                txtDescription.Text = trip.Description.ToString();               
-                if (trip.Status == true)
-                {
-                    cbTripStatus.Checked = true;
-                }
-                else
-                {
-                    cbTripStatus.Checked = false;
-                }
-                if (tourRepository.GetTourByID(trip.TourId).Status == false)
-                {
-                    cbTripStatus.Enabled = false;
-                }
-                else
-                {
-                    cbTripStatus.Enabled = true;
-                }
-            }
-            else
-            {
-                cbTripStatus.Checked = true;
-                cbTripStatus.Enabled = false;
-            }
-        }
-
         
     }
 }

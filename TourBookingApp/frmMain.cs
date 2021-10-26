@@ -11,7 +11,7 @@ namespace TourBookingApp
         ITripRepository tripRepository = new TripRepository();
         BindingSource source;
         public int m = 0;
-        public Boolean isAdmin { get; set; }
+        public bool isAdmin { get; set; }
         public int currentID { get; set; }
         public frmLogin frm { get; set; }
         public frmMain()
