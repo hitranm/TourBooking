@@ -83,7 +83,7 @@ namespace TourBookingApp
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1301, 761);
+            this.tabControl1.Size = new System.Drawing.Size(1281, 761);
             this.tabControl1.TabIndex = 0;
             // 
             // TourManage
@@ -96,7 +96,7 @@ namespace TourBookingApp
             this.TourManage.Location = new System.Drawing.Point(4, 29);
             this.TourManage.Name = "TourManage";
             this.TourManage.Padding = new System.Windows.Forms.Padding(3);
-            this.TourManage.Size = new System.Drawing.Size(1293, 728);
+            this.TourManage.Size = new System.Drawing.Size(1273, 728);
             this.TourManage.TabIndex = 0;
             this.TourManage.Text = "Tour";
             this.TourManage.UseVisualStyleBackColor = true;
@@ -104,6 +104,7 @@ namespace TourBookingApp
             // dtgListTour
             // 
             this.dtgListTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgListTour.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgListTour.Location = new System.Drawing.Point(33, 152);
             this.dtgListTour.Name = "dtgListTour";
             this.dtgListTour.ReadOnly = true;
@@ -137,9 +138,9 @@ namespace TourBookingApp
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(767, 10);
+            this.btnSearch.Location = new System.Drawing.Point(775, 17);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 47);
+            this.btnSearch.Size = new System.Drawing.Size(94, 32);
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -149,7 +150,8 @@ namespace TourBookingApp
             // 
             this.txtSearchTour.Location = new System.Drawing.Point(225, 20);
             this.txtSearchTour.Name = "txtSearchTour";
-            this.txtSearchTour.Size = new System.Drawing.Size(482, 27);
+            this.txtSearchTour.PlaceholderText = "Enter tour name here...";
+            this.txtSearchTour.Size = new System.Drawing.Size(519, 27);
             this.txtSearchTour.TabIndex = 19;
             // 
             // TripManage
@@ -160,7 +162,7 @@ namespace TourBookingApp
             this.TripManage.Location = new System.Drawing.Point(4, 29);
             this.TripManage.Name = "TripManage";
             this.TripManage.Padding = new System.Windows.Forms.Padding(3);
-            this.TripManage.Size = new System.Drawing.Size(1293, 728);
+            this.TripManage.Size = new System.Drawing.Size(1273, 728);
             this.TripManage.TabIndex = 1;
             this.TripManage.Text = "Trip";
             this.TripManage.UseVisualStyleBackColor = true;
@@ -383,7 +385,7 @@ namespace TourBookingApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1301, 761);
+            this.ClientSize = new System.Drawing.Size(1281, 761);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmManagement";
