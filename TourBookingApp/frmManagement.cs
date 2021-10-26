@@ -132,7 +132,7 @@ namespace TourBookingApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadOneTour(txtSearch.Text);
+            LoadOneTour();
         }
 
         private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -142,7 +142,7 @@ namespace TourBookingApp
 
         }
 
-        private void LoadOneTour(string name)
+        private void LoadOneTour()
         {
             ITourRepository tourRepository = new TourRepository();
             bool hasTour = false;
@@ -153,19 +153,27 @@ namespace TourBookingApp
             {
                 foreach (var i in tours)
                 {
-                    if (i.TourName.Contains(txtSearch.Text))
+                    if (i.TourName.Contains(txtSearchTour.Text))
                     {
                         hasTour = true;
                         tour.Add(i);
                     }
-                    source = new BindingSource();
-                    source.DataSource = tour;
-
-
-                    dtgListTour.DataSource = null;
-                    dtgListTour.DataSource = source;
-
                 }
+                        source = new BindingSource();
+                        source.DataSource = tour;
+
+
+                        dtgListTour.DataSource = null;
+                        dtgListTour.DataSource = source;
+                        dtgListTour.Columns[6].Visible = false;
+                        dtgListTour.Columns[4].Width = 400;
+                        dtgListTour.Columns[5].Width = 75;
+                        dtgListTour.Columns[0].Width = 75;
+                        dtgListTour.Columns[2].Width = 200;
+                        dtgListTour.Columns[3].Width = 200;
+                        
+                    
+                
             }
             catch (Exception e)
             {
@@ -189,6 +197,11 @@ namespace TourBookingApp
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
                 dtgListTour.Columns[6].Visible = false;
+                dtgListTour.Columns[4].Width = 400;
+                dtgListTour.Columns[5].Width = 75;
+                dtgListTour.Columns[0].Width = 75;
+                dtgListTour.Columns[2].Width = 200;
+                dtgListTour.Columns[3].Width = 200;
 
 
             }

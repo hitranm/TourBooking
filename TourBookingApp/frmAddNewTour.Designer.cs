@@ -71,6 +71,7 @@ namespace TourBookingApp
             this.txtTourName.Location = new System.Drawing.Point(166, 108);
             this.txtTourName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTourName.Name = "txtTourName";
+            this.txtTourName.PlaceholderText = "Enter here..";
             this.txtTourName.Size = new System.Drawing.Size(217, 27);
             this.txtTourName.TabIndex = 2;
             // 
@@ -119,6 +120,7 @@ namespace TourBookingApp
             this.txtDeparture.Location = new System.Drawing.Point(166, 172);
             this.txtDeparture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDeparture.Name = "txtDeparture";
+            this.txtDeparture.PlaceholderText = "Enter here..";
             this.txtDeparture.Size = new System.Drawing.Size(217, 27);
             this.txtDeparture.TabIndex = 7;
             // 
@@ -127,6 +129,7 @@ namespace TourBookingApp
             this.txtDestination.Location = new System.Drawing.Point(542, 108);
             this.txtDestination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDestination.Name = "txtDestination";
+            this.txtDestination.PlaceholderText = "Enter here...";
             this.txtDestination.Size = new System.Drawing.Size(214, 27);
             this.txtDestination.TabIndex = 8;
             // 
@@ -136,6 +139,7 @@ namespace TourBookingApp
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.PlaceholderText = "Enter 1-100 characters";
             this.txtDescription.Size = new System.Drawing.Size(214, 105);
             this.txtDescription.TabIndex = 9;
             // 
