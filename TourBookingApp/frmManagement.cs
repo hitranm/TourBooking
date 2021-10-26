@@ -13,6 +13,7 @@ namespace TourBookingApp
         ITripRepository tripRepository = new TripRepository();
         ICustomerRepository customerRepository = new CustomerRepository();
         IBookingRepository bookingRepository = new BookingRepository();
+        IUserRepository userRepository = new UserRepository();
         BindingSource source;
         public int tripID;
         public int tourID;
@@ -109,7 +110,7 @@ namespace TourBookingApp
                     {
                         c.Status = false;
                         tripRepository.UpdateTrip(c);
-                        foreach(TblBooking booking in bookingRepository.GetBookingsByTripId(c.TripId))
+                        foreach (TblBooking booking in bookingRepository.GetBookingsByTripId(c.TripId))
                         {
                             booking.Status = false;
                             bookingRepository.UpdateBooking(booking);
@@ -312,7 +313,7 @@ namespace TourBookingApp
                             bookingRepository.UpdateBooking(booking);
                         }
                         MessageBox.Show("Delete successfully");
-                        
+
                     }
                 }
                 LoadTripList();
@@ -331,7 +332,8 @@ namespace TourBookingApp
 
         private void cboSelect_SelectedValueChanged(object sender, EventArgs e)
         {
-
+            dgvBooking.Columns.Clear();
+            dgvSelectList.Columns.Clear();
             if (cboSelect.SelectedItem.ToString() == "Customer")
             {
                 dgvBooking.DataSource = null;
@@ -354,6 +356,7 @@ namespace TourBookingApp
                 dgvSelectList.DataSource = source;
                 dgvSelectList.Columns["TblBookings"].Visible = false;
 
+
             }
             catch (Exception ex)
             {
@@ -369,7 +372,16 @@ namespace TourBookingApp
                 source.DataSource = tripRepository.GetTrips();
                 dgvSelectList.DataSource = null;
                 dgvSelectList.DataSource = source;
+                dgvSelectList.Columns.Add("TourName", "TourName");
                 dgvSelectList.Columns["TblBookings"].Visible = false;
+                dgvSelectList.Columns["TourId"].DisplayIndex = 1;
+                dgvSelectList.Columns["TourName"].DisplayIndex = 2;
+                for (int i = 0; i < dgvSelectList.RowCount; i++)
+                {
+                    int tourId = Int32.Parse(dgvSelectList.Rows[i].Cells[8].Value.ToString());
+                    //MessageBox.Show();
+                    dgvSelectList.Rows[i].Cells[11].Value = tourRepository.GetTourByID(tourId).TourName;
+                }
                 dgvSelectList.Columns["Tour"].Visible = false;
             }
             catch (Exception ex)
@@ -382,6 +394,7 @@ namespace TourBookingApp
         {
             try
             {
+                dgvBooking.Columns.Clear();
                 source = new BindingSource();
                 if (cboSelect.SelectedItem.ToString() == "Customer")
                 {
@@ -392,6 +405,18 @@ namespace TourBookingApp
                     dgvBooking.Columns["Trip"].Visible = false;
                     dgvBooking.Columns["User"].Visible = false;
                     dgvBooking.Columns["CustomerId"].Visible = false;
+                    dgvBooking.Columns.Add("Tour", "Tour");
+                    dgvBooking.Columns.Add("UserName", "UserName");
+                    dgvBooking.Columns["Tour"].DisplayIndex = 2;
+                    dgvBooking.Columns["UserName"].DisplayIndex = 4;
+                    for (int i = 0; i < dgvBooking.RowCount; i++)
+                    {
+                        int tripId = Int32.Parse(dgvBooking.Rows[i].Cells[1].Value.ToString());
+                        //MessageBox.Show();
+                        dgvBooking.Rows[i].Cells[11].Value = tourRepository.GetTourByID(tripRepository.GetTripByID(tripId).TourId).TourName;
+                        int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
+                        dgvBooking.Rows[i].Cells[12].Value = userRepository.GetUserByID(userId).Name;
+                    }
                 }
                 else
                 {
@@ -402,6 +427,22 @@ namespace TourBookingApp
                     dgvBooking.Columns["Trip"].Visible = false;
                     dgvBooking.Columns["User"].Visible = false;
                     dgvBooking.Columns["TripId"].Visible = false;
+                    dgvBooking.Columns.Add("CustomerName", "CustomerName");
+                    dgvBooking.Columns.Add("CustomerEmail", "CustomerEmail");
+                    dgvBooking.Columns.Add("UserName", "UserName");
+                    dgvBooking.Columns["CustomerId"].DisplayIndex = 1;
+                    dgvBooking.Columns["CustomerName"].DisplayIndex = 2;
+                    dgvBooking.Columns["CustomerEmail"].DisplayIndex = 3;
+                    dgvBooking.Columns["UserId"].DisplayIndex = 4;
+                    dgvBooking.Columns["UserName"].DisplayIndex = 5;
+                    for (int i=0; i < dgvBooking.RowCount; i++)
+                    {
+                        int customerId = Int32.Parse(dgvBooking.Rows[i].Cells[3].Value.ToString());
+                        dgvBooking.Rows[i].Cells[11].Value = customerRepository.GetCustomerByID(customerId).Name;
+                        dgvBooking.Rows[i].Cells[12].Value = customerRepository.GetCustomerByID(customerId).Email;
+                        int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
+                        dgvBooking.Rows[i].Cells[13].Value = userRepository.GetUserByID(userId).Name;
+                    }
                 }
             }
             catch (Exception ex)
