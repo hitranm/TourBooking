@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess.Repository;
 using DataAccess.DataAccess;
+using System.ComponentModel.DataAnnotations;
 
 namespace TourBookingApp
 {
@@ -66,16 +67,15 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
-                    if (txtTourName.Text == "" || txtDeparture.Text == "" || txtDescription.Text == "" || txtDestination.Text == "" )
+                    ValidationContext context = new ValidationContext(touAdd, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+                    if (!Validator.TryValidateObject(touAdd, context, errors, true))
                     {
-                        MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        
-                    }
-                  
-
-                   
-                    else if ( txtTourName.Text.Length > 12 || txtDeparture.Text.Length>10 || txtDescription.Text.Length >100 || txtDestination.Text.Length >10)
-                    { MessageBox.Show("Wrong format !!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                        foreach (ValidationResult result1 in errors)
+                        {
+                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
                     else
                     {
@@ -97,12 +97,18 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
-                    if (txtTourName.Text == "" || txtDeparture.Text == "" || txtDescription.Text == "" || txtDestination.Text == "")
+                    ValidationContext context = new ValidationContext(touUp, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+                    if (!Validator.TryValidateObject(touUp, context, errors, true))
                     {
-                        MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        foreach (ValidationResult result1 in errors)
+                        {
+                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
-                    else if (txtTourName.Text.Length > 12 || txtDeparture.Text.Length > 10 || txtDescription.Text.Length > 100 || txtDestination.Text.Length > 10) { MessageBox.Show("Wrong format !!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-                    else {
+                    else
+                    {
                         tourRepository.UpdateTour(touUp);
                         MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
