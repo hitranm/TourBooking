@@ -16,16 +16,18 @@ namespace TourBookingApp
         BindingSource source;
         public int tripID;
         public int tourID;
+        private int tempBookingId;
 
         public frmManagement()
         {
             InitializeComponent();
-            
-        }       
+
+        }
         private void frmManagement_Load_1(object sender, EventArgs e)
         {
             LoadTourList();
             LoadTripList();
+            btnCancelBooking.Enabled = false;
         }
 
 
@@ -162,7 +164,7 @@ namespace TourBookingApp
                 MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-           
+
         public void LoadTourList()
         {
             var tours = tourRepository.GetTours();
@@ -327,7 +329,7 @@ namespace TourBookingApp
                 LoadTripForBooking();
             }
         }
-  
+
         private void LoadCustomerList()
         {
             try
@@ -443,10 +445,71 @@ namespace TourBookingApp
             }
             return customer;
         }
-             
+
+        private void btnCancelBooking_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tempBookingId != 0)
+                {
+
+                    DialogResult result = MessageBox.Show("Are you sure to cancel this booking?", "Booking management - Cancel", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        TblBooking booking = bookingRepository.GetBookingByID(tempBookingId);
+                        if (DateTime.Compare(DateTime.Now.AddDays(3), tripRepository.GetTripByID(booking.TripId).StartTime) > 0)
+                        {
+                            throw new Exception("Booking can only be canceled at least 3 days before the trip");
+                        }
+                        else
+                        {
+                            booking.Status = false;
+                            bookingRepository.UpdateBooking(booking);
+                        }
+                    }
+                }
+                else
+                {
+                    btnCancelBooking.Enabled = false;
+                    throw new Exception("Please select a booking to cancel");
+                }
+                if (this.dgvSelectList.CurrentCell != null && this.dgvSelectList.CurrentRow != null)
+                {
+                    dgvSelectList_CellDoubleClick(this.dgvSelectList, new DataGridViewCellEventArgs(this.dgvSelectList.CurrentCell.ColumnIndex, this.dgvSelectList.CurrentRow.Index));
+                }
+                //reset tempBookingID value
+                tempBookingId = 0;
+                btnCancelBooking.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cancel booking");
+            }
+        }
+
+        private void dgvBooking_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dgvBooking.Rows[e.RowIndex];
+                    this.tempBookingId = int.Parse(row.Cells["BookingId"].Value.ToString());
+                }
+                if (tempBookingId != 0)
+                {
+                    btnCancelBooking.Enabled = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cancel booking");
+            }
+        }
     }
 }
 
- 
-        
-       
+
+
+
