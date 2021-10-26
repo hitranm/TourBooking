@@ -100,13 +100,13 @@ namespace TourBookingApp
 
                     if (tou != null)
                     {
-                        if (tou.Status == false) { MessageBox.Show("Tour already deleted !!", "Notification", MessageBoxButtons.OK); }
+                        if (tou.Status == false) { MessageBox.Show("Tour already deleted !!", "Notification", MessageBoxButtons.OK,MessageBoxIcon.Warning); }
                         else
                         {
 
                             tou.Status = false;
                             tourRepository.UpdateTour(tou);
-                            MessageBox.Show("Delete successfully","Notification");
+                            MessageBox.Show("Delete successfully","Notification",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         }
                     }
                     List<TblTrip> listtrip = new List<TblTrip>();
