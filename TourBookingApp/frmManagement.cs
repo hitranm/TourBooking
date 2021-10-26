@@ -349,6 +349,71 @@ namespace TourBookingApp
             }
         }
 
+        private void btnFindTrip_Click(object sender, EventArgs e)
+        {
+            if (DTPFilterStart.Value.Date > DTPFilterEnd.Value.Date)
+            {
+                MessageBox.Show("Please choose the End Day beyond Start day");
+            }
+            else
+            {
+                var trip = tripRepository.GetTrips();
+                if (rdbtnAll.Checked)
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    foreach (var t in trip)
+                    {
+                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value)
+                        {
+                            listtrip.Add(t);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+                else if (rdbtnAct.Checked)
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    foreach (var t in trip)
+                    {
+                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value && t.Status == true)
+                        {
+                            listtrip.Add(t);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+                else if (rdbtnUnact.Checked)
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    foreach (var t in trip)
+                    {
+                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value && t.Status == false)
+                        {
+                            listtrip.Add(t);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+            }
+        }
+
+        private void btnRefreshTrip_Click(object sender, EventArgs e)
+        {
+            LoadTripList();
+        }
+
         //* BOOKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -482,7 +547,7 @@ namespace TourBookingApp
             }
             return customer;
         }
-              
+       
     }
 }
 
