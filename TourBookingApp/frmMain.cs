@@ -23,7 +23,7 @@ namespace TourBookingApp
             LoadTourList();
             txtTourID.Enabled = false;
             txtTourName.Enabled = false;
-          
+
             txtDestination.Enabled = false;
             txtDescription.Enabled = false;
             txtDeparture.Enabled = false;
@@ -72,8 +72,8 @@ namespace TourBookingApp
 
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
                 currencyManager1.SuspendBinding();
-               
-                bool isvisible=true;
+
+                bool isvisible = true;
                 bool isok = false;
                 for (int i = 0; i <= dtgTourList.RowCount - 1; i++)
                 {
@@ -82,7 +82,7 @@ namespace TourBookingApp
                     {
                         dtgTourList.Rows[i].Visible = false;
                         currencyManager1.ResumeBinding();
-                       
+
                     }
                     else
                     {
@@ -91,18 +91,18 @@ namespace TourBookingApp
                 }
                 if (isok == false)
                 {
-                   
+
 
                     ClearText();
                     txtTourID.Enabled = false;
                     txtTourName.Enabled = false;
-                  
+
                     txtDestination.Enabled = false;
                     txtDescription.Enabled = false;
                     txtDeparture.Enabled = false;
                     MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-               
+
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
 
@@ -122,6 +122,7 @@ namespace TourBookingApp
             txtDestination.Text = string.Empty;
             txtDescription.Text = string.Empty;
             txtDeparture.Text = string.Empty;
+
         }
 
 
@@ -161,7 +162,7 @@ namespace TourBookingApp
 
 
             }
-            catch (Exception e)
+            catch 
             {
                 MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -28,6 +28,7 @@ namespace TourBookingApp
             LoadTourList();
             LoadTripList();
             btnCancelBooking.Enabled = false;
+            cboSelect.SelectedIndex = 0;
         }
 
 
@@ -108,10 +109,16 @@ namespace TourBookingApp
                     {
                         c.Status = false;
                         tripRepository.UpdateTrip(c);
+                        foreach(TblBooking booking in bookingRepository.GetBookingsByTripId(c.TripId))
+                        {
+                            booking.Status = false;
+                            bookingRepository.UpdateBooking(booking);
+                        }
                     }
                 }
                 LoadTourList();
                 LoadTripList();
+                cboSelect_SelectedValueChanged(cboSelect, EventArgs.Empty);
             }
 
             catch (Exception ex)
@@ -299,10 +306,17 @@ namespace TourBookingApp
                     {
                         tri.Status = false;
                         tripRepository.UpdateTrip(tri);
+                        foreach (TblBooking booking in bookingRepository.GetBookingsByTripId(tri.TripId))
+                        {
+                            booking.Status = false;
+                            bookingRepository.UpdateBooking(booking);
+                        }
                         MessageBox.Show("Delete successfully");
+                        
                     }
                 }
                 LoadTripList();
+                cboSelect_SelectedValueChanged(cboSelect, EventArgs.Empty);
             }
             catch (Exception ex)
             {
