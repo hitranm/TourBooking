@@ -168,6 +168,7 @@ namespace TourBookingApp
             // 
             // dtgTripList
             // 
+            this.dtgTripList.AllowUserToAddRows = false;
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgTripList.Location = new System.Drawing.Point(74, 153);
             this.dtgTripList.Name = "dtgTripList";
