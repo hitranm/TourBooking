@@ -95,7 +95,7 @@ namespace TourBookingApp
 
             try
             {
-                if (AddOrUpdate == false) // add
+                if (AddOrUpdate == false) // ADD
                 {
                     var tripA = new TblTrip
                     {
@@ -151,7 +151,7 @@ namespace TourBookingApp
                         Close();
                     }
                 }
-                else // update
+                else // UPDATE
                 {                   
                     var tripU = new TblTrip
                     {
@@ -198,11 +198,11 @@ namespace TourBookingApp
                             var tri = tripRepository.GetTripByID(tripU.TripId);
                             if (tri != null)
                             {
-                                MessageBox.Show("Update successfully");
+                                MessageBox.Show("Update successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Update failed");
+                                MessageBox.Show("Update failed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             this.Close();
                         }
@@ -216,7 +216,7 @@ namespace TourBookingApp
             }
             catch (Exception)
             {
-                MessageBox.Show("The Price field is required", AddOrUpdate == false ? "Add new trip" : "Update a trip");
+                MessageBox.Show("The Price field is required", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }

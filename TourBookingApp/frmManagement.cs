@@ -28,7 +28,7 @@ namespace TourBookingApp
             LoadTripList();
         }
 
-
+        
 
         //*TOUR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -285,21 +285,31 @@ namespace TourBookingApp
 
         private void btnDeleteTrip_Click(object sender, EventArgs e)
         {
+            var tri = tripRepository.GetTripByID(tripID);
             try
             {
-                DialogResult result = MessageBox.Show("Are you sure want to delete this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
+                if (tri != null && tri.Status == false)
                 {
-                    var tri = tripRepository.GetTripByID(tripID);
-                    if (tri != null)
+                    
+                    MessageBox.Show("This trip hase been already deleted","Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (tri == null)
+                {
+                    MessageBox.Show("Please choose a trip first", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (tri != null && tri.Status == true)
+                {
+
+                    DialogResult result = MessageBox.Show("Are you sure want to delete this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                            MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
                     {
                         tri.Status = false;
                         tripRepository.UpdateTrip(tri);
                         MessageBox.Show("Delete successfully");
                     }
+                    LoadTripList();
                 }
-                LoadTripList();
             }
             catch (Exception ex)
             {
