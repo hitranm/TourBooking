@@ -44,6 +44,7 @@ namespace TourBookingApp
             this.btnDeleteTrip = new System.Windows.Forms.Button();
             this.btnAddTrip = new System.Windows.Forms.Button();
             this.tabBooking = new System.Windows.Forms.TabPage();
+            this.btnCancelBooking = new System.Windows.Forms.Button();
             this.dgvBooking = new System.Windows.Forms.DataGridView();
             this.dgvSelectList = new System.Windows.Forms.DataGridView();
             this.cboSelect = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,7 @@ namespace TourBookingApp
             this.lbTourName = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.btnCancelBooking = new System.Windows.Forms.Button();
+            this.lbBooking = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TourManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListTour)).BeginInit();
@@ -213,6 +214,7 @@ namespace TourBookingApp
             // 
             // tabBooking
             // 
+            this.tabBooking.Controls.Add(this.lbBooking);
             this.tabBooking.Controls.Add(this.btnCancelBooking);
             this.tabBooking.Controls.Add(this.dgvBooking);
             this.tabBooking.Controls.Add(this.dgvSelectList);
@@ -224,6 +226,16 @@ namespace TourBookingApp
             this.tabBooking.TabIndex = 2;
             this.tabBooking.Text = "Booking";
             this.tabBooking.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelBooking
+            // 
+            this.btnCancelBooking.Location = new System.Drawing.Point(1047, 13);
+            this.btnCancelBooking.Name = "btnCancelBooking";
+            this.btnCancelBooking.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelBooking.TabIndex = 3;
+            this.btnCancelBooking.Text = "Cancel";
+            this.btnCancelBooking.UseVisualStyleBackColor = true;
+            this.btnCancelBooking.Click += new System.EventHandler(this.btnCancelBooking_Click);
             // 
             // dgvBooking
             // 
@@ -395,15 +407,15 @@ namespace TourBookingApp
             this.dataGridView2.Size = new System.Drawing.Size(831, 336);
             this.dataGridView2.TabIndex = 21;
             // 
-            // btnCancelBooking
+            // lbBooking
             // 
-            this.btnCancelBooking.Location = new System.Drawing.Point(1047, 13);
-            this.btnCancelBooking.Name = "btnCancelBooking";
-            this.btnCancelBooking.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelBooking.TabIndex = 3;
-            this.btnCancelBooking.Text = "Cancel";
-            this.btnCancelBooking.UseVisualStyleBackColor = true;
-            this.btnCancelBooking.Click += new System.EventHandler(this.btnCancelBooking_Click);
+            this.lbBooking.AutoSize = true;
+            this.lbBooking.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbBooking.Location = new System.Drawing.Point(721, 9);
+            this.lbBooking.Name = "lbBooking";
+            this.lbBooking.Size = new System.Drawing.Size(159, 25);
+            this.lbBooking.TabIndex = 4;
+            this.lbBooking.Text = "Booking History";
             // 
             // frmManagement
             // 
@@ -422,6 +434,7 @@ namespace TourBookingApp
             this.TripManage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).EndInit();
             this.tabBooking.ResumeLayout(false);
+            this.tabBooking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectList)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -473,6 +486,7 @@ namespace TourBookingApp
         private System.Windows.Forms.DataGridView dgvSelectList;
         private System.Windows.Forms.ComboBox cboSelect;
         private Button btnCancelBooking;
+        private Label lbBooking;
     }
 }
 #endregion
