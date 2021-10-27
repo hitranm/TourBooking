@@ -62,7 +62,7 @@ namespace DataAccess
             }
             return trip;
         }
-        public IEnumerable<TblTrip> GetTripByTourID(int TourID)
+        public List<TblTrip> GetTripByTourID(int TourID)
         {
             var trip = new List<TblTrip>();
             var trips = GetTripList();
