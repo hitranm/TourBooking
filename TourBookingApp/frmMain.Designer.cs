@@ -60,7 +60,7 @@
             this.lbTripList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbTripList.AutoSize = true;
             this.lbTripList.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTripList.Location = new System.Drawing.Point(992, 35);
+            this.lbTripList.Location = new System.Drawing.Point(1128, 36);
             this.lbTripList.Name = "lbTripList";
             this.lbTripList.Size = new System.Drawing.Size(67, 38);
             this.lbTripList.TabIndex = 15;
@@ -73,13 +73,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTripList.Location = new System.Drawing.Point(586, 109);
+            this.dtgTripList.Location = new System.Drawing.Point(807, 109);
             this.dtgTripList.Name = "dtgTripList";
             this.dtgTripList.ReadOnly = true;
             this.dtgTripList.RowHeadersWidth = 51;
             this.dtgTripList.RowTemplate.Height = 29;
             this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTripList.Size = new System.Drawing.Size(885, 429);
+            this.dtgTripList.Size = new System.Drawing.Size(664, 429);
             this.dtgTripList.TabIndex = 16;
             this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
             // 
@@ -87,7 +87,7 @@
             // 
             this.txtDestination.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDestination.Location = new System.Drawing.Point(366, 108);
+            this.txtDestination.Location = new System.Drawing.Point(477, 108);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.ReadOnly = true;
             this.txtDestination.Size = new System.Drawing.Size(164, 27);
@@ -97,7 +97,7 @@
             // 
             this.txtTourName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTourName.Location = new System.Drawing.Point(366, 61);
+            this.txtTourName.Location = new System.Drawing.Point(477, 61);
             this.txtTourName.Name = "txtTourName";
             this.txtTourName.ReadOnly = true;
             this.txtTourName.Size = new System.Drawing.Size(164, 27);
@@ -128,7 +128,7 @@
             this.lbDes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbDes.AutoSize = true;
-            this.lbDes.Location = new System.Drawing.Point(269, 111);
+            this.lbDes.Location = new System.Drawing.Point(380, 111);
             this.lbDes.Name = "lbDes";
             this.lbDes.Size = new System.Drawing.Size(85, 20);
             this.lbDes.TabIndex = 7;
@@ -150,7 +150,7 @@
             this.lbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(269, 65);
+            this.lbName.Location = new System.Drawing.Point(380, 65);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(82, 20);
             this.lbName.TabIndex = 9;
@@ -182,14 +182,14 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(427, 73);
+            this.txtDescription.Size = new System.Drawing.Size(538, 73);
             this.txtDescription.TabIndex = 12;
             // 
             // lbTourList
             // 
             this.lbTourList.AutoSize = true;
             this.lbTourList.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTourList.Location = new System.Drawing.Point(225, 3);
+            this.lbTourList.Location = new System.Drawing.Point(307, 4);
             this.lbTourList.Name = "lbTourList";
             this.lbTourList.Size = new System.Drawing.Size(75, 38);
             this.lbTourList.TabIndex = 14;
@@ -217,7 +217,7 @@
             this.panel1.Controls.Add(this.txtDestination);
             this.panel1.Location = new System.Drawing.Point(2, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(555, 524);
+            this.panel1.Size = new System.Drawing.Size(725, 524);
             this.panel1.TabIndex = 2;
             // 
             // btnLoad
@@ -262,7 +262,7 @@
             this.dtgTourList.RowHeadersWidth = 51;
             this.dtgTourList.RowTemplate.Height = 29;
             this.dtgTourList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTourList.Size = new System.Drawing.Size(523, 200);
+            this.dtgTourList.Size = new System.Drawing.Size(719, 200);
             this.dtgTourList.TabIndex = 17;
             this.dtgTourList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgTourList_CellMouseDoubleClick);
             // 

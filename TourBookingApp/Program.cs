@@ -6,8 +6,11 @@ using System.Windows.Forms;
 
 namespace TourBookingApp
 {
+    
     static class Program
     {
+        //check the login status
+        public static bool canLog =false;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -17,7 +20,8 @@ namespace TourBookingApp
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmAddNewTour());
+            
         }
     }
 }

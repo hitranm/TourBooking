@@ -12,21 +12,24 @@ namespace TourBookingApp
         {
             InitializeComponent();
         }
-       
 
+        public int canLog = 0;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-          
+
+            this.DialogResult = DialogResult.OK;
             bool isMem = false;
             var user = userRepository.GetUsers();
             foreach(var i in user)
             {
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text)&&i.RoleId==1)
                 {
+                    Program.canLog=true;
+                   
                     frmMain frm = new frmMain
                     {
                         isAdmin = false,
-                        currentID = i.UserId
+                        currentID = i.UserId,
                         
                     };
                     this.Hide();
@@ -37,15 +40,23 @@ namespace TourBookingApp
 
                     if (frm.m < 0)
                         this.Show();
-                    else this.Close();
+                    else
+                    {
+                        
+                        this.Close();
+                    }
+
                     break;
                 }
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text) && i.RoleId == 2)
                 {
+                    Program.canLog = true;
+
+
                     frmMain frm = new frmMain
                     {
                         isAdmin = true,
-                        currentID = i.UserId
+                        currentID = i.UserId,
                     };
                     this.Hide();
                     frm.ShowDialog();
@@ -53,8 +64,13 @@ namespace TourBookingApp
 
                     if (frm.m < 0)
                         this.Show();
-                    else this.Close();
-                   
+                    else
+                    {   
+                       
+                        this.Close(); 
+                    }
+                
+                    
                     break;
                 }
             }
@@ -69,6 +85,7 @@ namespace TourBookingApp
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

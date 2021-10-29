@@ -8,23 +8,30 @@
     {
         public partial class frmMain : Form
         {
+            
+
+        
             ITourRepository tourRepository = new TourRepository();
             ITripRepository tripRepository = new TripRepository();
             BindingSource source;
             public int m = 0;
-            public Boolean isAdmin { get; set; }
+            public bool isAdmin { get; set; }
+            
             public int currentID { get; set; }
             public frmLogin frm { get; set; }
             public frmMain()
             {
                 InitializeComponent();
             }
+        
             private void frmMain_Load(object sender, EventArgs e)
+            {
+            if (Program.canLog==true)
             {
                 LoadTourList();
                 txtTourID.Enabled = false;
                 txtTourName.Enabled = false;
-          
+
                 txtDestination.Enabled = false;
                 txtDescription.Enabled = false;
                 txtDeparture.Enabled = false;
@@ -35,7 +42,17 @@
                     manageToolStripMenuItem.Enabled = false;
                 }
                 else manageToolStripMenuItem.Enabled = true;
-
+            }
+            else
+            {
+              
+                frmLogin frm = new frmLogin() ;
+                this.Hide();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
             }
             private void frmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
             {
@@ -70,10 +87,12 @@
 
                     dtgTourList.DataSource = null;
                     dtgTourList.DataSource = source;
-                dtgTourList.Columns[6].Visible = false;
-                dtgTourList.Columns[5].Visible = false;
+                    dtgTourList.Columns[6].Visible = false;
+                    dtgTourList.Columns[5].Visible = false;
+                dtgTourList.Columns[4].Width = 175;
+
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
-                   
+                currencyManager1.SuspendBinding();
                
                     bool isvisible=true;
                     bool isok = false;
@@ -83,14 +102,15 @@
                         if (isvisible == false)
                         {
                             dtgTourList.Rows[i].Visible = false;
-                            currencyManager1.ResumeBinding();
-                       
+                        currencyManager1.ResumeBinding();
                         }
                         else
                         {
                             isok = true;
-                        }
+                        currencyManager1.ResumeBinding();
+
                     }
+                }
                     if (isok == false)
                     {
                         ClearText();
@@ -187,7 +207,7 @@
                 {
                     foreach (var i in tours)
                     {
-                        if (i.TourName.Contains(txtSearchTour.Text) && i.Status == true)
+                        if (i.TourName.ToUpper().Contains(txtSearchTour.Text.ToUpper()) && i.Status == true)
                         {
                             hasTour = true;
                             tour.Add(i);
@@ -209,9 +229,11 @@
 
                     dtgTourList.DataSource = null;
                     dtgTourList.DataSource = source;
+                dtgTourList.Columns[6].Visible = false;
+                dtgTourList.Columns[5].Visible = false;
+                dtgTourList.Columns[4].Width = 175;
 
-
-                }
+            }
                 catch (Exception e)
                 {
                     MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
