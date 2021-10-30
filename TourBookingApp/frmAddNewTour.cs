@@ -3,43 +3,57 @@ using System.Windows.Forms;
 using DataAccess.Repository;
 using DataAccess.DataAccess;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace TourBookingApp
 {
     public partial class frmAddNewTour : Form
     {
-       
+
         public ITourRepository tourRepository { get; set; }
-        public bool InsertOrUpdate{get;set;}
+        public bool InsertOrUpdate { get; set; }
         public TblTour TourInfo { get; set; }
         public frmAddNewTour()
         {
             InitializeComponent();
         }
 
-       
-       
+
+
 
         private void frmAddNewTour_Load(object sender, EventArgs e)
         {
-            txtTourID.Enabled = !InsertOrUpdate;
-            if(InsertOrUpdate == true)
+            if (frmLogin.canLog == true)
             {
-                txtTourID.Text = TourInfo.TourId.ToString();
-                txtTourName.Text = TourInfo.TourName;
-                txtDeparture.Text = TourInfo.Departure;
-                txtDestination.Text = TourInfo.Destination;
-                txtDescription.Text = TourInfo.Description;
-                cbStatus.Checked = TourInfo.Status;
+                txtTourID.Enabled = !InsertOrUpdate;
+                if (InsertOrUpdate == true)
+                {
+                    txtTourID.Text = TourInfo.TourId.ToString();
+                    txtTourName.Text = TourInfo.TourName;
+                    txtDeparture.Text = TourInfo.Departure;
+                    txtDestination.Text = TourInfo.Destination;
+                    txtDescription.Text = TourInfo.Description;
+                    cbStatus.Checked = TourInfo.Status;
+                }
+                else
+                {
+                    lbTourID.Visible = false;
+                    txtTourID.Visible = false;
+                }
             }
             else
             {
-                lbTourID.Visible = false;
-                txtTourID.Visible = false;
+
+                frmLogin frm = new frmLogin();
+                this.Hide();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
         }
 
-       
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -47,8 +61,9 @@ namespace TourBookingApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-           
-            try {
+
+            try
+            {
                 if (InsertOrUpdate == false)
                 {
                     var touAdd = new TblTour
@@ -83,7 +98,7 @@ namespace TourBookingApp
                 {
                     var touUp = new TblTour
                     {
-                        TourId= int.Parse(txtTourID.Text),
+                        TourId = int.Parse(txtTourID.Text),
                         TourName = txtTourName.Text,
                         Departure = txtDeparture.Text,
                         Destination = txtDeparture.Text,
@@ -107,11 +122,13 @@ namespace TourBookingApp
                         this.Close();
                     }
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a tour" : "Update a tour");
-                }
-     }
+            }
+        }
 
-        
+
     }
 }

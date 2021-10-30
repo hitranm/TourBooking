@@ -45,7 +45,7 @@ namespace TourBookingApp
                 }
             }
         }
-           
+
         //*TOUR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -123,7 +123,7 @@ namespace TourBookingApp
                     {
                         tou.Status = false;
                         tourRepository.UpdateTour(tou);
-                        MessageBox.Show("Delete successfully","Notification",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("Delete successfully", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
 
@@ -145,7 +145,7 @@ namespace TourBookingApp
                 cboSelect_SelectedValueChanged(cboSelect, EventArgs.Empty);
             }
 
-            }
+
 
             catch (Exception ex)
             {
@@ -153,7 +153,7 @@ namespace TourBookingApp
             }
         }
 
-    private void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadOneTour();
         }
@@ -182,21 +182,21 @@ namespace TourBookingApp
                         tour.Add(i);
                     }
                 }
-                        source = new BindingSource();
-                        source.DataSource = tour;
+                source = new BindingSource();
+                source.DataSource = tour;
 
 
-                        dtgListTour.DataSource = null;
-                        dtgListTour.DataSource = source;
-                        dtgListTour.Columns[6].Visible = false;
-                        dtgListTour.Columns[4].Width = 400;
-                        dtgListTour.Columns[5].Width = 75;
-                        dtgListTour.Columns[0].Width = 75;
-                        dtgListTour.Columns[2].Width = 200;
-                        dtgListTour.Columns[3].Width = 200;
-                        
-                    
-                
+                dtgListTour.DataSource = null;
+                dtgListTour.DataSource = source;
+                dtgListTour.Columns[6].Visible = false;
+                dtgListTour.Columns[4].Width = 400;
+                dtgListTour.Columns[5].Width = 75;
+                dtgListTour.Columns[0].Width = 75;
+                dtgListTour.Columns[2].Width = 200;
+                dtgListTour.Columns[3].Width = 200;
+
+
+
             }
             catch (Exception e)
             {
@@ -241,7 +241,7 @@ namespace TourBookingApp
             source.DataSource = tour;
             dtgListTour.DataSource = null;
             dtgListTour.DataSource = source;
-            
+
 
         }
 
@@ -261,7 +261,7 @@ namespace TourBookingApp
                 source.DataSource = trips;
 
                 dtgTripList.DataSource = null;
-                dtgTripList.DataSource = source;               
+                dtgTripList.DataSource = source;
                 dtgTripList.Columns[10].Visible = false;
                 dtgTripList.Columns[9].Visible = false;
                 dtgTripList.Columns.Add("TourName", "TourName");
@@ -274,7 +274,7 @@ namespace TourBookingApp
                      //row.Cells["TourName"].Value = tour.TourName;
                  }*/
                 int count = 0;
-                
+
                 foreach (var i in trips)
                 {
                     var tour = tourRepository.GetTourByID(i.TourId);
@@ -346,7 +346,7 @@ namespace TourBookingApp
         }
 
         private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {            
+        {
             var rowIndex = e.RowIndex;
             tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
         }
@@ -358,8 +358,8 @@ namespace TourBookingApp
             {
                 if (tri != null && tri.Status == false)
                 {
-                    
-                    MessageBox.Show("This trip hase been already deleted","Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    MessageBox.Show("This trip hase been already deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (tri == null)
                 {
@@ -396,19 +396,20 @@ namespace TourBookingApp
         {
             if (listTripFilter != null)
             {
-                if(cbxTripFilter.SelectedIndex == 0)
+                if (cbxTripFilter.SelectedIndex == 0)
                 {
                     source = new BindingSource();
                     source.DataSource = listTripFilter;
 
                     dtgTripList.DataSource = null;
                     dtgTripList.DataSource = source;
-                }else if(cbxTripFilter.SelectedIndex == 1)
+                }
+                else if (cbxTripFilter.SelectedIndex == 1)
                 {
                     List<TblTrip> listtrip = new List<TblTrip>();
-                    foreach(var c in listTripFilter)
+                    foreach (var c in listTripFilter)
                     {
-                        if(c.Status == true)
+                        if (c.Status == true)
                         {
                             listtrip.Add(c);
                         }
@@ -620,7 +621,7 @@ namespace TourBookingApp
                     dgvBooking.Columns["CustomerEmail"].DisplayIndex = 3;
                     dgvBooking.Columns["UserId"].DisplayIndex = 4;
                     dgvBooking.Columns["UserName"].DisplayIndex = 5;
-                    for (int i=0; i < dgvBooking.RowCount; i++)
+                    for (int i = 0; i < dgvBooking.RowCount; i++)
                     {
                         int customerId = Int32.Parse(dgvBooking.Rows[i].Cells[3].Value.ToString());
                         dgvBooking.Rows[i].Cells[11].Value = customerRepository.GetCustomerByID(customerId).Name;
