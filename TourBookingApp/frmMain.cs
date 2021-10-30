@@ -26,7 +26,7 @@
         
             private void frmMain_Load(object sender, EventArgs e)
             {
-            if (Program.canLog==true)
+            if (frmLogin.canLog==true)
             {
                 LoadTourList();
                 txtTourID.Enabled = false;
@@ -298,11 +298,13 @@
 
 
             private void logoutToolStripMenuItem_Click_2(object sender, EventArgs e)
-            {
+            
+        {
 
                 DialogResult msg = MessageBox.Show("Do you really want to logout?", "Messaage Box", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (msg == DialogResult.OK)
                 {
+                this.DialogResult = DialogResult.OK;
                     m = -1;
                     this.Close();
                 }
@@ -333,7 +335,21 @@
                     MessageBox.Show("Book trip successfully");
                 }
             }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+            
+            Application.Restart();
         }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+            System.Environment.Exit(1);
+            Application.Restart();
+        }
+    }
     }
 
 

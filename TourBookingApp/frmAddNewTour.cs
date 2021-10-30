@@ -21,7 +21,7 @@ namespace TourBookingApp
 
         private void frmAddNewTour_Load(object sender, EventArgs e)
         {
-            if (Program.canLog = false)
+            if (frmLogin.canLog == true)
             {
                 txtTourID.Enabled = !InsertOrUpdate;
                 if (InsertOrUpdate == true)

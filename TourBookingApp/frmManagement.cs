@@ -24,8 +24,21 @@ namespace TourBookingApp
         }       
         private void frmManagement_Load_1(object sender, EventArgs e)
         {
-            LoadTourList();
-            LoadTripList();
+            if (frmLogin.canLog == true)
+            {
+                LoadTourList();
+                LoadTripList();
+            }
+            else
+            {
+
+                frmLogin frm = new frmLogin();
+                this.Hide();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
         }
 
 
