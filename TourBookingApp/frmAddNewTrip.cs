@@ -96,36 +96,39 @@ namespace TourBookingApp
             try
             {
                 if (AddOrUpdate == false) // ADD
-                {
-                    var tripA = new TblTrip
-                    {
-                        StartTime = DTPStartTime.Value,
-                        Endtime = DTPEndTime.Value,
-                        Price = decimal.Parse(mtxtPrice.Text),
-                        Capacity = int.Parse(NUDCapacity.Value.ToString()),
-                        Accommodation = txtAccommodation.Text,
-                        Description = txtDescription.Text,
-                        TourId = tourID,
-                        Status=true
-                    };                   
+                {                                   
                     DialogResult result = MessageBox.Show("Are you sure want to add this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day + 7 && DTPEndTime.Value.Date.Day < DTPStartTime.Value.Date.Day)
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day + 7 && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
                         {
                             MessageBox.Show("Please set the Start day beyond the present time at least 7 days and" +
                                 " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        ValidationContext context = new ValidationContext(tripA, null, null);
+                        if (string.IsNullOrEmpty(mtxtPrice.Text))
+                        {
+                            throw new Exception("The Price field is required");
+                        }                       
+                        var tripA = new TblTrip
+                        {
+                            StartTime = DTPStartTime.Value,
+                            Endtime = DTPEndTime.Value,
+                            Price = decimal.Parse(mtxtPrice.Text),
+                            Capacity = int.Parse(NUDCapacity.Value.ToString()),
+                            Accommodation = txtAccommodation.Text,
+                            Description = txtDescription.Text,
+                            TourId = tourID,
+                            Status = true
+                        };
+                        ValidationContext context = new ValidationContext(tripA, null, null);                     
                         IList<ValidationResult> errors = new List<ValidationResult>();
                         if (!Validator.TryValidateObject(tripA, context, errors, true))
                         {
                             foreach (ValidationResult result1 in errors)
                             {
-                                MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
+                                throw new Exception(result1.ErrorMessage);
                             }
                         }
                         else
@@ -152,18 +155,33 @@ namespace TourBookingApp
                     }
                 }
                 else // UPDATE
-                {                   
-                    var tripU = new TblTrip
+                {
+                                       
+                    DialogResult result = MessageBox.Show("Are you sure want to update this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
                     {
-                        TripId = int.Parse(txtTripID.Text.ToString()),
-                        StartTime = DTPStartTime.Value,
-                        Endtime = DTPEndTime.Value,
-                        Price = decimal.Parse(mtxtPrice.Text),
-                        Capacity = int.Parse(NUDCapacity.Value.ToString()),
-                        Accommodation = txtAccommodation.Text,
-                        Description = txtDescription.Text,
-                        TourId = tourID
-                    };                   
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day  && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
+                        {
+                            MessageBox.Show("Please set the Start day beyond the present time and" +
+                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(mtxtPrice.Text))
+                        {
+                            throw new Exception("The Price field is required");
+                        }
+                        var tripU = new TblTrip
+                        {
+                            TripId = int.Parse(txtTripID.Text.ToString()),
+                            StartTime = DTPStartTime.Value,
+                            Endtime = DTPEndTime.Value,
+                            Price = decimal.Parse(mtxtPrice.Text),
+                            Capacity = int.Parse(NUDCapacity.Value.ToString()),
+                            Accommodation = txtAccommodation.Text,
+                            Description = txtDescription.Text,
+                            TourId = tourID
+                        };
                         if (cbTripStatus.CheckState == CheckState.Checked)
                         {
                             tripU.Status = true;
@@ -171,16 +189,6 @@ namespace TourBookingApp
                         else
                         {
                             tripU.Status = false;
-                        }                   
-                    DialogResult result = MessageBox.Show("Are you sure want to update this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button1);
-                    if (result == DialogResult.Yes)
-                    {
-                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day  && DTPEndTime.Value.Date.Day < DTPStartTime.Value.Date.Day)
-                        {
-                            MessageBox.Show("Please set the Start day beyond the present time and" +
-                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
                         }
                         ValidationContext context = new ValidationContext(tripU, null, null);
                         IList<ValidationResult> errors = new List<ValidationResult>();
@@ -188,8 +196,7 @@ namespace TourBookingApp
                         {
                             foreach (ValidationResult result1 in errors)
                             {
-                                MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
+                                throw new Exception(result1.ErrorMessage);
                             }
                         }
                         else
@@ -214,9 +221,9 @@ namespace TourBookingApp
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("The Price field is required", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }

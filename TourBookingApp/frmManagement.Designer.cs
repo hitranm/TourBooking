@@ -40,10 +40,8 @@ namespace TourBookingApp
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.TripManage = new System.Windows.Forms.TabPage();
+            this.btnRefreshTrip = new System.Windows.Forms.Button();
             this.btnFindTrip = new System.Windows.Forms.Button();
-            this.rdbtnUnact = new System.Windows.Forms.RadioButton();
-            this.rdbtnAct = new System.Windows.Forms.RadioButton();
-            this.rdbtnAll = new System.Windows.Forms.RadioButton();
             this.DTPFilterEnd = new System.Windows.Forms.DateTimePicker();
             this.DTPFilterStart = new System.Windows.Forms.DateTimePicker();
             this.lbTripFilterByDate = new System.Windows.Forms.Label();
@@ -68,7 +66,6 @@ namespace TourBookingApp
             this.lbTourName = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.btnRefreshTrip = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TourManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListTour)).BeginInit();
@@ -172,9 +169,6 @@ namespace TourBookingApp
             // 
             this.TripManage.Controls.Add(this.btnRefreshTrip);
             this.TripManage.Controls.Add(this.btnFindTrip);
-            this.TripManage.Controls.Add(this.rdbtnUnact);
-            this.TripManage.Controls.Add(this.rdbtnAct);
-            this.TripManage.Controls.Add(this.rdbtnAll);
             this.TripManage.Controls.Add(this.DTPFilterEnd);
             this.TripManage.Controls.Add(this.DTPFilterStart);
             this.TripManage.Controls.Add(this.lbTripFilterByDate);
@@ -192,9 +186,20 @@ namespace TourBookingApp
             this.TripManage.Text = "Trip";
             this.TripManage.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshTrip
+            // 
+            this.btnRefreshTrip.Location = new System.Drawing.Point(190, 65);
+            this.btnRefreshTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRefreshTrip.Name = "btnRefreshTrip";
+            this.btnRefreshTrip.Size = new System.Drawing.Size(102, 31);
+            this.btnRefreshTrip.TabIndex = 31;
+            this.btnRefreshTrip.Text = "Refresh";
+            this.btnRefreshTrip.UseVisualStyleBackColor = true;
+            this.btnRefreshTrip.Click += new System.EventHandler(this.btnRefreshTrip_Click);
+            // 
             // btnFindTrip
             // 
-            this.btnFindTrip.Location = new System.Drawing.Point(65, 105);
+            this.btnFindTrip.Location = new System.Drawing.Point(65, 65);
             this.btnFindTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFindTrip.Name = "btnFindTrip";
             this.btnFindTrip.Size = new System.Drawing.Size(102, 31);
@@ -203,48 +208,16 @@ namespace TourBookingApp
             this.btnFindTrip.UseVisualStyleBackColor = true;
             this.btnFindTrip.Click += new System.EventHandler(this.btnFindTrip_Click);
             // 
-            // rdbtnUnact
-            // 
-            this.rdbtnUnact.AutoSize = true;
-            this.rdbtnUnact.Location = new System.Drawing.Point(325, 67);
-            this.rdbtnUnact.Name = "rdbtnUnact";
-            this.rdbtnUnact.Size = new System.Drawing.Size(71, 19);
-            this.rdbtnUnact.TabIndex = 29;
-            this.rdbtnUnact.Text = "Unactive";
-            this.rdbtnUnact.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnAct
-            // 
-            this.rdbtnAct.AutoSize = true;
-            this.rdbtnAct.Location = new System.Drawing.Point(189, 67);
-            this.rdbtnAct.Name = "rdbtnAct";
-            this.rdbtnAct.Size = new System.Drawing.Size(58, 19);
-            this.rdbtnAct.TabIndex = 28;
-            this.rdbtnAct.Text = "Active";
-            this.rdbtnAct.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnAll
-            // 
-            this.rdbtnAll.AutoSize = true;
-            this.rdbtnAll.Checked = true;
-            this.rdbtnAll.Location = new System.Drawing.Point(69, 67);
-            this.rdbtnAll.Name = "rdbtnAll";
-            this.rdbtnAll.Size = new System.Drawing.Size(39, 19);
-            this.rdbtnAll.TabIndex = 27;
-            this.rdbtnAll.TabStop = true;
-            this.rdbtnAll.Text = "All";
-            this.rdbtnAll.UseVisualStyleBackColor = true;
-            // 
             // DTPFilterEnd
             // 
-            this.DTPFilterEnd.Location = new System.Drawing.Point(325, 38);
+            this.DTPFilterEnd.Location = new System.Drawing.Point(325, 27);
             this.DTPFilterEnd.Name = "DTPFilterEnd";
             this.DTPFilterEnd.Size = new System.Drawing.Size(200, 23);
             this.DTPFilterEnd.TabIndex = 26;
             // 
             // DTPFilterStart
             // 
-            this.DTPFilterStart.Location = new System.Drawing.Point(65, 38);
+            this.DTPFilterStart.Location = new System.Drawing.Point(65, 27);
             this.DTPFilterStart.Name = "DTPFilterStart";
             this.DTPFilterStart.Size = new System.Drawing.Size(200, 23);
             this.DTPFilterStart.TabIndex = 25;
@@ -252,7 +225,7 @@ namespace TourBookingApp
             // lbTripFilterByDate
             // 
             this.lbTripFilterByDate.AutoSize = true;
-            this.lbTripFilterByDate.Location = new System.Drawing.Point(69, 20);
+            this.lbTripFilterByDate.Location = new System.Drawing.Point(69, 9);
             this.lbTripFilterByDate.Name = "lbTripFilterByDate";
             this.lbTripFilterByDate.Size = new System.Drawing.Size(82, 15);
             this.lbTripFilterByDate.TabIndex = 24;
@@ -261,7 +234,7 @@ namespace TourBookingApp
             // lbTripFilterByStatus
             // 
             this.lbTripFilterByStatus.AutoSize = true;
-            this.lbTripFilterByStatus.Location = new System.Drawing.Point(884, 105);
+            this.lbTripFilterByStatus.Location = new System.Drawing.Point(65, 119);
             this.lbTripFilterByStatus.Name = "lbTripFilterByStatus";
             this.lbTripFilterByStatus.Size = new System.Drawing.Size(90, 15);
             this.lbTripFilterByStatus.TabIndex = 23;
@@ -274,7 +247,7 @@ namespace TourBookingApp
             "Both",
             "Active",
             "Unactive"});
-            this.cbxTripFilter.Location = new System.Drawing.Point(884, 126);
+            this.cbxTripFilter.Location = new System.Drawing.Point(65, 140);
             this.cbxTripFilter.Name = "cbxTripFilter";
             this.cbxTripFilter.Size = new System.Drawing.Size(196, 23);
             this.cbxTripFilter.TabIndex = 22;
@@ -284,21 +257,21 @@ namespace TourBookingApp
             // 
             this.dtgTripList.AllowUserToAddRows = false;
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTripList.Location = new System.Drawing.Point(65, 168);
+            this.dtgTripList.Location = new System.Drawing.Point(28, 168);
             this.dtgTripList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgTripList.Name = "dtgTripList";
             this.dtgTripList.ReadOnly = true;
             this.dtgTripList.RowHeadersWidth = 51;
             this.dtgTripList.RowTemplate.Height = 25;
             this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTripList.Size = new System.Drawing.Size(1015, 356);
+            this.dtgTripList.Size = new System.Drawing.Size(1076, 356);
             this.dtgTripList.TabIndex = 21;
             this.dtgTripList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellClick);
             this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
             // 
             // btnDeleteTrip
             // 
-            this.btnDeleteTrip.Location = new System.Drawing.Point(951, 11);
+            this.btnDeleteTrip.Location = new System.Drawing.Point(817, 119);
             this.btnDeleteTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteTrip.Name = "btnDeleteTrip";
             this.btnDeleteTrip.Size = new System.Drawing.Size(102, 31);
@@ -309,7 +282,7 @@ namespace TourBookingApp
             // 
             // btnAddTrip
             // 
-            this.btnAddTrip.Location = new System.Drawing.Point(827, 11);
+            this.btnAddTrip.Location = new System.Drawing.Point(660, 119);
             this.btnAddTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTrip.Name = "btnAddTrip";
             this.btnAddTrip.Size = new System.Drawing.Size(102, 31);
@@ -500,17 +473,6 @@ namespace TourBookingApp
             this.dataGridView2.Size = new System.Drawing.Size(831, 336);
             this.dataGridView2.TabIndex = 21;
             // 
-            // btnRefreshTrip
-            // 
-            this.btnRefreshTrip.Location = new System.Drawing.Point(190, 105);
-            this.btnRefreshTrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRefreshTrip.Name = "btnRefreshTrip";
-            this.btnRefreshTrip.Size = new System.Drawing.Size(102, 31);
-            this.btnRefreshTrip.TabIndex = 31;
-            this.btnRefreshTrip.Text = "Refresh";
-            this.btnRefreshTrip.UseVisualStyleBackColor = true;
-            this.btnRefreshTrip.Click += new System.EventHandler(this.btnRefreshTrip_Click);
-            // 
             // frmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -576,9 +538,6 @@ namespace TourBookingApp
         private ComboBox cbxTripFilter;
         private Label lbTripFilterByDate;
         private Button btnFindTrip;
-        private RadioButton rdbtnUnact;
-        private RadioButton rdbtnAct;
-        private RadioButton rdbtnAll;
         private DateTimePicker DTPFilterEnd;
         private DateTimePicker DTPFilterStart;
         private Button btnRefreshTrip;

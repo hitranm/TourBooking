@@ -16,6 +16,7 @@ namespace TourBookingApp
         BindingSource source;
         public int tripID;
         public int tourID;
+        public List<TblTrip> listTripFilter = null;
 
         public frmManagement()
         {
@@ -207,12 +208,26 @@ namespace TourBookingApp
                 source.DataSource = trips;
 
                 dtgTripList.DataSource = null;
-                dtgTripList.DataSource = source;
-                //dtgTripList.Columns[7].Visible = false;
-                //dtgTripList.Columns[8].Visible = false;
-                dtgTripList.Columns[9].Visible = false;
+                dtgTripList.DataSource = source;               
                 dtgTripList.Columns[10].Visible = false;
-
+                dtgTripList.Columns[9].Visible = false;
+                dtgTripList.Columns.Add("TourName", "TourName");
+                /* foreach (DataGridViewRow row in dtgTripList.Rows)
+                 {
+                     int id = int.Parse(row.Cells["TourId"].Value.ToString());
+                     var tour = tourRepository.GetTourByID(id);
+                     dtgTripList[dtgTripList.Columns["TourName"].Index, row.Index].Value = tour.TourName;
+                     //dtgTripList[11,row.Index].Value = tour.TourName;
+                     //row.Cells["TourName"].Value = tour.TourName;
+                 }*/
+                int count = 0;
+                
+                foreach (var i in trips)
+                {
+                    var tour = tourRepository.GetTourByID(i.TourId);
+                    dtgTripList[dtgTripList.Columns["TourName"].Index, count].Value = tour.TourName;
+                    count += 1;
+                }
             }
             catch (Exception ex)
             {
@@ -278,7 +293,7 @@ namespace TourBookingApp
         }
 
         private void dtgTripList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {            
             var rowIndex = e.RowIndex;
             tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
         }
@@ -319,43 +334,89 @@ namespace TourBookingApp
 
         private void cbxTripFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxTripFilter.SelectedIndex == 0)
+            if (listTripFilter != null)
             {
-                LoadTripList();
-            }
-            else if (cbxTripFilter.SelectedIndex == 1)
-            {
-                List<TblTrip> listtrip = new List<TblTrip>();
-                var trip = tripRepository.GetTrips();
-                foreach (var c in trip)
+                if(cbxTripFilter.SelectedIndex == 0)
                 {
-                    if (c.Status == true)
-                    {
-                        listtrip.Add(c);
-                    }
-                }
-                source = new BindingSource();
-                source.DataSource = listtrip;
+                    source = new BindingSource();
+                    source.DataSource = listTripFilter;
 
-                dtgTripList.DataSource = null;
-                dtgTripList.DataSource = source;
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }else if(cbxTripFilter.SelectedIndex == 1)
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    foreach(var c in listTripFilter)
+                    {
+                        if(c.Status == true)
+                        {
+                            listtrip.Add(c);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+                else
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    foreach (var c in listTripFilter)
+                    {
+                        if (c.Status == false)
+                        {
+                            listtrip.Add(c);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+
             }
             else
             {
-                List<TblTrip> listtrip = new List<TblTrip>();
-                var trip = tripRepository.GetTrips();
-                foreach (var c in trip)
+                if (cbxTripFilter.SelectedIndex == 0)
                 {
-                    if (c.Status == false)
-                    {
-                        listtrip.Add(c);
-                    }
+                    LoadTripList();
                 }
-                source = new BindingSource();
-                source.DataSource = listtrip;
+                else if (cbxTripFilter.SelectedIndex == 1)
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    var trip = tripRepository.GetTrips();
+                    foreach (var c in trip)
+                    {
+                        if (c.Status == true)
+                        {
+                            listtrip.Add(c);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
 
-                dtgTripList.DataSource = null;
-                dtgTripList.DataSource = source;
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
+                else
+                {
+                    List<TblTrip> listtrip = new List<TblTrip>();
+                    var trip = tripRepository.GetTrips();
+                    foreach (var c in trip)
+                    {
+                        if (c.Status == false)
+                        {
+                            listtrip.Add(c);
+                        }
+                    }
+                    source = new BindingSource();
+                    source.DataSource = listtrip;
+
+                    dtgTripList.DataSource = null;
+                    dtgTripList.DataSource = source;
+                }
             }
         }
 
@@ -368,60 +429,27 @@ namespace TourBookingApp
             else
             {
                 var trip = tripRepository.GetTrips();
-                if (rdbtnAll.Checked)
+                List<TblTrip> listtrip = new List<TblTrip>();
+                foreach (var t in trip)
                 {
-                    List<TblTrip> listtrip = new List<TblTrip>();
-                    foreach (var t in trip)
+                    if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value)
                     {
-                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value)
-                        {
-                            listtrip.Add(t);
-                        }
+                        listtrip.Add(t);
                     }
-                    source = new BindingSource();
-                    source.DataSource = listtrip;
-
-                    dtgTripList.DataSource = null;
-                    dtgTripList.DataSource = source;
                 }
-                else if (rdbtnAct.Checked)
-                {
-                    List<TblTrip> listtrip = new List<TblTrip>();
-                    foreach (var t in trip)
-                    {
-                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value && t.Status == true)
-                        {
-                            listtrip.Add(t);
-                        }
-                    }
-                    source = new BindingSource();
-                    source.DataSource = listtrip;
+                source = new BindingSource();
+                source.DataSource = listtrip;
 
-                    dtgTripList.DataSource = null;
-                    dtgTripList.DataSource = source;
-                }
-                else if (rdbtnUnact.Checked)
-                {
-                    List<TblTrip> listtrip = new List<TblTrip>();
-                    foreach (var t in trip)
-                    {
-                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value && t.Status == false)
-                        {
-                            listtrip.Add(t);
-                        }
-                    }
-                    source = new BindingSource();
-                    source.DataSource = listtrip;
-
-                    dtgTripList.DataSource = null;
-                    dtgTripList.DataSource = source;
-                }
+                dtgTripList.DataSource = null;
+                dtgTripList.DataSource = source;
+                listTripFilter = listtrip;
             }
         }
 
         private void btnRefreshTrip_Click(object sender, EventArgs e)
         {
             LoadTripList();
+            listTripFilter = null;
         }
 
         //* BOOKING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
