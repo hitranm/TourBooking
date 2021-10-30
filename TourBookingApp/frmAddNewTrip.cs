@@ -1,6 +1,8 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Repository;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace TourBookingApp
@@ -17,9 +19,46 @@ namespace TourBookingApp
         public frmAddNewTrip()
         {
             InitializeComponent();
-            LoadTourlistInCbx();
+            
         }
 
+        private void frmAddNewTrip_Load(object sender, EventArgs e)
+        {
+            LoadTourlistInCbx();
+            if (AddOrUpdate == true)
+            {
+                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                cbxListTourName.Enabled = false;
+                txtTripID.Text = trip.TripId.ToString();
+                DTPStartTime.Value = trip.StartTime;
+                DTPEndTime.Value = trip.Endtime;
+                mtxtPrice.Text = trip.Price.ToString();
+                NUDCapacity.Value = trip.Capacity;
+                txtAccommodation.Text = trip.Accommodation.ToString();
+                txtDescription.Text = trip.Description.ToString();
+                if (trip.Status == true)
+                {
+                    cbTripStatus.Checked = true;
+                }
+                else
+                {
+                    cbTripStatus.Checked = false;
+                }
+                if (tourRepository.GetTourByID(trip.TourId).Status == false)
+                {
+                    cbTripStatus.Enabled = false;
+                }
+                else
+                {
+                    cbTripStatus.Enabled = true;
+                }
+            }
+            else
+            {
+                cbTripStatus.Checked = true;
+                cbTripStatus.Enabled = false;
+            }
+        }
 
         private void cbxListTourName_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -34,7 +73,15 @@ namespace TourBookingApp
         private void LoadTourlistInCbx()
         {
             var tours = tourRepository.GetTours();
-            cbxListTourName.DataSource = tours;
+            List<TblTour> listtour = new List<TblTour>();
+            foreach( var c in tours)
+            {
+                if(c.Status == true)
+                {
+                    listtour.Add(c);
+                }
+            }
+            cbxListTourName.DataSource = listtour;
             cbxListTourName.DisplayMember = "TourName";
         }
 
@@ -48,44 +95,58 @@ namespace TourBookingApp
 
             try
             {
-
-                if (AddOrUpdate == false)
-                {
-                    var tripA = new TblTrip
-                    {
-                        StartTime = DTPStartTime.Value,
-                        Endtime = DTPEndTime.Value,
-                        Price = decimal.Parse(mtxtPrice.Text),
-                        Capacity = int.Parse(NUDCapacity.Value.ToString()),
-                        Accommodation = txtAccommodation.Text,
-                        Description = txtDescription.Text,
-                        TourId = tourID
-                    };
-                    if (cbTripStatus.CheckState == CheckState.Checked)
-                    {
-                        tripA.Status = true;
-                    }
-                    else
-                    {
-                        tripA.Status = false;
-                    }
+                if (AddOrUpdate == false) // ADD
+                {                                   
                     DialogResult result = MessageBox.Show("Are you sure want to add this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        tripRepository.InsertTrip(tripA);
-                        DialogResult result2 = MessageBox.Show("Trip added, Do you want to add another one ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button1);
-                        if (result2 == DialogResult.No)
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day + 7 && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
                         {
-                            Close();
+                            MessageBox.Show("Please set the Start day beyond the present time at least 7 days and" +
+                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(mtxtPrice.Text))
+                        {
+                            throw new Exception("The Price field is required");
+                        }                       
+                        var tripA = new TblTrip
+                        {
+                            StartTime = DTPStartTime.Value,
+                            Endtime = DTPEndTime.Value,
+                            Price = decimal.Parse(mtxtPrice.Text),
+                            Capacity = int.Parse(NUDCapacity.Value.ToString()),
+                            Accommodation = txtAccommodation.Text,
+                            Description = txtDescription.Text,
+                            TourId = tourID,
+                            Status = true
+                        };
+                        ValidationContext context = new ValidationContext(tripA, null, null);                     
+                        IList<ValidationResult> errors = new List<ValidationResult>();
+                        if (!Validator.TryValidateObject(tripA, context, errors, true))
+                        {
+                            foreach (ValidationResult result1 in errors)
+                            {
+                                throw new Exception(result1.ErrorMessage);
+                            }
                         }
                         else
                         {
-                            mtxtPrice.Text = string.Empty;
-                            NUDCapacity.Value = 1;
-                            txtAccommodation.Text = string.Empty;
-                            txtDescription.Text = string.Empty;
+                            tripRepository.InsertTrip(tripA);
+                            DialogResult result2 = MessageBox.Show("Trip added, Do you want to add another one ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                            MessageBoxDefaultButton.Button1);
+                            if (result2 == DialogResult.No)
+                            {
+                                Close();
+                            }
+                            else
+                            {
+                                mtxtPrice.Text = string.Empty;
+                                NUDCapacity.Value = 1;
+                                txtAccommodation.Text = string.Empty;
+                                txtDescription.Text = string.Empty;
+                            }
                         }
                     }
                     else
@@ -93,26 +154,34 @@ namespace TourBookingApp
                         Close();
                     }
                 }
-                else
+                else // UPDATE
                 {
-                    //cbTripStatus.Enabled = true;
-                    var tripU = new TblTrip
+                                       
+                    DialogResult result = MessageBox.Show("Are you sure want to update this trip ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.Yes)
                     {
-                        TripId = int.Parse(txtTripID.Text.ToString()),
-                        StartTime = DTPStartTime.Value,
-                        Endtime = DTPEndTime.Value,
-                        Price = decimal.Parse(mtxtPrice.Text),
-                        Capacity = int.Parse(NUDCapacity.Value.ToString()),
-                        Accommodation = txtAccommodation.Text,
-                        Description = txtDescription.Text,
-                        TourId = tourID
-                    };
-                    if (tourRepository.GetTourByID(tourID).Status == false)
-                    {
-                        cbTripStatus.Enabled = false;
-                    }
-                    else
-                    {
+                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day  && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
+                        {
+                            MessageBox.Show("Please set the Start day beyond the present time and" +
+                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (string.IsNullOrEmpty(mtxtPrice.Text))
+                        {
+                            throw new Exception("The Price field is required");
+                        }
+                        var tripU = new TblTrip
+                        {
+                            TripId = int.Parse(txtTripID.Text.ToString()),
+                            StartTime = DTPStartTime.Value,
+                            Endtime = DTPEndTime.Value,
+                            Price = decimal.Parse(mtxtPrice.Text),
+                            Capacity = int.Parse(NUDCapacity.Value.ToString()),
+                            Accommodation = txtAccommodation.Text,
+                            Description = txtDescription.Text,
+                            TourId = tourID
+                        };
                         if (cbTripStatus.CheckState == CheckState.Checked)
                         {
                             tripU.Status = true;
@@ -121,74 +190,43 @@ namespace TourBookingApp
                         {
                             tripU.Status = false;
                         }
-                    }                
-                    try
-                    {
-                        tripRepository.UpdateTrip(tripU);
-                        var tri = tripRepository.GetTripByID(tripU.TripId);
-                        if (tri != null)
+                        ValidationContext context = new ValidationContext(tripU, null, null);
+                        IList<ValidationResult> errors = new List<ValidationResult>();
+                        if (!Validator.TryValidateObject(tripU, context, errors, true))
                         {
-                            MessageBox.Show("Update successfully");
+                            foreach (ValidationResult result1 in errors)
+                            {
+                                throw new Exception(result1.ErrorMessage);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Update failed");
+                            tripRepository.UpdateTrip(tripU);
+                            var tri = tripRepository.GetTripByID(tripU.TripId);
+                            if (tri != null)
+                            {
+                                MessageBox.Show("Update successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Update failed", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            this.Close();
                         }
-                        this.Close();
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message, "Update Trip");
+                        Close();
                     }
 
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, AddOrUpdate == false ? "Add new trip" : "Update a trip");
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }
-
-
-        private void frmAddNewTrip_Load(object sender, EventArgs e)
-        {
-            if (frmLogin.canLog == true)
-            {
-                if (AddOrUpdate == true)
-                {
-                    cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
-                    txtTripID.Text = trip.TripId.ToString();
-                    DTPStartTime.Value = trip.StartTime;
-                    DTPEndTime.Value = trip.Endtime;
-                    mtxtPrice.Text = trip.Price.ToString();
-                    NUDCapacity.Value = trip.Capacity;
-                    txtAccommodation.Text = trip.Accommodation.ToString();
-                    txtDescription.Text = trip.Description.ToString();
-                    if (trip.Status == true)
-                    {
-                        cbTripStatus.Checked = true;
-                    }
-                    else
-                    {
-                        cbTripStatus.Checked = false;
-                    }
-                }
-            }
-            
-                else
-                {
-
-                    frmLogin frm = new frmLogin();
-                    this.Hide();
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        this.Close();
-                    }
-                }
-            
-        }
-
         
     }
 }
