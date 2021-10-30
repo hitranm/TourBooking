@@ -8,7 +8,7 @@ namespace DataAccess.Repository
 {
     public class TripRepository:ITripRepository
     {
-        public IEnumerable<TblTrip> GetTripByTourID(int TourID) => TripDAO.Instance.GetTripByTourID(TourID);
+        public List<TblTrip> GetTripByTourID(int TourID) => TripDAO.Instance.GetTripByTourID(TourID);
         public IEnumerable<TblTrip> GetTrips() => TripDAO.Instance.GetTripList();
         public TblTrip GetTripByID(int TripID) => TripDAO.Instance.GetTripByID(TripID);
         public void InsertTrip(TblTrip trip) => TripDAO.Instance.AddNew(trip);

@@ -153,25 +153,40 @@ namespace TourBookingApp
 
         private void frmAddNewTrip_Load(object sender, EventArgs e)
         {
-            if (AddOrUpdate == true)
+            if (frmLogin.canLog == true)
             {
-                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();               
-                txtTripID.Text = trip.TripId.ToString();
-                DTPStartTime.Value = trip.StartTime;
-                DTPEndTime.Value = trip.Endtime;
-                mtxtPrice.Text = trip.Price.ToString();
-                NUDCapacity.Value = trip.Capacity;
-                txtAccommodation.Text = trip.Accommodation.ToString();
-                txtDescription.Text = trip.Description.ToString();
-                if (trip.Status == true)
+                if (AddOrUpdate == true)
                 {
-                    cbTripStatus.Checked = true;
-                }
-                else
-                {
-                    cbTripStatus.Checked = false;
+                    cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                    txtTripID.Text = trip.TripId.ToString();
+                    DTPStartTime.Value = trip.StartTime;
+                    DTPEndTime.Value = trip.Endtime;
+                    mtxtPrice.Text = trip.Price.ToString();
+                    NUDCapacity.Value = trip.Capacity;
+                    txtAccommodation.Text = trip.Accommodation.ToString();
+                    txtDescription.Text = trip.Description.ToString();
+                    if (trip.Status == true)
+                    {
+                        cbTripStatus.Checked = true;
+                    }
+                    else
+                    {
+                        cbTripStatus.Checked = false;
+                    }
                 }
             }
+            
+                else
+                {
+
+                    frmLogin frm = new frmLogin();
+                    this.Hide();
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+                }
+            
         }
 
         

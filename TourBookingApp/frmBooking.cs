@@ -24,17 +24,30 @@ namespace TourBookingApp
 
         private void frmBooking_Load(object sender, EventArgs e)
         {
-            lbTourInfo.Text = GetTourName(TripInfo.TourId);
-            lbStartInfo.Text = TripInfo.StartTime.ToString();
-            lbEndInfo.Text = TripInfo.Endtime.ToString();
-            lbAccInfo.Text = TripInfo.Accommodation;
-            lbDesInfo.Text = TripInfo.Description;
-            lbPriceInfo.Text = TripInfo.Price.ToString();
-            lbTotalInfo.Text = TripInfo.Price.ToString();
-            txtEmail.Enabled = false;
-            txtName.Enabled = false;
-            dtpDOB.Enabled = false;
-            cbSex.Enabled = false;
+            if (frmLogin.canLog == true)
+            {
+                lbTourInfo.Text = GetTourName(TripInfo.TourId);
+                lbStartInfo.Text = TripInfo.StartTime.ToString();
+                lbEndInfo.Text = TripInfo.Endtime.ToString();
+                lbAccInfo.Text = TripInfo.Accommodation;
+                lbDesInfo.Text = TripInfo.Description;
+                lbPriceInfo.Text = TripInfo.Price.ToString();
+                lbTotalInfo.Text = TripInfo.Price.ToString();
+                txtEmail.Enabled = false;
+                txtName.Enabled = false;
+                dtpDOB.Enabled = false;
+                cbSex.Enabled = false;
+            }
+            else
+            {
+
+                frmLogin frm = new frmLogin();
+                this.Hide();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
         }
 
         private void numQuantity_ValueChanged(object sender, EventArgs e)
