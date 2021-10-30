@@ -30,6 +30,8 @@ namespace TourBookingApp
             {
                 LoadTourList();
                 LoadTripList();
+                btnCancelBooking.Enabled = false;
+                cboSelect.SelectedIndex = 0;
             }
             else
             {
@@ -42,14 +44,7 @@ namespace TourBookingApp
                 }
             }
         }
-            LoadTourList();
-            LoadTripList()
-            btnCancelBooking.Enabled = false;
-            cboSelect.SelectedIndex = 0;
-        }
-
-
-
+           
         //*TOUR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
