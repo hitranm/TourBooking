@@ -104,8 +104,8 @@ namespace TourBookingApp
             this.TourManage.Controls.Add(this.txtSearchTour);
             this.TourManage.Location = new System.Drawing.Point(4, 29);
             this.TourManage.Name = "TourManage";
-            this.TourManage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.TourManage.Size = new System.Drawing.Size(1293, 728);
+            this.TourManage.Padding = new System.Windows.Forms.Padding(3);
+            this.TourManage.Size = new System.Drawing.Size(1273, 728);
             this.TourManage.TabIndex = 0;
             this.TourManage.Text = "Tour";
             this.TourManage.UseVisualStyleBackColor = true;
@@ -114,20 +114,21 @@ namespace TourBookingApp
             // 
             this.dtgListTour.AllowUserToAddRows = false;
             this.dtgListTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgListTour.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgListTour.Location = new System.Drawing.Point(33, 152);
             this.dtgListTour.Name = "dtgListTour";
             this.dtgListTour.ReadOnly = true;
             this.dtgListTour.RowHeadersWidth = 51;
             this.dtgListTour.RowTemplate.Height = 25;
             this.dtgListTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListTour.Size = new System.Drawing.Size(1235, 516);
+            this.dtgListTour.Size = new System.Drawing.Size(1130, 516);
             this.dtgListTour.TabIndex = 18;
             this.dtgListTour.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListTour_CellClick);
             this.dtgListTour.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListTour_CellDoubleClick);
             // 
             // btnDeleteTour
             // 
-            this.btnDeleteTour.Location = new System.Drawing.Point(902, 93);
+            this.btnDeleteTour.Location = new System.Drawing.Point(1061, 93);
             this.btnDeleteTour.Name = "btnDeleteTour";
             this.btnDeleteTour.Size = new System.Drawing.Size(102, 53);
             this.btnDeleteTour.TabIndex = 17;
@@ -137,7 +138,7 @@ namespace TourBookingApp
             // 
             // btnAddTour
             // 
-            this.btnAddTour.Location = new System.Drawing.Point(759, 93);
+            this.btnAddTour.Location = new System.Drawing.Point(933, 93);
             this.btnAddTour.Name = "btnAddTour";
             this.btnAddTour.Size = new System.Drawing.Size(109, 53);
             this.btnAddTour.TabIndex = 16;
@@ -147,9 +148,9 @@ namespace TourBookingApp
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(774, 11);
+            this.btnSearch.Location = new System.Drawing.Point(775, 17);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 47);
+            this.btnSearch.Size = new System.Drawing.Size(94, 32);
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -159,7 +160,8 @@ namespace TourBookingApp
             // 
             this.txtSearchTour.Location = new System.Drawing.Point(225, 20);
             this.txtSearchTour.Name = "txtSearchTour";
-            this.txtSearchTour.Size = new System.Drawing.Size(482, 27);
+            this.txtSearchTour.PlaceholderText = "Enter tour name here...";
+            this.txtSearchTour.Size = new System.Drawing.Size(519, 27);
             this.txtSearchTour.TabIndex = 19;
             // 
             // TripManage

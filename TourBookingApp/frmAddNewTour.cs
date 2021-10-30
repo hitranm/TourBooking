@@ -1,7 +1,8 @@
-﻿using DataAccess.DataAccess;
-using DataAccess.Repository;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using DataAccess.Repository;
+using DataAccess.DataAccess;
+using System.ComponentModel.DataAnnotations;
 
 namespace TourBookingApp
 {
@@ -15,39 +16,26 @@ namespace TourBookingApp
         {
             InitializeComponent();
         }
-        
+
        
        
 
         private void frmAddNewTour_Load(object sender, EventArgs e)
         {
-            if (frmLogin.canLog == true)
+            txtTourID.Enabled = !InsertOrUpdate;
+            if(InsertOrUpdate == true)
             {
-                txtTourID.Enabled = !InsertOrUpdate;
-                if (InsertOrUpdate == true)
-                {
-                    txtTourID.Text = TourInfo.TourId.ToString();
-                    txtTourName.Text = TourInfo.TourName;
-                    txtDeparture.Text = TourInfo.Departure;
-                    txtDestination.Text = TourInfo.Destination;
-                    txtDescription.Text = TourInfo.Description;
-                    cbStatus.Checked = TourInfo.Status;
-                }
-                else
-                {
-                    lbTourID.Visible = false;
-                    txtTourID.Visible = false;
-                }
+                txtTourID.Text = TourInfo.TourId.ToString();
+                txtTourName.Text = TourInfo.TourName;
+                txtDeparture.Text = TourInfo.Departure;
+                txtDestination.Text = TourInfo.Destination;
+                txtDescription.Text = TourInfo.Description;
+                cbStatus.Checked = TourInfo.Status;
             }
             else
             {
-
-                frmLogin frm = new frmLogin();
-                this.Hide();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                lbTourID.Visible = false;
+                txtTourID.Visible = false;
             }
         }
 
@@ -72,16 +60,23 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
-                    if (txtTourName.Text=="" ||txtDeparture.Text=="" || txtDescription.Text=="" || txtDestination.Text=="")
+                    ValidationContext context = new ValidationContext(touAdd, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+                    if (!Validator.TryValidateObject(touAdd, context, errors, true))
                     {
-                        MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        
+                        foreach (ValidationResult result1 in errors)
+                        {
+                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
-                    else {
+                    else
+                    {
                         tourRepository.InsertTour(touAdd);
-                        MessageBox.Show("Tour Added!!", "Add Tour", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("Tour Added!!", "Add Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
+
                 }
                 else
 
@@ -95,11 +90,18 @@ namespace TourBookingApp
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
-                    if (txtTourName.Text == "" || txtDeparture.Text == "" || txtDescription.Text == "" || txtDestination.Text == "")
+                    ValidationContext context = new ValidationContext(touUp, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+                    if (!Validator.TryValidateObject(touUp, context, errors, true))
                     {
-                        MessageBox.Show("Please fill in all fields!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        foreach (ValidationResult result1 in errors)
+                        {
+                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
-                    else {
+                    else
+                    {
                         tourRepository.UpdateTour(touUp);
                         MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
@@ -109,5 +111,7 @@ namespace TourBookingApp
                 MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a tour" : "Update a tour");
                 }
      }
+
+        
     }
 }
