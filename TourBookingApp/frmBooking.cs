@@ -1,6 +1,7 @@
 ﻿using DataAccess.DataAccess;
 using DataAccess.Repository;
 using System;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -19,6 +20,7 @@ namespace TourBookingApp
         public TblTrip TripInfo { get; set; }
         public int userID { get; set; }
         bool InsertOrUpdate; //true = update, false = insert 
+        int tempCustomerID;
 
         private void frmBooking_Load(object sender, EventArgs e)
         {
@@ -57,8 +59,6 @@ namespace TourBookingApp
         {
             try
             {
-
-
                 if (!Regex.IsMatch(txtPhone.Text, "[0-9]{10}") || txtPhone.Text.Length > 10)
                 {
                     txtEmail.Enabled = false;
@@ -93,6 +93,7 @@ namespace TourBookingApp
                         }
 
                         dtpDOB.Value = customer.Dob;
+                        tempCustomerID = customer.CustomerId;
                     }
                     else
                     {
@@ -119,83 +120,103 @@ namespace TourBookingApp
                     cbSex.Enabled = false;
                     throw new Exception("Please enter 10 numbers for the phone number");
                 }
-                else if (txtName.Text.Length < 1 || txtEmail.Text.Length < 1 || cbSex.Text.Length < 1)
+                else if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(cbSex.Text))
                 {
                     throw new Exception("Please fill in all field.");
                 }
+                try
+                {
+                    MailAddress email = new MailAddress(txtEmail.Text);
+                }
+                catch
+                {
+                    throw new Exception("Please enter correct format for email");
+                }
+                if (txtEmail.Text.Length > 100)
+                {
+                    throw new Exception("Email max length is 100 characters");
+                }
+                if (txtName.Text.Length > 50)
+                {
+                    throw new Exception("Name max length is 50 characters");
+                }
+
+                //customer section
+                if (customerRepository.SearchCustomer(txtPhone.Text) != null && customerRepository.SearchCustomer(txtPhone.Text).CustomerId != tempCustomerID)
+                {
+                    throw new Exception("This phone number already exists!");
+                }
+                bool sex;
+                if (cbSex.Text == "Female")
+                {
+                    sex = true;
+                }
                 else
                 {
-                    //customer section
-                    bool sex;
-                    if (cbSex.Text == "Female")
+                    sex = false;
+                }
+                TblCustomer customer = new TblCustomer
+                {
+                    PhoneNo = txtPhone.Text,
+                    Email = txtEmail.Text,
+                    Name = txtName.Text,
+                    Dob = dtpDOB.Value,
+                    Sex = sex
+                };
+                if (InsertOrUpdate == false)
+                {
+                    customerRepository.InsertCustomer(customer);
+                }
+                else
+                {
+                    TblCustomer customerForUpdate = new TblCustomer
                     {
-                        sex = true;
-                    }
-                    else
-                    {
-                        sex = false;
-                    }
-                    TblCustomer customer = new TblCustomer
-                    {
+                        CustomerId = tempCustomerID,
                         PhoneNo = txtPhone.Text,
-                        Email = txtEmail.Text,
                         Name = txtName.Text,
+                        Email = txtEmail.Text,
                         Dob = dtpDOB.Value,
                         Sex = sex
                     };
-                    if (InsertOrUpdate == false)
-                    {
-                        customerRepository.InsertCustomer(customer);
-                    }
-                    else
-                    {
-                        TblCustomer customerForUpdate = new TblCustomer
-                        {
-                            CustomerId = customerRepository.SearchCustomer(txtPhone.Text).CustomerId,
-                            PhoneNo = txtPhone.Text,
-                            Name = txtName.Text,
-                            Email = txtEmail.Text,
-                            Dob = dtpDOB.Value,
-                            Sex = sex
-                        };
-                        customerRepository.UpdateCustomer(customerForUpdate);
-                    }
-                    //booking section
-                    var customerForSearch = customerRepository.SearchCustomer(txtPhone.Text);
-                    TblBooking booking = new TblBooking
-                    {
-                        UserId = this.userID,
-                        TripId = TripInfo.TripId,
-                        NoOfPeople = Convert.ToInt32(numQuantity.Value),
-                        TotalPrice = decimal.Parse(lbTotalInfo.Text),
-                        BookingDate = DateTime.Now,
-                        Status = true,
-                        CustomerId = customerForSearch.CustomerId
-
-                    };
-                    bookingRepository.InsertBooking(booking);
-                    //trip section
-                    int quantityLeft = TripInfo.Capacity - Convert.ToInt32(numQuantity.Value);
-                    TblTrip trip = new TblTrip
-                    {
-                        TripId = TripInfo.TripId,
-                        StartTime = TripInfo.StartTime,
-                        Endtime = TripInfo.Endtime,
-                        Price = TripInfo.Price,
-                        Capacity = quantityLeft,
-                        Accommodation = TripInfo.Accommodation,
-                        Description = TripInfo.Description,
-                        Status = TripInfo.Status,
-                        TourId = TripInfo.TourId
-                    };
-                    TripRepository.UpdateTrip(trip);
-                    this.Close();
+                    customerRepository.UpdateCustomer(customerForUpdate);
                 }
+                //booking section
+                var customerForSearch = customerRepository.SearchCustomer(txtPhone.Text);
+                TblBooking booking = new TblBooking
+                {
+                    UserId = this.userID,
+                    TripId = TripInfo.TripId,
+                    NoOfPeople = Convert.ToInt32(numQuantity.Value),
+                    TotalPrice = decimal.Parse(lbTotalInfo.Text),
+                    BookingDate = DateTime.Now,
+                    Status = true,
+                    CustomerId = customerForSearch.CustomerId
+
+                };
+                bookingRepository.InsertBooking(booking);
+                //trip section
+                int quantityLeft = TripInfo.Capacity - Convert.ToInt32(numQuantity.Value);
+                TblTrip trip = new TblTrip
+                {
+                    TripId = TripInfo.TripId,
+                    StartTime = TripInfo.StartTime,
+                    Endtime = TripInfo.Endtime,
+                    Price = TripInfo.Price,
+                    Capacity = quantityLeft,
+                    Accommodation = TripInfo.Accommodation,
+                    Description = TripInfo.Description,
+                    Status = TripInfo.Status,
+                    TourId = TripInfo.TourId
+                };
+                TripRepository.UpdateTrip(trip);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+
             }
             catch (Exception ex)
             {
-                DialogResult d =  MessageBox.Show(ex.Message, "Tour booking", MessageBoxButtons.OKCancel);
-                if (d==DialogResult.Cancel)
+                DialogResult d = MessageBox.Show(ex.Message, "Tour booking", MessageBoxButtons.OKCancel);
+                if (d == DialogResult.Cancel)
                 {
                     this.Close();
                 }

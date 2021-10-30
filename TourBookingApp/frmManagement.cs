@@ -512,6 +512,10 @@ namespace TourBookingApp
                     if (result == DialogResult.Yes)
                     {
                         TblBooking booking = bookingRepository.GetBookingByID(tempBookingId);
+                        if (booking.Status == false)
+                        {
+                            throw new Exception("This booking has been cancelled");
+                        }
                         if (DateTime.Compare(DateTime.Now.AddDays(3), tripRepository.GetTripByID(booking.TripId).StartTime) > 0)
                         {
                             throw new Exception("Booking can only be canceled at least 3 days before the trip");
