@@ -24,65 +24,88 @@ namespace TourBookingApp
 
         private void frmAddNewTrip_Load(object sender, EventArgs e)
         {
-            LoadTourlistInCbx();
-            if (AddOrUpdate == true)
+            try
             {
-                cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
-                cbxListTourName.Enabled = false;
-                txtTripID.Text = trip.TripId.ToString();
-                DTPStartTime.Value = trip.StartTime;
-                DTPEndTime.Value = trip.Endtime;
-                mtxtPrice.Text = trip.Price.ToString();
-                NUDCapacity.Value = trip.Capacity;
-                txtAccommodation.Text = trip.Accommodation.ToString();
-                txtDescription.Text = trip.Description.ToString();
-                if (trip.Status == true)
+                LoadTourlistInCbx();
+                if (AddOrUpdate == true)
+                {
+                    cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                    cbxListTourName.Enabled = false;
+                    txtTripID.Text = trip.TripId.ToString();
+                    DTPStartTime.Value = trip.StartTime;
+                    DTPEndTime.Value = trip.Endtime;
+                    mtxtPrice.Text = trip.Price.ToString();
+                    NUDCapacity.Value = trip.Capacity;
+                    txtAccommodation.Text = trip.Accommodation.ToString();
+                    txtDescription.Text = trip.Description.ToString();
+                    if (trip.Status == true)
+                    {
+                        cbTripStatus.Checked = true;
+                    }
+                    else
+                    {
+                        cbTripStatus.Checked = false;
+                    }
+                    if (tourRepository.GetTourByID(trip.TourId).Status == false)
+                    {
+                        cbTripStatus.Enabled = false;
+                    }
+                    else
+                    {
+                        cbTripStatus.Enabled = true;
+                    }
+                }
+                else
                 {
                     cbTripStatus.Checked = true;
-                }
-                else
-                {
-                    cbTripStatus.Checked = false;
-                }
-                if (tourRepository.GetTourByID(trip.TourId).Status == false)
-                {
                     cbTripStatus.Enabled = false;
                 }
-                else
-                {
-                    cbTripStatus.Enabled = true;
-                }
             }
-            else
+            catch (Exception ex)
             {
-                cbTripStatus.Checked = true;
-                cbTripStatus.Enabled = false;
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void cbxListTourName_SelectedValueChanged(object sender, EventArgs e)
         {
-            ComboBox cb = sender as ComboBox;
-            if (cb.SelectedValue != null)
+            try
             {
-                TblTour tour = cb.SelectedValue as TblTour;
-                tourID = tour.TourId;
+
+
+                ComboBox cb = sender as ComboBox;
+                if (cb.SelectedValue != null)
+                {
+                    TblTour tour = cb.SelectedValue as TblTour;
+                    tourID = tour.TourId;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void LoadTourlistInCbx()
         {
-            var tours = tourRepository.GetTours();
-            List<TblTour> listtour = new List<TblTour>();
-            foreach( var c in tours)
+            try
             {
-                if(c.Status == true)
+                var tours = tourRepository.GetTours();
+                List<TblTour> listtour = new List<TblTour>();
+                foreach (var c in tours)
                 {
-                    listtour.Add(c);
+                    if (c.Status == true)
+                    {
+                        listtour.Add(c);
+                    }
                 }
+                cbxListTourName.DataSource = listtour;
+                cbxListTourName.DisplayMember = "TourName";
             }
-            cbxListTourName.DataSource = listtour;
-            cbxListTourName.DisplayMember = "TourName";
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
