@@ -555,8 +555,6 @@ namespace TourBookingApp
         private System.Windows.Forms.TextBox txtSearch;       
         private System.Windows.Forms.TabPage tabPage2;
         private DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabBooking;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

@@ -24,7 +24,6 @@ namespace DataAccess.DataAccess
         [MaxLength(50, ErrorMessage = "Max Length of Accommodation is 50 characters")]
         public string Accommodation { get; set; }
         [Required]
-        [MaxLength(500, ErrorMessage = "The Description is too long, please shorten it")]
         public string Description { get; set; }
         public bool Status { get; set; }
         public int TourId { get; set; }
