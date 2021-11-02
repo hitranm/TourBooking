@@ -59,6 +59,8 @@ namespace TourBookingApp
                 {
                     cbTripStatus.Checked = true;
                     cbTripStatus.Enabled = false;
+                    lbTripId.Visible = false;
+                    txtTripID.Visible = false;
                 }
             }
             catch (Exception ex)
