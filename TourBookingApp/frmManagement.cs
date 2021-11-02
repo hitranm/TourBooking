@@ -251,7 +251,7 @@ namespace TourBookingApp
 
 
 
-        void LoadTripList()
+        private void LoadTripList()
         {
             var trips = tripRepository.GetTrips();
 
@@ -524,7 +524,7 @@ namespace TourBookingApp
         private void btnFindTrip_Click(object sender, EventArgs e)
         {
             try {
-                if (DTPFilterStart.Value.Date > DTPFilterEnd.Value.Date)
+                if (DateTime.Compare(DTPFilterStart.Value, DTPFilterEnd.Value) >0)
                 {
                     MessageBox.Show("Please choose the End Day beyond Start day");
                 }
@@ -533,8 +533,8 @@ namespace TourBookingApp
                     var trip = tripRepository.GetTrips();
                     List<TblTrip> listtrip = new List<TblTrip>();
                     foreach (var t in trip)
-                    {
-                        if (t.StartTime.Date >= DTPFilterStart.Value && t.Endtime.Date <= DTPFilterEnd.Value)
+                    {                       
+                         if(DateTime.Compare(t.StartTime, DTPFilterStart.Value) >= 0 && DateTime.Compare(t.Endtime, DTPFilterEnd.Value) <=0)
                         {
                             listtrip.Add(t);
                         }

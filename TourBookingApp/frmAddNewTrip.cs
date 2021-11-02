@@ -124,11 +124,10 @@ namespace TourBookingApp
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day + 7 && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
+                        if (DateTime.Compare(DateTime.Now.AddDays(7), DTPStartTime.Value) > 0 || DateTime.Compare(DTPStartTime.Value, DTPEndTime.Value) > 0)
                         {
-                            MessageBox.Show("Please set the Start day beyond the present time at least 7 days and" +
-                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
+                            throw new Exception ("Please set the Start day beyond the present time at least 7 days and" +
+                                " the end day beyond the start day !");                           
                         }
                         if (string.IsNullOrEmpty(mtxtPrice.Text))
                         {
@@ -184,11 +183,11 @@ namespace TourBookingApp
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        if (DTPStartTime.Value.Date.Day < DateTime.Now.Day  && DTPEndTime.Value.Date < DTPStartTime.Value.Date)
+                        if (DateTime.Compare(DateTime.Now, DTPStartTime.Value) >0 || DateTime.Compare(DTPStartTime.Value, DTPEndTime.Value )> 0)
                         {
-                            MessageBox.Show("Please set the Start day beyond the present time and" +
-                                " the end day beyond the start day !", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
+                            throw new Exception ("Please set the Start day beyond the present time and" +
+                                " the end day beyond the start day !");
+                            
                         }
                         if (string.IsNullOrEmpty(mtxtPrice.Text))
                         {
