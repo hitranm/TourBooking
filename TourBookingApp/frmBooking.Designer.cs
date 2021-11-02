@@ -307,6 +307,7 @@ namespace TourBookingApp
             // 
             // cbSex
             // 
+            this.cbSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.Items.AddRange(new object[] {
             "Male",
