@@ -33,7 +33,7 @@ namespace TourBookingApp
                 lbDesInfo.Text = TripInfo.Description;
                 lbPriceInfo.Text = TripInfo.Price.ToString();
                 lbTotalInfo.Text = TripInfo.Price.ToString();
-                dtpDOB.MinDate = DateTime.Now.AddYears(-18);
+                dtpDOB.MaxDate = DateTime.Now.AddYears(-18).AddSeconds(10);
                 dtpDOB.Value = DateTime.Now.AddYears(-18);
                 txtEmail.Enabled = false;
                 txtName.Enabled = false;
@@ -90,7 +90,7 @@ namespace TourBookingApp
                     cbSex.Enabled = true;
                     txtName.Text = string.Empty;
                     txtEmail.Text = string.Empty;
-                    dtpDOB.Value = DateTime.Now;
+                    dtpDOB.Value = DateTime.Now.AddYears(-18);
                     cbSex.SelectedItem = null;
                     var customer = customerRepository.SearchCustomer(txtPhone.Text);
                     if (customer != null)
