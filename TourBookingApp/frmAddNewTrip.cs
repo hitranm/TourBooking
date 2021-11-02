@@ -183,9 +183,9 @@ namespace TourBookingApp
                     MessageBoxDefaultButton.Button1);
                     if (result == DialogResult.Yes)
                     {
-                        if (DateTime.Compare(DateTime.Now, DTPStartTime.Value) >0 || DateTime.Compare(DTPStartTime.Value, DTPEndTime.Value )> 0)
+                        if (DateTime.Compare(DateTime.Now.AddDays(3), DTPStartTime.Value) >0 || DateTime.Compare(DTPStartTime.Value, DTPEndTime.Value )> 0)
                         {
-                            throw new Exception ("Please set the Start day beyond the present time and" +
+                            throw new Exception ("Please set the Start day beyond the present time 3 days and" +
                                 " the end day beyond the start day !");
                             
                         }
