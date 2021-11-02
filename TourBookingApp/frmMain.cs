@@ -1,12 +1,11 @@
-﻿    using DataAccess.DataAccess;
-    using DataAccess.Repository;
-    using System;
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-    using DataAccess.Repository;
-    namespace TourBookingApp
-    {
-        public partial class frmMain : Form
+﻿using DataAccess.DataAccess;
+using DataAccess.Repository;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+namespace TourBookingApp
+{
+    public partial class frmMain : Form
         {
             
 
@@ -234,7 +233,7 @@
                 dtgTourList.Columns[4].Width = 175;
 
             }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
