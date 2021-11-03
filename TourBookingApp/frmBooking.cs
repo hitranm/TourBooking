@@ -42,13 +42,11 @@ namespace TourBookingApp
             }
             else
             {
+                this.Hide();
 
                 frmLogin frm = new frmLogin();
-                this.Hide();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                frm.ShowDialog();
+
             }
         }
 

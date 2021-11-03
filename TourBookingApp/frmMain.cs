@@ -7,13 +7,11 @@ namespace TourBookingApp
 {
     public partial class frmMain : Form
         {
-            
-
         
             ITourRepository tourRepository = new TourRepository();
             ITripRepository tripRepository = new TripRepository();
             BindingSource source;
-            public int m = 0;
+            public static int m = 0;
             public bool isAdmin { get; set; }
             
             public int currentID { get; set; }
@@ -42,15 +40,15 @@ namespace TourBookingApp
                 }
                 else manageToolStripMenuItem.Enabled = true;
             }
+           
             else
             {
-              
-                frmLogin frm = new frmLogin() ;
-                this.Hide();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                
+                    this.Hide();
+                    frmLogin frm = new frmLogin();
+                    frm.ShowDialog();
+                
+                
             }
             }
             private void frmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -162,16 +160,16 @@ namespace TourBookingApp
                     dtgTripList.Columns[9].Visible = false;
                     dtgTripList.Columns[10].Visible = false;
                     dtgTripList.Columns[6].Width = 520;
-
+                    DateTime now = DateTime.Now;
                     CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTripList.DataSource];
                     currencyManager1.SuspendBinding();
                     bool isok = false;
                     bool isvisible=true;
                     for (int i = 0; i <= dtgTripList.RowCount - 1; i++)
                     {
-
+                        var time = DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString());
                         isvisible = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, i].Value.ToString());
-                        if (isvisible == false || DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString()).Date.Day + 3 > DateTime.Now.Day || DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString()).Date.Month < DateTime.Now.Month)
+                        if (isvisible == false || DateTime.Compare(now.AddDays(3),time)>0 )
                         {
                             dtgTripList.Rows[i].Visible = false;
                             currencyManager1.ResumeBinding();
@@ -335,7 +333,7 @@ namespace TourBookingApp
                 }
             }
 
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        /*private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
             
@@ -347,7 +345,7 @@ namespace TourBookingApp
             Application.Exit();
             System.Environment.Exit(1);
             Application.Restart();
-        }
+        }*/
     }
     }
 

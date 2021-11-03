@@ -8,6 +8,7 @@ namespace TourBookingApp
     {
         private UserRepository userRepository = new UserRepository();
         public static bool canLog = false;
+     
         public frmLogin()
         {
             InitializeComponent();
@@ -16,8 +17,7 @@ namespace TourBookingApp
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-            this.DialogResult = DialogResult.OK;
+          
             bool isMem = false;
             var user = userRepository.GetUsers();
             foreach(var i in user)
@@ -37,21 +37,42 @@ namespace TourBookingApp
                     frm.ShowDialog();
                     
                     isMem = true;
+                    if (frmMain.m == -1)
+                    {
+                        this.Show();
+                    }
+                    else
+                    {
+                       
+
+                        this.Close();
+                        Application.Exit();
+                    }
                     break;
                 }
                 if (i.UserName.Equals(txtUserName.Text) && i.Password.Equals(txtPassword.Text) && i.RoleId == 2)
                 {
                     canLog = true;
 
-
+                   
                     frmMain frm = new frmMain
                     {
                         isAdmin = true,
                         currentID = i.UserId,
                     };
                     this.Hide();
-                    isMem = true;
                     frm.ShowDialog();
+                    isMem = true;
+                    if (frmMain.m == -1)
+                    {
+                        this.Show();
+                    }
+                    else
+                    {
+           
+                        this.Close();
+                        Application.Exit();
+                    }
                     break;
                 }
             }
@@ -72,11 +93,14 @@ namespace TourBookingApp
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+            Application.Exit();
         }
 
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+      
+
+        private void frmLogin_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            Application.Exit();
         }
     }
 }
