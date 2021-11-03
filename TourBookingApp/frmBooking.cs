@@ -33,7 +33,7 @@ namespace TourBookingApp
                 lbDesInfo.Text = TripInfo.Description;
                 lbPriceInfo.Text = TripInfo.Price.ToString();
                 lbTotalInfo.Text = TripInfo.Price.ToString();
-                dtpDOB.MaxDate = DateTime.Now.AddYears(-18).AddSeconds(10);
+                dtpDOB.MaxDate = DateTime.Now.AddYears(-18).AddDays(1);
                 dtpDOB.Value = DateTime.Now.AddYears(-18);
                 txtEmail.Enabled = false;
                 txtName.Enabled = false;
