@@ -24,60 +24,48 @@ namespace TourBookingApp
 
         private void frmAddNewTrip_Load(object sender, EventArgs e)
         {
-
-
-            if (frmLogin.canLog == true)
+            try
             {
-                try
+                LoadTourlistInCbx();
+                if (AddOrUpdate == true)
                 {
-                    LoadTourlistInCbx();
-                    if (AddOrUpdate == true)
+                    cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
+                    cbxListTourName.Enabled = false;
+                    txtTripID.Text = trip.TripId.ToString();
+                    DTPStartTime.Value = trip.StartTime;
+                    DTPEndTime.Value = trip.Endtime;
+                    mtxtPrice.Text = trip.Price.ToString();
+                    NUDCapacity.Value = trip.Capacity;
+                    txtAccommodation.Text = trip.Accommodation.ToString();
+                    txtDescription.Text = trip.Description.ToString();
+                    if (trip.Status == true)
                     {
-                        cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
-                        cbxListTourName.Enabled = false;
-                        txtTripID.Text = trip.TripId.ToString();
-                        DTPStartTime.Value = trip.StartTime;
-                        DTPEndTime.Value = trip.Endtime;
-                        mtxtPrice.Text = trip.Price.ToString();
-                        NUDCapacity.Value = trip.Capacity;
-                        txtAccommodation.Text = trip.Accommodation.ToString();
-                        txtDescription.Text = trip.Description.ToString();
-                        if (trip.Status == true)
-                        {
-                            cbTripStatus.Checked = true;
-                        }
-                        else
-                        {
-                            cbTripStatus.Checked = false;
-                        }
-                        if (tourRepository.GetTourByID(trip.TourId).Status == false)
-                        {
-                            cbTripStatus.Enabled = false;
-                        }
-                        else
-                        {
-                            cbTripStatus.Enabled = true;
-                        }
+                        cbTripStatus.Checked = true;
                     }
                     else
                     {
-                        cbTripStatus.Checked = true;
+                        cbTripStatus.Checked = false;
+                    }
+                    if (tourRepository.GetTourByID(trip.TourId).Status == false)
+                    {
                         cbTripStatus.Enabled = false;
                     }
+                    else
+                    {
+                        cbTripStatus.Enabled = true;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    cbTripStatus.Checked = true;
+                    cbTripStatus.Enabled = false;
+                    lbTripId.Visible = false;
+                    txtTripID.Visible = false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-
-                this.Hide();
-                frmLogin frm = new frmLogin();
-                frm.ShowDialog();
-              
-
+                MessageBox.Show(ex.Message);
             }
         }
 
