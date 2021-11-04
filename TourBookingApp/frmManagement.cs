@@ -31,8 +31,10 @@ namespace TourBookingApp
             {
                 LoadTourList();
                 LoadTripList();
+                CheckStatus();
                 btnCancelBooking.Enabled = false;
                 cboSelect.SelectedIndex = 0;
+                
             }
             else
             {
@@ -40,6 +42,27 @@ namespace TourBookingApp
 
                 frmLogin frm = new frmLogin();
                 frm.ShowDialog();
+            }
+        }
+
+        private void CheckStatus()
+        {
+            bool checkstatus = false;
+            List<TblTour> tourcheck = (List<TblTour>)tourRepository.GetTours();
+            for (int i = 0; i < tourcheck.Count; i++)
+            {
+                if (tourcheck[i].Status == true)
+                {
+                    checkstatus = true;
+                }
+            }
+            if (checkstatus == true)
+            {
+                btnAddTrip.Enabled = true;
+            }
+            else
+            {
+                btnAddTrip.Enabled = false;
             }
         }
 
@@ -95,6 +118,8 @@ namespace TourBookingApp
         private void frmAddNewTour_FormClosing(object sender, FormClosingEventArgs e)
         {
             LoadTourList();
+            LoadTripList();
+            CheckStatus();
         }
 
         private void btnDeleteTour_Click(object sender, EventArgs e)

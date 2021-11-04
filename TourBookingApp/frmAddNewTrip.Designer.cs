@@ -123,6 +123,7 @@ namespace TourBookingApp
             this.txtAccommodation.Location = new System.Drawing.Point(229, 339);
             this.txtAccommodation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAccommodation.Name = "txtAccommodation";
+            this.txtAccommodation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAccommodation.Size = new System.Drawing.Size(256, 23);
             this.txtAccommodation.TabIndex = 11;
             // 
@@ -132,6 +133,7 @@ namespace TourBookingApp
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(256, 67);
             this.txtDescription.TabIndex = 12;
             // 
@@ -195,6 +197,7 @@ namespace TourBookingApp
             // 
             // cbxListTourName
             // 
+            this.cbxListTourName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxListTourName.FormattingEnabled = true;
             this.cbxListTourName.Location = new System.Drawing.Point(229, 121);
             this.cbxListTourName.Name = "cbxListTourName";

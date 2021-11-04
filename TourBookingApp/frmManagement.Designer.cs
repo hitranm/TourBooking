@@ -40,6 +40,8 @@ namespace TourBookingApp
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchTour = new System.Windows.Forms.TextBox();
             this.TripManage = new System.Windows.Forms.TabPage();
+            this.lbTo = new System.Windows.Forms.Label();
+            this.lbFrom = new System.Windows.Forms.Label();
             this.btnRefreshTrip = new System.Windows.Forms.Button();
             this.btnFindTrip = new System.Windows.Forms.Button();
             this.DTPFilterEnd = new System.Windows.Forms.DateTimePicker();
@@ -68,8 +70,6 @@ namespace TourBookingApp
             this.lbTourName = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.lbFrom = new System.Windows.Forms.Label();
-            this.lbTo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TourManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListTour)).BeginInit();
@@ -194,6 +194,24 @@ namespace TourBookingApp
             this.TripManage.Text = "Trip";
             this.TripManage.UseVisualStyleBackColor = true;
             // 
+            // lbTo
+            // 
+            this.lbTo.AutoSize = true;
+            this.lbTo.Location = new System.Drawing.Point(313, 44);
+            this.lbTo.Name = "lbTo";
+            this.lbTo.Size = new System.Drawing.Size(25, 15);
+            this.lbTo.TabIndex = 33;
+            this.lbTo.Text = "To :";
+            // 
+            // lbFrom
+            // 
+            this.lbFrom.AutoSize = true;
+            this.lbFrom.Location = new System.Drawing.Point(9, 44);
+            this.lbFrom.Name = "lbFrom";
+            this.lbFrom.Size = new System.Drawing.Size(41, 15);
+            this.lbFrom.TabIndex = 32;
+            this.lbFrom.Text = "From :";
+            // 
             // btnRefreshTrip
             // 
             this.btnRefreshTrip.Location = new System.Drawing.Point(189, 65);
@@ -252,6 +270,7 @@ namespace TourBookingApp
             // 
             // cbxTripFilter
             // 
+            this.cbxTripFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTripFilter.FormattingEnabled = true;
             this.cbxTripFilter.Items.AddRange(new object[] {
             "Both",
@@ -509,24 +528,6 @@ namespace TourBookingApp
             this.dataGridView2.RowTemplate.Height = 25;
             this.dataGridView2.Size = new System.Drawing.Size(831, 336);
             this.dataGridView2.TabIndex = 21;
-            // 
-            // lbFrom
-            // 
-            this.lbFrom.AutoSize = true;
-            this.lbFrom.Location = new System.Drawing.Point(9, 44);
-            this.lbFrom.Name = "lbFrom";
-            this.lbFrom.Size = new System.Drawing.Size(41, 15);
-            this.lbFrom.TabIndex = 32;
-            this.lbFrom.Text = "From :";
-            // 
-            // lbTo
-            // 
-            this.lbTo.AutoSize = true;
-            this.lbTo.Location = new System.Drawing.Point(313, 44);
-            this.lbTo.Name = "lbTo";
-            this.lbTo.Size = new System.Drawing.Size(25, 15);
-            this.lbTo.TabIndex = 33;
-            this.lbTo.Text = "To :";
             // 
             // frmManagement
             // 

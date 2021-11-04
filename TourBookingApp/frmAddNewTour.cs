@@ -9,7 +9,7 @@ namespace TourBookingApp
 {
     public partial class frmAddNewTour : Form
     {
-
+        ITripRepository tripRepository = new TripRepository();
         public ITourRepository tourRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
         public TblTour TourInfo { get; set; }
@@ -120,6 +120,15 @@ namespace TourBookingApp
                     else
                     {
                         tourRepository.UpdateTour(touUp);
+                        if (touUp.Status == false)
+                        {
+                            var triplist = tripRepository.GetTripByTourID(touUp.TourId);
+                            foreach(var i in triplist)
+                            {
+                                i.Status = false;
+                                tripRepository.UpdateTrip(i);
+                            }
+                        }
                         MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
