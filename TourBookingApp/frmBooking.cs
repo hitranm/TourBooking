@@ -33,6 +33,7 @@ namespace TourBookingApp
                 lbDesInfo.Text = TripInfo.Description;
                 lbPriceInfo.Text = TripInfo.Price.ToString();
                 lbTotalInfo.Text = TripInfo.Price.ToString();
+                lbCapaInfo.Text = TripInfo.Capacity.ToString();
                 dtpDOB.MaxDate = DateTime.Now.AddYears(-18).AddDays(1);
                 dtpDOB.Value = DateTime.Now.AddYears(-18);
                 txtEmail.Enabled = false;
@@ -154,11 +155,16 @@ namespace TourBookingApp
                     throw new Exception("Name max length is 50 characters");
                 }
 
-                //customer section
                 if (customerRepository.SearchCustomer(txtPhone.Text) != null && customerRepository.SearchCustomer(txtPhone.Text).CustomerId != tempCustomerID)
                 {
                     throw new Exception("This phone number already exists!");
                 }
+
+                if (numQuantity.Value > TripInfo.Capacity)
+                {
+                    throw new Exception("There are not enough capacity left");
+                }
+                //customer section
                 bool sex;
                 if (cbSex.Text == "Female")
                 {
@@ -208,20 +214,8 @@ namespace TourBookingApp
                 };
                 bookingRepository.InsertBooking(booking);
                 //trip section
-                int quantityLeft = TripInfo.Capacity - Convert.ToInt32(numQuantity.Value);
-                TblTrip trip = new TblTrip
-                {
-                    TripId = TripInfo.TripId,
-                    StartTime = TripInfo.StartTime,
-                    Endtime = TripInfo.Endtime,
-                    Price = TripInfo.Price,
-                    Capacity = quantityLeft,
-                    Accommodation = TripInfo.Accommodation,
-                    Description = TripInfo.Description,
-                    Status = TripInfo.Status,
-                    TourId = TripInfo.TourId
-                };
-                TripRepository.UpdateTrip(trip);
+                TripInfo.Capacity -= Convert.ToInt32(numQuantity.Value);
+                TripRepository.UpdateTrip(TripInfo);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
 

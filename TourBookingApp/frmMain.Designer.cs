@@ -62,9 +62,9 @@ namespace TourBookingApp
             this.lbTripList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbTripList.AutoSize = true;
             this.lbTripList.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTripList.Location = new System.Drawing.Point(1128, 36);
+            this.lbTripList.Location = new System.Drawing.Point(987, 27);
             this.lbTripList.Name = "lbTripList";
-            this.lbTripList.Size = new System.Drawing.Size(67, 38);
+            this.lbTripList.Size = new System.Drawing.Size(53, 30);
             this.lbTripList.TabIndex = 15;
             this.lbTripList.Text = "Trip";
             // 
@@ -75,13 +75,14 @@ namespace TourBookingApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgTripList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTripList.Location = new System.Drawing.Point(807, 109);
+            this.dtgTripList.Location = new System.Drawing.Point(706, 82);
+            this.dtgTripList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgTripList.Name = "dtgTripList";
             this.dtgTripList.ReadOnly = true;
             this.dtgTripList.RowHeadersWidth = 51;
             this.dtgTripList.RowTemplate.Height = 29;
             this.dtgTripList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTripList.Size = new System.Drawing.Size(664, 429);
+            this.dtgTripList.Size = new System.Drawing.Size(581, 322);
             this.dtgTripList.TabIndex = 16;
             this.dtgTripList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTripList_CellDoubleClick);
             // 
@@ -89,40 +90,44 @@ namespace TourBookingApp
             // 
             this.txtDestination.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDestination.Location = new System.Drawing.Point(477, 108);
+            this.txtDestination.Location = new System.Drawing.Point(417, 81);
+            this.txtDestination.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.ReadOnly = true;
-            this.txtDestination.Size = new System.Drawing.Size(164, 27);
+            this.txtDestination.Size = new System.Drawing.Size(144, 23);
             this.txtDestination.TabIndex = 5;
             // 
             // txtTourName
             // 
             this.txtTourName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTourName.Location = new System.Drawing.Point(477, 61);
+            this.txtTourName.Location = new System.Drawing.Point(417, 46);
+            this.txtTourName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTourName.Name = "txtTourName";
             this.txtTourName.ReadOnly = true;
-            this.txtTourName.Size = new System.Drawing.Size(164, 27);
+            this.txtTourName.Size = new System.Drawing.Size(144, 23);
             this.txtTourName.TabIndex = 4;
             // 
             // txtTourID
             // 
             this.txtTourID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTourID.Location = new System.Drawing.Point(103, 61);
+            this.txtTourID.Location = new System.Drawing.Point(90, 46);
+            this.txtTourID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTourID.Name = "txtTourID";
             this.txtTourID.ReadOnly = true;
-            this.txtTourID.Size = new System.Drawing.Size(149, 27);
+            this.txtTourID.Size = new System.Drawing.Size(131, 23);
             this.txtTourID.TabIndex = 3;
             // 
             // txtDeparture
             // 
             this.txtDeparture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDeparture.Location = new System.Drawing.Point(103, 108);
+            this.txtDeparture.Location = new System.Drawing.Point(90, 81);
+            this.txtDeparture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDeparture.Name = "txtDeparture";
             this.txtDeparture.ReadOnly = true;
-            this.txtDeparture.Size = new System.Drawing.Size(149, 27);
+            this.txtDeparture.Size = new System.Drawing.Size(131, 23);
             this.txtDeparture.TabIndex = 6;
             // 
             // lbDes
@@ -130,9 +135,9 @@ namespace TourBookingApp
             this.lbDes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbDes.AutoSize = true;
-            this.lbDes.Location = new System.Drawing.Point(380, 111);
+            this.lbDes.Location = new System.Drawing.Point(332, 83);
             this.lbDes.Name = "lbDes";
-            this.lbDes.Size = new System.Drawing.Size(85, 20);
+            this.lbDes.Size = new System.Drawing.Size(67, 15);
             this.lbDes.TabIndex = 7;
             this.lbDes.Text = "Destination";
             // 
@@ -141,9 +146,9 @@ namespace TourBookingApp
             this.lbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbID.AutoSize = true;
-            this.lbID.Location = new System.Drawing.Point(11, 65);
+            this.lbID.Location = new System.Drawing.Point(10, 49);
             this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(57, 20);
+            this.lbID.Size = new System.Drawing.Size(44, 15);
             this.lbID.TabIndex = 8;
             this.lbID.Text = "Tour ID";
             // 
@@ -152,9 +157,9 @@ namespace TourBookingApp
             this.lbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(380, 65);
+            this.lbName.Location = new System.Drawing.Point(332, 49);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(82, 20);
+            this.lbName.Size = new System.Drawing.Size(65, 15);
             this.lbName.TabIndex = 9;
             this.lbName.Text = "Tour Name";
             // 
@@ -163,37 +168,38 @@ namespace TourBookingApp
             this.lbDepart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbDepart.AutoSize = true;
-            this.lbDepart.Location = new System.Drawing.Point(11, 111);
+            this.lbDepart.Location = new System.Drawing.Point(10, 83);
             this.lbDepart.Name = "lbDepart";
-            this.lbDepart.Size = new System.Drawing.Size(76, 20);
+            this.lbDepart.Size = new System.Drawing.Size(59, 15);
             this.lbDepart.TabIndex = 10;
             this.lbDepart.Text = "Departure";
             // 
             // lbDescript
             // 
             this.lbDescript.AutoSize = true;
-            this.lbDescript.Location = new System.Drawing.Point(11, 171);
+            this.lbDescript.Location = new System.Drawing.Point(10, 128);
             this.lbDescript.Name = "lbDescript";
-            this.lbDescript.Size = new System.Drawing.Size(85, 20);
+            this.lbDescript.Size = new System.Drawing.Size(67, 15);
             this.lbDescript.TabIndex = 11;
             this.lbDescript.Text = "Description";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(103, 171);
+            this.txtDescription.Location = new System.Drawing.Point(90, 128);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(538, 73);
+            this.txtDescription.Size = new System.Drawing.Size(471, 56);
             this.txtDescription.TabIndex = 12;
             // 
             // lbTourList
             // 
             this.lbTourList.AutoSize = true;
             this.lbTourList.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTourList.Location = new System.Drawing.Point(307, 4);
+            this.lbTourList.Location = new System.Drawing.Point(269, 3);
             this.lbTourList.Name = "lbTourList";
-            this.lbTourList.Size = new System.Drawing.Size(75, 38);
+            this.lbTourList.Size = new System.Drawing.Size(59, 30);
             this.lbTourList.TabIndex = 14;
             this.lbTourList.Text = "Tour";
             this.lbTourList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,16 +223,18 @@ namespace TourBookingApp
             this.panel1.Controls.Add(this.txtTourID);
             this.panel1.Controls.Add(this.txtTourName);
             this.panel1.Controls.Add(this.txtDestination);
-            this.panel1.Location = new System.Drawing.Point(2, 32);
+            this.panel1.Location = new System.Drawing.Point(2, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(725, 524);
+            this.panel1.Size = new System.Drawing.Size(634, 393);
             this.panel1.TabIndex = 2;
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(433, 263);
+            this.btnLoad.Location = new System.Drawing.Point(379, 197);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(94, 29);
+            this.btnLoad.Size = new System.Drawing.Size(82, 22);
             this.btnLoad.TabIndex = 19;
             this.btnLoad.Text = "&Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -234,9 +242,10 @@ namespace TourBookingApp
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(323, 261);
+            this.btnSearch.Location = new System.Drawing.Point(283, 196);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.Size = new System.Drawing.Size(82, 22);
             this.btnSearch.TabIndex = 18;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -244,9 +253,10 @@ namespace TourBookingApp
             // 
             // txtSearchTour
             // 
-            this.txtSearchTour.Location = new System.Drawing.Point(103, 263);
+            this.txtSearchTour.Location = new System.Drawing.Point(90, 197);
+            this.txtSearchTour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchTour.Name = "txtSearchTour";
-            this.txtSearchTour.Size = new System.Drawing.Size(197, 27);
+            this.txtSearchTour.Size = new System.Drawing.Size(173, 23);
             this.txtSearchTour.TabIndex = 17;
             this.txtSearchTour.TextChanged += new System.EventHandler(this.txtSearchTour_TextChanged);
             // 
@@ -257,16 +267,17 @@ namespace TourBookingApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgTourList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTourList.Location = new System.Drawing.Point(3, 307);
+            this.dtgTourList.Location = new System.Drawing.Point(3, 230);
+            this.dtgTourList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgTourList.MultiSelect = false;
             this.dtgTourList.Name = "dtgTourList";
             this.dtgTourList.ReadOnly = true;
             this.dtgTourList.RowHeadersWidth = 51;
             this.dtgTourList.RowTemplate.Height = 29;
             this.dtgTourList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTourList.Size = new System.Drawing.Size(719, 200);
+            this.dtgTourList.Size = new System.Drawing.Size(629, 150);
             this.dtgTourList.TabIndex = 17;
-            this.dtgTourList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgTourList_CellMouseDoubleClick);
+            this.dtgTourList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgTourList_CellDoubleClick);
             // 
             // menuStrip1
             // 
@@ -276,44 +287,43 @@ namespace TourBookingApp
             this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1482, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1297, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click_2);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click_2);
             // 
             // frmMain
             // 
             this.AcceptButton = this.btnSearch;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1482, 553);
+            this.ClientSize = new System.Drawing.Size(1297, 415);
             this.Controls.Add(this.dtgTripList);
             this.Controls.Add(this.lbTripList);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1000, 498);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(877, 383);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Group 3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-          /*  this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);*/
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).EndInit();
             this.panel1.ResumeLayout(false);

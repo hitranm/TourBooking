@@ -158,7 +158,14 @@ namespace TourBookingApp
         private void dtgListTour_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var rowIndex = e.RowIndex;
-            tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
+            if (rowIndex >= 0)
+            {
+                tourID = (int)dtgListTour.Rows[rowIndex].Cells[0].Value;
+            }
+            else
+            {
+                tourID = 0;
+            }
 
         }
 
@@ -314,17 +321,17 @@ namespace TourBookingApp
         {
             try
             {
-
-
-                frmAddNewTrip frmDetails = new frmAddNewTrip
+                if (GetTripInfor(e) != null)
                 {
-                    Text = "Update Trip",
-                    AddOrUpdate = true,
-                    trip = GetTripInfor(e),
-                };
-                frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
-                frmDetails.ShowDialog();
-
+                    frmAddNewTrip frmDetails = new frmAddNewTrip
+                    {
+                        Text = "Update Trip",
+                        AddOrUpdate = true,
+                        trip = GetTripInfor(e),
+                    };
+                    frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
+                    frmDetails.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -334,22 +341,27 @@ namespace TourBookingApp
 
         private TblTrip GetTripInfor(DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
+            
             TblTrip trip = null;
             try
             {
-                trip = new TblTrip
+                int rowIndex = e.RowIndex;
+                if (rowIndex >= 0)
                 {
-                    TripId = int.Parse(dtgTripList[dtgTripList.Columns["TripId"].Index, rowIndex].Value.ToString()),
-                    StartTime = DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, rowIndex].Value.ToString()),
-                    Endtime = DateTime.Parse(dtgTripList[dtgTripList.Columns["EndTime"].Index, rowIndex].Value.ToString()),
-                    Accommodation = dtgTripList[dtgTripList.Columns["Accommodation"].Index, rowIndex].Value.ToString(),
-                    Description = dtgTripList[dtgTripList.Columns["Description"].Index, rowIndex].Value.ToString(),
-                    Price = decimal.Parse(dtgTripList[dtgTripList.Columns["Price"].Index, rowIndex].Value.ToString()),
-                    Capacity = int.Parse(dtgTripList[dtgTripList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
-                    Status = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, rowIndex].Value.ToString()),
-                    TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index, rowIndex].Value.ToString()),
-                };
+                    trip = new TblTrip
+                    {
+                        TripId = int.Parse(dtgTripList[dtgTripList.Columns["TripId"].Index, rowIndex].Value.ToString()),
+                        StartTime = DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, rowIndex].Value.ToString()),
+                        Endtime = DateTime.Parse(dtgTripList[dtgTripList.Columns["EndTime"].Index, rowIndex].Value.ToString()),
+                        Accommodation = dtgTripList[dtgTripList.Columns["Accommodation"].Index, rowIndex].Value.ToString(),
+                        Description = dtgTripList[dtgTripList.Columns["Description"].Index, rowIndex].Value.ToString(),
+                        Price = decimal.Parse(dtgTripList[dtgTripList.Columns["Price"].Index, rowIndex].Value.ToString()),
+                        Capacity = int.Parse(dtgTripList[dtgTripList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
+                        Status = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, rowIndex].Value.ToString()),
+                        TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index, rowIndex].Value.ToString()),
+                    };
+                }
+                
             }
             catch (Exception ex)
             {
@@ -363,8 +375,16 @@ namespace TourBookingApp
             try
             {
                 var rowIndex = e.RowIndex;
-                tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
-            }catch(Exception ex)
+                if (rowIndex >= 0)
+                {
+                    tripID = (int)dtgTripList.Rows[rowIndex].Cells[0].Value;
+                }
+                else
+                {
+                    tripID = 0;
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -512,7 +532,8 @@ namespace TourBookingApp
                         dtgTripList.Columns[9].Visible = false;
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -520,8 +541,9 @@ namespace TourBookingApp
 
         private void btnFindTrip_Click(object sender, EventArgs e)
         {
-            try {
-                if (DateTime.Compare(DTPFilterStart.Value, DTPFilterEnd.Value) >0)
+            try
+            {
+                if (DateTime.Compare(DTPFilterStart.Value, DTPFilterEnd.Value) > 0)
                 {
                     MessageBox.Show("Please choose the End Day beyond Start day");
                 }
@@ -530,8 +552,8 @@ namespace TourBookingApp
                     var trip = tripRepository.GetTrips();
                     List<TblTrip> listtrip = new List<TblTrip>();
                     foreach (var t in trip)
-                    {                       
-                         if(DateTime.Compare(t.StartTime, DTPFilterStart.Value) >= 0 && DateTime.Compare(t.Endtime, DTPFilterEnd.Value) <=0)
+                    {
+                        if (DateTime.Compare(t.StartTime, DTPFilterStart.Value) >= 0 && DateTime.Compare(t.Endtime, DTPFilterEnd.Value) <= 0)
                         {
                             listtrip.Add(t);
                         }
@@ -543,7 +565,8 @@ namespace TourBookingApp
                     dtgTripList.DataSource = source;
                     listTripFilter = listtrip;
                 }
-                }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -555,7 +578,8 @@ namespace TourBookingApp
             {
                 LoadTripList();
                 listTripFilter = null;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -632,50 +656,57 @@ namespace TourBookingApp
                 source = new BindingSource();
                 if (cboSelect.SelectedItem.ToString() == "Customer")
                 {
-                    source.DataSource = bookingRepository.GetBookingsByCustomerId(GetCustomerObject(e).CustomerId);
-                    dgvBooking.DataSource = null;
-                    dgvBooking.DataSource = source;
-                    dgvBooking.Columns["Customer"].Visible = false;
-                    dgvBooking.Columns["Trip"].Visible = false;
-                    dgvBooking.Columns["User"].Visible = false;
-                    dgvBooking.Columns["CustomerId"].Visible = false;
-                    dgvBooking.Columns.Add("Tour", "Tour");
-                    dgvBooking.Columns.Add("UserName", "UserName");
-                    dgvBooking.Columns["Tour"].DisplayIndex = 2;
-                    dgvBooking.Columns["UserName"].DisplayIndex = 4;
-                    for (int i = 0; i < dgvBooking.RowCount; i++)
+                    if (GetCustomerObject(e) != null)
                     {
-                        int tripId = Int32.Parse(dgvBooking.Rows[i].Cells[1].Value.ToString());
-                        //MessageBox.Show();
-                        dgvBooking.Rows[i].Cells[11].Value = tourRepository.GetTourByID(tripRepository.GetTripByID(tripId).TourId).TourName;
-                        int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
-                        dgvBooking.Rows[i].Cells[12].Value = userRepository.GetUserByID(userId).Name;
+                        source.DataSource = bookingRepository.GetBookingsByCustomerId(GetCustomerObject(e).CustomerId);
+                        dgvBooking.DataSource = null;
+                        dgvBooking.DataSource = source;
+                        dgvBooking.Columns["Customer"].Visible = false;
+                        dgvBooking.Columns["Trip"].Visible = false;
+                        dgvBooking.Columns["User"].Visible = false;
+                        dgvBooking.Columns["CustomerId"].Visible = false;
+                        dgvBooking.Columns.Add("Tour", "Tour");
+                        dgvBooking.Columns.Add("UserName", "UserName");
+                        dgvBooking.Columns["Tour"].DisplayIndex = 2;
+                        dgvBooking.Columns["UserName"].DisplayIndex = 4;
+                        for (int i = 0; i < dgvBooking.RowCount; i++)
+                        {
+                            int tripId = Int32.Parse(dgvBooking.Rows[i].Cells[1].Value.ToString());
+                            //MessageBox.Show();
+                            dgvBooking.Rows[i].Cells[11].Value = tourRepository.GetTourByID(tripRepository.GetTripByID(tripId).TourId).TourName;
+                            int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
+                            dgvBooking.Rows[i].Cells[12].Value = userRepository.GetUserByID(userId).Name;
+                        }
                     }
+
                 }
                 else
                 {
-                    source.DataSource = bookingRepository.GetBookingsByTripId(GetTripObject(e).TripId);
-                    dgvBooking.DataSource = null;
-                    dgvBooking.DataSource = source;
-                    dgvBooking.Columns["Customer"].Visible = false;
-                    dgvBooking.Columns["Trip"].Visible = false;
-                    dgvBooking.Columns["User"].Visible = false;
-                    dgvBooking.Columns["TripId"].Visible = false;
-                    dgvBooking.Columns.Add("CustomerName", "CustomerName");
-                    dgvBooking.Columns.Add("CustomerEmail", "CustomerEmail");
-                    dgvBooking.Columns.Add("UserName", "UserName");
-                    dgvBooking.Columns["CustomerId"].DisplayIndex = 1;
-                    dgvBooking.Columns["CustomerName"].DisplayIndex = 2;
-                    dgvBooking.Columns["CustomerEmail"].DisplayIndex = 3;
-                    dgvBooking.Columns["UserId"].DisplayIndex = 4;
-                    dgvBooking.Columns["UserName"].DisplayIndex = 5;
-                    for (int i = 0; i < dgvBooking.RowCount; i++)
+                    if (GetTripObject(e) != null)
                     {
-                        int customerId = Int32.Parse(dgvBooking.Rows[i].Cells[3].Value.ToString());
-                        dgvBooking.Rows[i].Cells[11].Value = customerRepository.GetCustomerByID(customerId).Name;
-                        dgvBooking.Rows[i].Cells[12].Value = customerRepository.GetCustomerByID(customerId).Email;
-                        int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
-                        dgvBooking.Rows[i].Cells[13].Value = userRepository.GetUserByID(userId).Name;
+                        source.DataSource = bookingRepository.GetBookingsByTripId(GetTripObject(e).TripId);
+                        dgvBooking.DataSource = null;
+                        dgvBooking.DataSource = source;
+                        dgvBooking.Columns["Customer"].Visible = false;
+                        dgvBooking.Columns["Trip"].Visible = false;
+                        dgvBooking.Columns["User"].Visible = false;
+                        dgvBooking.Columns["TripId"].Visible = false;
+                        dgvBooking.Columns.Add("CustomerName", "CustomerName");
+                        dgvBooking.Columns.Add("CustomerEmail", "CustomerEmail");
+                        dgvBooking.Columns.Add("UserName", "UserName");
+                        dgvBooking.Columns["CustomerId"].DisplayIndex = 1;
+                        dgvBooking.Columns["CustomerName"].DisplayIndex = 2;
+                        dgvBooking.Columns["CustomerEmail"].DisplayIndex = 3;
+                        dgvBooking.Columns["UserId"].DisplayIndex = 4;
+                        dgvBooking.Columns["UserName"].DisplayIndex = 5;
+                        for (int i = 0; i < dgvBooking.RowCount; i++)
+                        {
+                            int customerId = Int32.Parse(dgvBooking.Rows[i].Cells[3].Value.ToString());
+                            dgvBooking.Rows[i].Cells[11].Value = customerRepository.GetCustomerByID(customerId).Name;
+                            dgvBooking.Rows[i].Cells[12].Value = customerRepository.GetCustomerByID(customerId).Email;
+                            int userId = Int32.Parse(dgvBooking.Rows[i].Cells[2].Value.ToString());
+                            dgvBooking.Rows[i].Cells[13].Value = userRepository.GetUserByID(userId).Name;
+                        }
                     }
                 }
             }
@@ -687,22 +718,27 @@ namespace TourBookingApp
 
         private TblTrip GetTripObject(DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
+
             TblTrip trip = null;
 
             try
             {
-                trip = new TblTrip
+                int rowIndex = e.RowIndex;
+                if (rowIndex >= 0)
                 {
-                    TripId = int.Parse(dgvSelectList[dgvSelectList.Columns["TripId"].Index, rowIndex].Value.ToString()),
-                    StartTime = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["StartTime"].Index, rowIndex].Value.ToString()),
-                    Endtime = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["Endtime"].Index, rowIndex].Value.ToString()),
-                    Accommodation = dgvSelectList[dgvSelectList.Columns["Accommodation"].Index, rowIndex].Value.ToString(),
-                    Capacity = int.Parse(dgvSelectList[dgvSelectList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
-                    Price = decimal.Parse(dgvSelectList[dgvSelectList.Columns["Price"].Index, rowIndex].Value.ToString()),
-                    Description = dgvSelectList[dgvSelectList.Columns["Description"].Index, rowIndex].Value.ToString(),
-                    TourId = int.Parse(dgvSelectList[dgvSelectList.Columns["TourId"].Index, rowIndex].Value.ToString())
-                };
+                    trip = new TblTrip
+                    {
+                        TripId = int.Parse(dgvSelectList[dgvSelectList.Columns["TripId"].Index, rowIndex].Value.ToString()),
+                        StartTime = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["StartTime"].Index, rowIndex].Value.ToString()),
+                        Endtime = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["Endtime"].Index, rowIndex].Value.ToString()),
+                        Accommodation = dgvSelectList[dgvSelectList.Columns["Accommodation"].Index, rowIndex].Value.ToString(),
+                        Capacity = int.Parse(dgvSelectList[dgvSelectList.Columns["Capacity"].Index, rowIndex].Value.ToString()),
+                        Price = decimal.Parse(dgvSelectList[dgvSelectList.Columns["Price"].Index, rowIndex].Value.ToString()),
+                        Description = dgvSelectList[dgvSelectList.Columns["Description"].Index, rowIndex].Value.ToString(),
+                        TourId = int.Parse(dgvSelectList[dgvSelectList.Columns["TourId"].Index, rowIndex].Value.ToString())
+                    };
+                }
+
             }
             catch (Exception ex)
             {
@@ -713,20 +749,25 @@ namespace TourBookingApp
 
         private TblCustomer GetCustomerObject(DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
+
             TblCustomer customer = null;
 
             try
             {
-                customer = new TblCustomer
+                int rowIndex = e.RowIndex;
+                if (rowIndex >= 0)
                 {
-                    CustomerId = int.Parse(dgvSelectList[dgvSelectList.Columns["CustomerId"].Index, rowIndex].Value.ToString()),
-                    Name = dgvSelectList[dgvSelectList.Columns["Name"].Index, rowIndex].Value.ToString(),
-                    Email = dgvSelectList[dgvSelectList.Columns["Email"].Index, rowIndex].Value.ToString(),
-                    PhoneNo = dgvSelectList[dgvSelectList.Columns["PhoneNo"].Index, rowIndex].Value.ToString(),
-                    Dob = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["Dob"].Index, rowIndex].Value.ToString()),
-                    Sex = bool.Parse(dgvSelectList[dgvSelectList.Columns["Sex"].Index, rowIndex].Value.ToString())
-                };
+                    customer = new TblCustomer
+                    {
+                        CustomerId = int.Parse(dgvSelectList[dgvSelectList.Columns["CustomerId"].Index, rowIndex].Value.ToString()),
+                        Name = dgvSelectList[dgvSelectList.Columns["Name"].Index, rowIndex].Value.ToString(),
+                        Email = dgvSelectList[dgvSelectList.Columns["Email"].Index, rowIndex].Value.ToString(),
+                        PhoneNo = dgvSelectList[dgvSelectList.Columns["PhoneNo"].Index, rowIndex].Value.ToString(),
+                        Dob = DateTime.Parse(dgvSelectList[dgvSelectList.Columns["Dob"].Index, rowIndex].Value.ToString()),
+                        Sex = bool.Parse(dgvSelectList[dgvSelectList.Columns["Sex"].Index, rowIndex].Value.ToString())
+                    };
+                }
+
             }
             catch (Exception ex)
             {
@@ -748,10 +789,14 @@ namespace TourBookingApp
                         TblBooking booking = bookingRepository.GetBookingByID(tempBookingId);
                         if (booking.Status == false)
                         {
+                            tempBookingId = 0;
+                            btnCancelBooking.Enabled = false;
                             throw new Exception("This booking has been cancelled");
                         }
                         if (DateTime.Compare(DateTime.Now.AddDays(3), tripRepository.GetTripByID(booking.TripId).StartTime) > 0)
                         {
+                            tempBookingId = 0;
+                            btnCancelBooking.Enabled = false;
                             throw new Exception("Booking can only be canceled at least 3 days before the trip");
                         }
                         else
@@ -799,6 +844,11 @@ namespace TourBookingApp
             {
                 MessageBox.Show(ex.Message, "Cancel booking");
             }
+        }
+
+        private void frmManagement_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
