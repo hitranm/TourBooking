@@ -140,6 +140,7 @@ namespace TourBookingApp
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PlaceholderText = "Enter here...";
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(214, 105);
             this.txtDescription.TabIndex = 9;
             // 

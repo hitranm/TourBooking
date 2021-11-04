@@ -16,12 +16,15 @@ namespace DataAccess.DataAccess
         public int TourId { get; set; }
         [Required]
         [MaxLength(50,ErrorMessage = "Max Length of Tour Name is 50")]
+        [MinLength(5,ErrorMessage = " Min Length of Tour Name is 5")]
         public string TourName { get; set; }
         [Required]
         [MaxLength(50,ErrorMessage = "Max Length of Departure Name is 50")]
+        [MinLength(5, ErrorMessage = " Min Length of Departure Name is 5")]
         public string Departure { get; set; }
         [Required]
         [MaxLength(50, ErrorMessage = "Max Length of Destination Name is 50")]
+        [MinLength(5, ErrorMessage = " Min Length of Destination Name is 5")]
         public string Destination { get; set; }
         [Required]
         //[MaxLength(100, ErrorMessage = "Max Length of Description is 100")]

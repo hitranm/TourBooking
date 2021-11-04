@@ -186,11 +186,11 @@ namespace TourBookingApp
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
                 dtgListTour.Columns[6].Visible = false;
-                dtgListTour.Columns[4].Width = 400;
-                dtgListTour.Columns[5].Width = 75;
-                dtgListTour.Columns[0].Width = 75;
+                dtgListTour.Columns[4].Width = 505;
+                dtgListTour.Columns[5].Width = 80;
+                dtgListTour.Columns[0].Width = 78;
                 dtgListTour.Columns[2].Width = 200;
-                dtgListTour.Columns[3].Width = 200;
+                dtgListTour.Columns[3].Width = 205;
 
 
 
@@ -217,11 +217,11 @@ namespace TourBookingApp
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
                 dtgListTour.Columns[6].Visible = false;
-                dtgListTour.Columns[4].Width = 400;
-                dtgListTour.Columns[5].Width = 75;
-                dtgListTour.Columns[0].Width = 75;
+                dtgListTour.Columns[4].Width = 505;
+                dtgListTour.Columns[5].Width = 80;
+                dtgListTour.Columns[0].Width = 78;
                 dtgListTour.Columns[2].Width = 200;
-                dtgListTour.Columns[3].Width = 200;
+                dtgListTour.Columns[3].Width = 205;
 
 
             }
