@@ -28,18 +28,22 @@ namespace TourBookingApp
                 txtTourID.Enabled = !InsertOrUpdate;
                 if (InsertOrUpdate == true)
                 {
+                    
                     txtTourID.Text = TourInfo.TourId.ToString();
                     txtTourName.Text = TourInfo.TourName;
                     txtDeparture.Text = TourInfo.Departure;
                     txtDestination.Text = TourInfo.Destination;
                     txtDescription.Text = TourInfo.Description;
                     cbStatus.Checked = TourInfo.Status;
+                    
                 }
                 else
                 {
                     lbTourID.Visible = false;
                     txtTourID.Visible = false;
+                    cbStatus.Enabled = false;
                 }
+
             }
             else
             {

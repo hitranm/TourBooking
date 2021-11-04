@@ -139,7 +139,7 @@ namespace TourBookingApp
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.PlaceholderText = "Enter 1-100 characters";
+            this.txtDescription.PlaceholderText = "Enter here...";
             this.txtDescription.Size = new System.Drawing.Size(214, 105);
             this.txtDescription.TabIndex = 9;
             // 
@@ -166,6 +166,8 @@ namespace TourBookingApp
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
+            this.cbStatus.Checked = true;
+            this.cbStatus.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbStatus.Location = new System.Drawing.Point(166, 403);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbStatus.Name = "cbStatus";
