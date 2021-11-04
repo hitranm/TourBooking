@@ -73,7 +73,7 @@ namespace TourBookingApp
 
                         TourName = txtTourName.Text,
                         Departure = txtDeparture.Text,
-                        Destination = txtDeparture.Text,
+                        Destination = txtDestination.Text,
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
@@ -103,7 +103,7 @@ namespace TourBookingApp
                         TourId = int.Parse(txtTourID.Text),
                         TourName = txtTourName.Text,
                         Departure = txtDeparture.Text,
-                        Destination = txtDeparture.Text,
+                        Destination = txtDestination.Text,
                         Description = txtDescription.Text,
                         Status = cbStatus.Checked,
                     };
