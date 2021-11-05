@@ -222,7 +222,8 @@ namespace TourBookingApp
                 dtgTourList.DataSource = source;
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
-                dtgTourList.Columns[4].Width = 175;
+                dtgTourList.Columns[4].Width = 210;
+                dtgTourList.Columns[0].Width = 80;
 
             }
             catch (Exception)
@@ -291,8 +292,8 @@ namespace TourBookingApp
             {
                 LoadTourList();
                 dtgTripList.DataSource = null;
-            }            
-            
+            }
+
         }
 
 
@@ -342,19 +343,6 @@ namespace TourBookingApp
             LoadTripList(int.Parse(txtTourID.Text));
         }
 
-        /*private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-            
-            Application.Restart();
-        }
-
-        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-            System.Environment.Exit(1);
-            Application.Restart();
-        }*/
     }
 }
 
