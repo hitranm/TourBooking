@@ -244,15 +244,7 @@ namespace TourBookingApp
                             Description = txtDescription.Text,
                             TourId = tourID,
                             Status = cbTripStatus.Checked
-                        };
-                        /*if (cbTripStatus.CheckState == CheckState.Checked)
-                        {
-                            tripU.Status = true;
-                        }
-                        else
-                        {
-                            tripU.Status = false;
-                        }*/
+                        };                        
                         ValidationContext context = new ValidationContext(tripU, null, null);
                         IList<ValidationResult> errors = new List<ValidationResult>();
                         if (!Validator.TryValidateObject(tripU, context, errors, true))
