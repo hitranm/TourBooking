@@ -83,7 +83,8 @@ namespace TourBookingApp
                 dtgTourList.DataSource = source;
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
-                dtgTourList.Columns[4].Width = 175;
+                dtgTourList.Columns[4].Width = 210;
+                dtgTourList.Columns[0].Width = 80;
 
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
                 currencyManager1.SuspendBinding();
@@ -152,7 +153,7 @@ namespace TourBookingApp
                     dtgTripList.Columns[8].Visible = false;
                     dtgTripList.Columns[9].Visible = false;
                     dtgTripList.Columns[10].Visible = false;
-                    dtgTripList.Columns[6].Width = 520;
+                    dtgTripList.Columns[6].Width = 298;
                     DateTime now = DateTime.Now;
                     CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTripList.DataSource];
                     currencyManager1.SuspendBinding();

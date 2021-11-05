@@ -13,6 +13,7 @@ namespace TourBookingApp
         ITripRepository tripRepository = new TripRepository();
         int tourID;
         public bool AddOrUpdate { get; set; } // false: add, true: update
+        public bool IsOutOfDate { get; set; }
         public bool Status1 { get; set; }
         public TblTrip trip { get; set; }
 
@@ -29,7 +30,7 @@ namespace TourBookingApp
                 try
                 {
                     LoadTourlistInCbx();
-                    if (AddOrUpdate == true)
+                    if (AddOrUpdate == true && IsOutOfDate == false)
                     {
                         cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();
                         cbxListTourName.Enabled = false;
@@ -56,6 +57,32 @@ namespace TourBookingApp
                         {
                             cbTripStatus.Enabled = true;
                         }
+                    }else if(AddOrUpdate == true && IsOutOfDate == true)
+                    {
+                        cbxListTourName.Text = tourRepository.GetTourByID(trip.TourId).TourName.ToString();                      
+                        txtTripID.Text = trip.TripId.ToString();
+                        DTPStartTime.Value = trip.StartTime;
+                        DTPEndTime.Value = trip.Endtime;
+                        mtxtPrice.Text = trip.Price.ToString();
+                        NUDCapacity.Value = trip.Capacity;
+                        txtAccommodation.Text = trip.Accommodation.ToString();
+                        txtDescription.Text = trip.Description.ToString();
+                        if (trip.Status == true)
+                        {
+                            cbTripStatus.Checked = true;
+                        }
+                        else
+                        {
+                            cbTripStatus.Checked = false;
+                        }
+                        cbTripStatus.Enabled = false;
+                        cbxListTourName.Enabled = false;
+                        DTPStartTime.Enabled = false;
+                        DTPEndTime.Enabled = false;
+                        mtxtPrice.Enabled = false;
+                        NUDCapacity.Enabled = false;
+                        txtAccommodation.Enabled = false;
+                        txtDescription.Enabled = false;
                     }
                     else
                     {
@@ -215,16 +242,17 @@ namespace TourBookingApp
                             Capacity = int.Parse(NUDCapacity.Value.ToString()),
                             Accommodation = txtAccommodation.Text,
                             Description = txtDescription.Text,
-                            TourId = tourID
+                            TourId = tourID,
+                            Status = cbTripStatus.Checked
                         };
-                        if (cbTripStatus.CheckState == CheckState.Checked)
+                        /*if (cbTripStatus.CheckState == CheckState.Checked)
                         {
                             tripU.Status = true;
                         }
                         else
                         {
                             tripU.Status = false;
-                        }
+                        }*/
                         ValidationContext context = new ValidationContext(tripU, null, null);
                         IList<ValidationResult> errors = new List<ValidationResult>();
                         if (!Validator.TryValidateObject(tripU, context, errors, true))
