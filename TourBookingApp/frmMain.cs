@@ -329,11 +329,12 @@ namespace TourBookingApp
                 };
                 if (frmBooking.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("Book trip successfully");
+                    
                     if (this.dtgTourList.CurrentCell != null && this.dtgTourList.CurrentRow != null)
                     {
                         dtgTourList_CellDoubleClick(this.dtgTourList, new DataGridViewCellEventArgs(this.dtgTourList.CurrentCell.ColumnIndex, this.dtgTourList.CurrentRow.Index));
                     }
+                    MessageBox.Show("Book trip successfully");
                 }
             }
         }

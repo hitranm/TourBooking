@@ -27,12 +27,12 @@ namespace TourBookingApp
             if (frmLogin.canLog == true)
             {
                 lbTourInfo.Text = GetTourName(TripInfo.TourId);
-                lbStartInfo.Text = TripInfo.StartTime.ToString();
-                lbEndInfo.Text = TripInfo.Endtime.ToString();
+                lbStartInfo.Text = TripInfo.StartTime.ToString("dd/MM/yyyy");
+                lbEndInfo.Text = TripInfo.Endtime.ToString("dd/MM/yyyy");
                 lbAccInfo.Text = TripInfo.Accommodation;
                 lbDesInfo.Text = TripInfo.Description;
-                lbPriceInfo.Text = TripInfo.Price.ToString();
-                lbTotalInfo.Text = TripInfo.Price.ToString();
+                lbPriceInfo.Text = TripInfo.Price.ToString("n2");
+                lbTotalInfo.Text = TripInfo.Price.ToString("n2");
                 lbCapaInfo.Text = TripInfo.Capacity.ToString();
                 dtpDOB.MaxDate = DateTime.Now.AddYears(-18).AddDays(1);
                 dtpDOB.Value = DateTime.Now.AddYears(-18);
@@ -57,7 +57,7 @@ namespace TourBookingApp
             int quantity = Convert.ToInt32(numQuantity.Value);
 
             decimal total = price * quantity;
-            lbTotalInfo.Text = total.ToString();
+            lbTotalInfo.Text = total.ToString("n2");
         }
 
         private string GetTourName(int tourID)
