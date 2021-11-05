@@ -132,6 +132,8 @@ namespace TourBookingApp
             if (trips.Count == 0)
             {
                 MessageBox.Show("No trip available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtgTripList.DataSource = null;
+
             }
             else
             {
@@ -171,6 +173,8 @@ namespace TourBookingApp
                     if (isok == false)
                     {
                         MessageBox.Show("No trip available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtgTripList.DataSource = null;
+
                     }
 
                 }
