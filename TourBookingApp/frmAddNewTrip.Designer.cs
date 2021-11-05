@@ -181,11 +181,6 @@ namespace TourBookingApp
             // 
             this.NUDCapacity.Location = new System.Drawing.Point(229, 292);
             this.NUDCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NUDCapacity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.NUDCapacity.Name = "NUDCapacity";
             this.NUDCapacity.Size = new System.Drawing.Size(256, 23);
             this.NUDCapacity.TabIndex = 17;

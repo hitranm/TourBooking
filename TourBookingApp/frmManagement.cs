@@ -293,23 +293,7 @@ namespace TourBookingApp
                 dtgTripList.DataSource = source;
                 dtgTripList.Columns[10].Visible = false;
                 dtgTripList.Columns[9].Visible = false;
-                //dtgTripList.Columns.Add("TourName", "TourName");
-                /* foreach (DataGridViewRow row in dtgTripList.Rows)
-                 {
-                     int id = int.Parse(row.Cells["TourId"].Value.ToString());
-                     var tour = tourRepository.GetTourByID(id);
-                     dtgTripList[dtgTripList.Columns["TourName"].Index, row.Index].Value = tour.TourName;
-                     //dtgTripList[11,row.Index].Value = tour.TourName;
-                     //row.Cells["TourName"].Value = tour.TourName;
-                 }*/
-                /*int count = 0;
-
-                foreach (var i in trips)
-                {
-                    var tour = tourRepository.GetTourByID(i.TourId);
-                    dtgTripList[dtgTripList.Columns["TourName"].Index, count].Value = tour.TourName;
-                    count += 1;
-                }*/
+                
             }
             catch (Exception ex)
             {
@@ -348,14 +332,30 @@ namespace TourBookingApp
             {
                 if (GetTripInfor(e) != null)
                 {
-                    frmAddNewTrip frmDetails = new frmAddNewTrip
+                    if (DateTime.Compare(DateTime.Now.AddDays(3), GetTripInfor(e).StartTime) > 0)
                     {
-                        Text = "Update Trip",
-                        AddOrUpdate = true,
-                        trip = GetTripInfor(e),
-                    };
-                    frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
-                    frmDetails.ShowDialog();
+                        frmAddNewTrip frmDetails = new frmAddNewTrip
+                        {
+                            Text = "Update Trip",
+                            AddOrUpdate = true,
+                            IsOutOfDate = true,
+                            trip = GetTripInfor(e),
+                        };
+                        frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
+                        frmDetails.ShowDialog();
+                    }
+                    else
+                    {
+                        frmAddNewTrip frmDetails = new frmAddNewTrip
+                        {
+                            Text = "Update Trip",
+                            AddOrUpdate = true,
+                            IsOutOfDate = false,
+                            trip = GetTripInfor(e),
+                        };
+                        frmDetails.FormClosing += new FormClosingEventHandler(this.frmAddNewTrip_FormClosing);
+                        frmDetails.ShowDialog();
+                    }
                 }
             }
             catch (Exception ex)
