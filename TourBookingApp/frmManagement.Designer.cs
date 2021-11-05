@@ -107,7 +107,7 @@ namespace TourBookingApp
             this.TourManage.Controls.Add(this.txtSearchTour);
             this.TourManage.Location = new System.Drawing.Point(4, 29);
             this.TourManage.Name = "TourManage";
-            this.TourManage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TourManage.Padding = new System.Windows.Forms.Padding(3);
             this.TourManage.Size = new System.Drawing.Size(1293, 728);
             this.TourManage.TabIndex = 0;
             this.TourManage.Text = "Tour";
@@ -183,7 +183,7 @@ namespace TourBookingApp
             this.TripManage.Controls.Add(this.btnAddTrip);
             this.TripManage.Location = new System.Drawing.Point(4, 29);
             this.TripManage.Name = "TripManage";
-            this.TripManage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TripManage.Padding = new System.Windows.Forms.Padding(3);
             this.TripManage.Size = new System.Drawing.Size(1293, 728);
             this.TripManage.TabIndex = 1;
             this.TripManage.Text = "Trip";
@@ -533,7 +533,7 @@ namespace TourBookingApp
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = "Management";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManagement_FormClosing);
             this.Load += new System.EventHandler(this.frmManagement_Load_1);
             this.tabControl1.ResumeLayout(false);

@@ -313,7 +313,7 @@ namespace TourBookingApp
             this.MinimumSize = new System.Drawing.Size(1000, 495);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Group 3";
+            this.Text = "Tour Booking";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgTripList)).EndInit();

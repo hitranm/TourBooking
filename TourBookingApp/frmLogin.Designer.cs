@@ -121,7 +121,7 @@
             this.MinimumSize = new System.Drawing.Size(480, 395);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Group 3";
+            this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing_1);
             this.ResumeLayout(false);
             this.PerformLayout();
