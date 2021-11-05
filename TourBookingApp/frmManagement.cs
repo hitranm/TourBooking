@@ -218,7 +218,7 @@ namespace TourBookingApp
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
                 dtgListTour.Columns[6].Visible = false;
-                dtgListTour.Columns[4].Width = 505;
+                dtgListTour.Columns[4].Width = 528;
                 dtgListTour.Columns[5].Width = 80;
                 dtgListTour.Columns[0].Width = 78;
                 dtgListTour.Columns[2].Width = 200;
@@ -294,8 +294,7 @@ namespace TourBookingApp
                 dtgTripList.Columns[10].Visible = false;
                 dtgTripList.Columns[9].Visible = false;
                 dtgTripList.Columns[6].Width = 200;
-                dtgTripList.Columns[8].Width = 85;
-
+                dtgTripList.Columns[8].Width = 100;
             }
             catch (Exception ex)
             {
@@ -475,6 +474,8 @@ namespace TourBookingApp
                         dtgTripList.DataSource = source;
                         dtgTripList.Columns[10].Visible = false;
                         dtgTripList.Columns[9].Visible = false;
+                        dtgTripList.Columns[6].Width = 200;
+                        dtgTripList.Columns[8].Width = 100;
                     }
                     else if (cbxTripFilter.SelectedIndex == 1)
                     {
@@ -493,6 +494,8 @@ namespace TourBookingApp
                         dtgTripList.DataSource = source;
                         dtgTripList.Columns[10].Visible = false;
                         dtgTripList.Columns[9].Visible = false;
+                        dtgTripList.Columns[6].Width = 200;
+                        dtgTripList.Columns[8].Width = 100;
                     }
                     else
                     {
@@ -511,6 +514,8 @@ namespace TourBookingApp
                         dtgTripList.DataSource = source;
                         dtgTripList.Columns[10].Visible = false;
                         dtgTripList.Columns[9].Visible = false;
+                        dtgTripList.Columns[6].Width = 200;
+                        dtgTripList.Columns[8].Width = 100;
                     }
 
                 }
@@ -572,7 +577,7 @@ namespace TourBookingApp
             {
                 if (DateTime.Compare(DTPFilterStart.Value, DTPFilterEnd.Value) > 0)
                 {
-                    MessageBox.Show("Please choose the End Day beyond Start day");
+                    MessageBox.Show("Please choose the End Day beyond Start day", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -585,12 +590,23 @@ namespace TourBookingApp
                             listtrip.Add(t);
                         }
                     }
-                    source = new BindingSource();
-                    source.DataSource = listtrip;
+                    if (listtrip.Count == 0)
+                    {
+                        MessageBox.Show("There are no trips", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        source = new BindingSource();
+                        source.DataSource = listtrip;
 
-                    dtgTripList.DataSource = null;
-                    dtgTripList.DataSource = source;
-                    listTripFilter = listtrip;
+                        dtgTripList.DataSource = null;
+                        dtgTripList.DataSource = source;
+                        listTripFilter = listtrip;
+                        dtgTripList.Columns[10].Visible = false;
+                        dtgTripList.Columns[9].Visible = false;
+                        dtgTripList.Columns[6].Width = 200;
+                        dtgTripList.Columns[8].Width = 100;
+                    }
                 }
             }
             catch (Exception ex)

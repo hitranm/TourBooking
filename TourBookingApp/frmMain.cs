@@ -26,12 +26,7 @@ namespace TourBookingApp
             if (frmLogin.canLog == true)
             {
                 LoadTourList();
-                txtTourID.Enabled = false;
-                txtTourName.Enabled = false;
-
-                txtDestination.Enabled = false;
-                txtDescription.Enabled = false;
-                txtDeparture.Enabled = false;
+              
 
 
                 if (isAdmin == false)
@@ -83,8 +78,8 @@ namespace TourBookingApp
                 dtgTourList.DataSource = source;
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
-                dtgTourList.Columns[4].Width = 210;
-                dtgTourList.Columns[0].Width = 80;
+                dtgTourList.Columns[4].Width = 230;
+                dtgTourList.Columns[0].Width = 60;
 
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
                 currencyManager1.SuspendBinding();
@@ -163,7 +158,7 @@ namespace TourBookingApp
                     {
                         var time = DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString());
                         isvisible = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, i].Value.ToString());
-                        if (isvisible == false || DateTime.Compare(now.AddDays(3), time) > 0)
+                        if (isvisible == false || DateTime.Compare(now.AddDays(7), time) > 0)
                         {
                             dtgTripList.Rows[i].Visible = false;
                             currencyManager1.ResumeBinding();
@@ -222,8 +217,9 @@ namespace TourBookingApp
                 dtgTourList.DataSource = source;
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
-                dtgTourList.Columns[4].Width = 210;
-                dtgTourList.Columns[0].Width = 80;
+                dtgTourList.Columns[4].Width = 230;
+                dtgTourList.Columns[0].Width = 60;
+
 
             }
             catch (Exception)

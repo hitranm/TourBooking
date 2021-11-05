@@ -184,8 +184,10 @@ namespace TourBookingApp
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(538, 73);
             this.txtDescription.TabIndex = 12;
+            this.txtDescription.Text = " ";
             // 
             // lbTourList
             // 
