@@ -63,81 +63,100 @@ namespace TourBookingApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            try
+            DialogResult ms;
+            if (InsertOrUpdate == true)
             {
-                if (InsertOrUpdate == false)
+                ms = MessageBox.Show("Do you want to update this tour?","Warning", MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+            }
+            else
+            {
+                 ms = MessageBox.Show("Do you want to add this tour?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            }
+            if (DialogResult.OK == ms)
+            {
+
+
+                try
                 {
-                    var touAdd = new TblTour
+                    if (InsertOrUpdate == false)
                     {
-
-                        TourName = txtTourName.Text,
-                        Departure = txtDeparture.Text,
-                        Destination = txtDestination.Text,
-                        Description = txtDescription.Text,
-                        Status = cbStatus.Checked,
-                    };
-                    ValidationContext context = new ValidationContext(touAdd, null, null);
-                    IList<ValidationResult> errors = new List<ValidationResult>();
-                    if (!Validator.TryValidateObject(touAdd, context, errors, true))
-                    {
-                        foreach (ValidationResult result1 in errors)
+                        var touAdd = new TblTour
                         {
-                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        tourRepository.InsertTour(touAdd);
-                        MessageBox.Show("Tour Added!!", "Add Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                    }
 
-                }
-                else
-
-                {
-                    var touUp = new TblTour
-                    {
-                        TourId = int.Parse(txtTourID.Text),
-                        TourName = txtTourName.Text,
-                        Departure = txtDeparture.Text,
-                        Destination = txtDestination.Text,
-                        Description = txtDescription.Text,
-                        Status = cbStatus.Checked,
-                    };
-                    ValidationContext context = new ValidationContext(touUp, null, null);
-                    IList<ValidationResult> errors = new List<ValidationResult>();
-                    if (!Validator.TryValidateObject(touUp, context, errors, true))
-                    {
-                        foreach (ValidationResult result1 in errors)
+                            TourName = txtTourName.Text,
+                            Departure = txtDeparture.Text,
+                            Destination = txtDestination.Text,
+                            Description = txtDescription.Text,
+                            Status = cbStatus.Checked,
+                        };
+                        ValidationContext context = new ValidationContext(touAdd, null, null);
+                        IList<ValidationResult> errors = new List<ValidationResult>();
+                        if (!Validator.TryValidateObject(touAdd, context, errors, true))
                         {
-                            MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        tourRepository.UpdateTour(touUp);
-                        if (touUp.Status == false)
-                        {
-                            var triplist = tripRepository.GetTripByTourID(touUp.TourId);
-                            foreach(var i in triplist)
+                            foreach (ValidationResult result1 in errors)
                             {
-                                i.Status = false;
-                                tripRepository.UpdateTrip(i);
+                                MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
                             }
                         }
-                        MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        else
+                        {
+                            tourRepository.InsertTour(touAdd);
+                            MessageBox.Show("Tour Added!!", "Add Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+
+                    }
+                    else
+
+                    {
+                        var touUp = new TblTour
+                        {
+                            TourId = int.Parse(txtTourID.Text),
+                            TourName = txtTourName.Text,
+                            Departure = txtDeparture.Text,
+                            Destination = txtDestination.Text,
+                            Description = txtDescription.Text,
+                            Status = cbStatus.Checked,
+                        };
+                        ValidationContext context = new ValidationContext(touUp, null, null);
+                        IList<ValidationResult> errors = new List<ValidationResult>();
+                        if (!Validator.TryValidateObject(touUp, context, errors, true))
+                        {
+                            foreach (ValidationResult result1 in errors)
+                            {
+                                MessageBox.Show(result1.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            tourRepository.UpdateTour(touUp);
+                            if (touUp.Status == false)
+                            {
+                                var triplist = tripRepository.GetTripByTourID(touUp.TourId);
+                                foreach (var i in triplist)
+                                {
+                                    i.Status = false;
+                                    tripRepository.UpdateTrip(i);
+                                }
+                            }
+                            MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a tour" : "Update a tour");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a tour" : "Update a tour");
+                this.Show();
             }
+            
         }
 
 

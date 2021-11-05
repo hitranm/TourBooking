@@ -249,7 +249,7 @@ namespace TourBookingApp
                 dtgListTour.DataSource = null;
                 dtgListTour.DataSource = source;
                 dtgListTour.Columns[6].Visible = false;
-                dtgListTour.Columns[4].Width = 505;
+                dtgListTour.Columns[4].Width = 528;
                 dtgListTour.Columns[5].Width = 80;
                 dtgListTour.Columns[0].Width = 78;
                 dtgListTour.Columns[2].Width = 200;
@@ -293,7 +293,9 @@ namespace TourBookingApp
                 dtgTripList.DataSource = source;
                 dtgTripList.Columns[10].Visible = false;
                 dtgTripList.Columns[9].Visible = false;
-                
+                dtgTripList.Columns[6].Width = 200;
+                dtgTripList.Columns[8].Width = 85;
+
             }
             catch (Exception ex)
             {

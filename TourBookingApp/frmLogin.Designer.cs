@@ -116,6 +116,7 @@
             this.Controls.Add(this.lbUsername);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(480, 395);
             this.MinimumSize = new System.Drawing.Size(480, 395);
             this.Name = "frmLogin";
