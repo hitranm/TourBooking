@@ -6,24 +6,24 @@ using System.Windows.Forms;
 namespace TourBookingApp
 {
     public partial class frmMain : Form
+    {
+
+        ITourRepository tourRepository = new TourRepository();
+        ITripRepository tripRepository = new TripRepository();
+        BindingSource source;
+        public static int m = 0;
+        public bool isAdmin { get; set; }
+
+        public int currentID { get; set; }
+        public frmLogin frm { get; set; }
+        public frmMain()
         {
-        
-            ITourRepository tourRepository = new TourRepository();
-            ITripRepository tripRepository = new TripRepository();
-            BindingSource source;
-            public static int m = 0;
-            public bool isAdmin { get; set; }
-            
-            public int currentID { get; set; }
-            public frmLogin frm { get; set; }
-            public frmMain()
-            {
-                InitializeComponent();
-            }
-        
-            private void frmMain_Load(object sender, EventArgs e)
-            {
-            if (frmLogin.canLog==true)
+            InitializeComponent();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (frmLogin.canLog == true)
             {
                 LoadTourList();
                 txtTourID.Enabled = false;
@@ -40,101 +40,94 @@ namespace TourBookingApp
                 }
                 else manageToolStripMenuItem.Enabled = true;
             }
-           
+
             else
             {
-                
-                    this.Hide();
-                    frmLogin frm = new frmLogin();
-                    frm.ShowDialog();
-                
-                
+                this.Hide();
+                frmLogin frm = new frmLogin();
+                frm.ShowDialog();
             }
-            }
-            private void frmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        }
+        private void frmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DialogResult msg = MessageBox.Show("Do you really want to logout?", "Messaage Box", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (msg == DialogResult.Cancel)
             {
-                DialogResult msg = MessageBox.Show("Do you really want to logout?", "Messaage Box", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (msg == DialogResult.Cancel)
-                {
-                    e.Cancel = true;
-                }
+                e.Cancel = true;
             }
+        }
 
 
 
-            public void LoadTourList()
+        public void LoadTourList()
+        {
+            var tours = tourRepository.GetTours();
+            try
             {
-                var tours = tourRepository.GetTours();
-                try
-                {
 
-                    source = new BindingSource();
-                    source.DataSource = tours;
-                    txtTourName.DataBindings.Clear();
-                    txtTourID.DataBindings.Clear();
-                    txtDestination.DataBindings.Clear();
-                    txtDescription.DataBindings.Clear();
-                    txtDeparture.DataBindings.Clear();
+                source = new BindingSource();
+                source.DataSource = tours;
+                txtTourName.DataBindings.Clear();
+                txtTourID.DataBindings.Clear();
+                txtDestination.DataBindings.Clear();
+                txtDescription.DataBindings.Clear();
+                txtDeparture.DataBindings.Clear();
 
-                    txtTourID.DataBindings.Add("Text", source, "TourID");
-                    txtTourName.DataBindings.Add("Text", source, "TourName");
-                    txtDeparture.DataBindings.Add("Text", source, "Departure");
-                    txtDestination.DataBindings.Add("Text", source, "Destination");
-                    txtDescription.DataBindings.Add("Text", source, "Description");
+                txtTourID.DataBindings.Add("Text", source, "TourID");
+                txtTourName.DataBindings.Add("Text", source, "TourName");
+                txtDeparture.DataBindings.Add("Text", source, "Departure");
+                txtDestination.DataBindings.Add("Text", source, "Destination");
+                txtDescription.DataBindings.Add("Text", source, "Description");
 
-                    dtgTourList.DataSource = null;
-                    dtgTourList.DataSource = source;
-                    dtgTourList.Columns[6].Visible = false;
-                    dtgTourList.Columns[5].Visible = false;
+                dtgTourList.DataSource = null;
+                dtgTourList.DataSource = source;
+                dtgTourList.Columns[6].Visible = false;
+                dtgTourList.Columns[5].Visible = false;
                 dtgTourList.Columns[4].Width = 175;
 
                 CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTourList.DataSource];
                 currencyManager1.SuspendBinding();
-               
-                    bool isvisible=true;
-                    bool isok = false;
-                    for (int i = 0; i <= dtgTourList.RowCount - 1; i++)
-                    {
-                        isvisible = bool.Parse(dtgTourList[dtgTourList.Columns["Status"].Index, i].Value.ToString());
-                        if (isvisible == false)
-                        {
-                            dtgTourList.Rows[i].Visible = false;
-                        currencyManager1.ResumeBinding();
-                        }
-                        else
-                        {
-                            isok = true;
-                        currencyManager1.ResumeBinding();
 
-                    }
-                }
-                    if (isok == false)
-                    {
-                        ClearText();
-                        
-                        MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-               
-                    
-
-
-                }
-                catch (Exception ex)
+                bool isvisible = true;
+                bool isok = false;
+                for (int i = 0; i <= dtgTourList.RowCount - 1; i++)
                 {
-                    MessageBox.Show(ex.Message, "Load tour list");
+                    isvisible = bool.Parse(dtgTourList[dtgTourList.Columns["Status"].Index, i].Value.ToString());
+                    if (isvisible == false)
+                    {
+                        dtgTourList.Rows[i].Visible = false;
+                        currencyManager1.ResumeBinding();
+                    }
+                    else
+                    {
+                        isok = true;
+                        currencyManager1.ResumeBinding();
+
+                    }
                 }
+                if (isok == false)
+                {
+                    ClearText();
 
+                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-            private void ClearText()
+            catch (Exception ex)
             {
-                txtTourID.Text = string.Empty;
-                txtTourName.Text = string.Empty;
-                txtDestination.Text = string.Empty;
-                txtDescription.Text = string.Empty;
-                txtDeparture.Text = string.Empty;
-
+                MessageBox.Show(ex.Message, "Load tour list");
             }
+
+        }
+
+        private void ClearText()
+        {
+            txtTourID.Text = string.Empty;
+            txtTourName.Text = string.Empty;
+            txtDestination.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+            txtDeparture.Text = string.Empty;
+
+        }
 
         private void LoadTripList(int TourID)
         {
@@ -164,12 +157,12 @@ namespace TourBookingApp
                     CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dtgTripList.DataSource];
                     currencyManager1.SuspendBinding();
                     bool isok = false;
-                    bool isvisible=true;
+                    bool isvisible = true;
                     for (int i = 0; i <= dtgTripList.RowCount - 1; i++)
                     {
                         var time = DateTime.Parse(dtgTripList[dtgTripList.Columns["StartTime"].Index, i].Value.ToString());
                         isvisible = bool.Parse(dtgTripList[dtgTripList.Columns["Status"].Index, i].Value.ToString());
-                        if (isvisible == false || DateTime.Compare(now.AddDays(3),time)>0 )
+                        if (isvisible == false || DateTime.Compare(now.AddDays(3), time) > 0)
                         {
                             dtgTripList.Rows[i].Visible = false;
                             currencyManager1.ResumeBinding();
@@ -195,57 +188,60 @@ namespace TourBookingApp
 
 
         private void LoadOneTour()
+        {
+            bool hasTour = false;
+
+            var tour = new List<TblTour>();
+            var tours = tourRepository.GetTours();
+            try
             {
-                bool hasTour = false;
-
-                var tour = new List<TblTour>();
-                var tours = tourRepository.GetTours();
-                try
+                foreach (var i in tours)
                 {
-                    foreach (var i in tours)
+                    if (i.TourName.ToUpper().Contains(txtSearchTour.Text.ToUpper()) && i.Status == true)
                     {
-                        if (i.TourName.ToUpper().Contains(txtSearchTour.Text.ToUpper()) && i.Status == true)
-                        {
-                            hasTour = true;
-                            tour.Add(i);
-                        }
+                        hasTour = true;
+                        tour.Add(i);
                     }
-                    source = new BindingSource();
-                    source.DataSource = tour;
-                    txtTourID.DataBindings.Clear();
-                    txtTourName.DataBindings.Clear();
-                    txtDeparture.DataBindings.Clear();
-                    txtDescription.DataBindings.Clear();
-                    txtDestination.DataBindings.Clear();
+                }
+                source = new BindingSource();
+                source.DataSource = tour;
+                txtTourID.DataBindings.Clear();
+                txtTourName.DataBindings.Clear();
+                txtDeparture.DataBindings.Clear();
+                txtDescription.DataBindings.Clear();
+                txtDestination.DataBindings.Clear();
 
-                    txtTourID.DataBindings.Add("Text", source, "TourId");
-                    txtTourName.DataBindings.Add("Text", source, "TourName");
-                    txtDeparture.DataBindings.Add("Text", source, "Departure");
-                    txtDescription.DataBindings.Add("Text", source, "Description");
-                    txtDestination.DataBindings.Add("Text", source, "Destination");
+                txtTourID.DataBindings.Add("Text", source, "TourId");
+                txtTourName.DataBindings.Add("Text", source, "TourName");
+                txtDeparture.DataBindings.Add("Text", source, "Departure");
+                txtDescription.DataBindings.Add("Text", source, "Description");
+                txtDestination.DataBindings.Add("Text", source, "Destination");
 
-                    dtgTourList.DataSource = null;
-                    dtgTourList.DataSource = source;
+                dtgTourList.DataSource = null;
+                dtgTourList.DataSource = source;
                 dtgTourList.Columns[6].Visible = false;
                 dtgTourList.Columns[5].Visible = false;
                 dtgTourList.Columns[4].Width = 175;
 
             }
-                catch (Exception)
-                {
-                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (hasTour == false)
-                {
-                    MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            catch (Exception)
+            {
+                MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
-            private TblTrip GetTrip(DataGridViewCellEventArgs e)
+            if (hasTour == false)
+            {
+                MessageBox.Show("There are no tours", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private TblTrip GetTrip(DataGridViewCellEventArgs e)
+        {
+
+            TblTrip trip = null;
+            try
             {
                 int rowIndex = e.RowIndex;
-                TblTrip trip = null;
-                try
+                if (rowIndex >= 0)
                 {
                     trip = new TblTrip
                     {
@@ -260,66 +256,68 @@ namespace TourBookingApp
                         TourId = int.Parse(dtgTripList[dtgTripList.Columns["TourId"].Index, rowIndex].Value.ToString())
                     };
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Get Trip Details Error");
-                }
-                return trip;
+
             }
-
-
-
-            private void btnSearch_Click(object sender, EventArgs e)
+            catch (Exception ex)
             {
-                LoadOneTour();
+                MessageBox.Show(ex.Message, "Get Trip Details Error");
             }
-
-            private void txtSearchTour_TextChanged(object sender, EventArgs e)
-            {
-                if (txtTourName.Text == null)
-                {
-                    LoadTourList();
-                }
-            }
+            return trip;
+        }
 
 
 
-            private void manageToolStripMenuItem_Click_2(object sender, EventArgs e)
-            {
-
-                frmManagement frm = new frmManagement();
-            
-                frm.ShowDialog();
-            LoadTourList();
-            }
-
-
-            private void logoutToolStripMenuItem_Click_2(object sender, EventArgs e)
-            
+        private void btnSearch_Click(object sender, EventArgs e)
         {
+            LoadOneTour();
+        }
 
-                DialogResult msg = MessageBox.Show("Do you really want to logout?", "Messaage Box", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (msg == DialogResult.OK)
-                {
-                this.DialogResult = DialogResult.OK;
-                    m = -1;
-                    this.Close();
-                }
-            }
-
-
-
-            private void btnLoad_Click(object sender, EventArgs e)
+        private void txtSearchTour_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTourName.Text == null)
             {
                 LoadTourList();
             }
+        }
 
-            private void dtgTourList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+
+
+        private void manageToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+
+            frmManagement frm = new frmManagement();
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                LoadTripList(int.Parse(txtTourID.Text));
-            }
+                LoadTourList();
+                dtgTripList.DataSource = null;
+            }            
+            
+        }
 
-            private void dtgTripList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void logoutToolStripMenuItem_Click_2(object sender, EventArgs e)
+
+        {
+
+            DialogResult msg = MessageBox.Show("Do you really want to logout?", "Messaage Box", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (msg == DialogResult.OK)
+            {
+                this.DialogResult = DialogResult.OK;
+                m = -1;
+                this.Close();
+            }
+        }
+
+
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            LoadTourList();
+        }
+
+        private void dtgTripList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GetTrip(e) != null)
             {
                 frmBooking frmBooking = new frmBooking
                 {
@@ -330,8 +328,18 @@ namespace TourBookingApp
                 if (frmBooking.ShowDialog() == DialogResult.OK)
                 {
                     MessageBox.Show("Book trip successfully");
+                    if (this.dtgTourList.CurrentCell != null && this.dtgTourList.CurrentRow != null)
+                    {
+                        dtgTourList_CellDoubleClick(this.dtgTourList, new DataGridViewCellEventArgs(this.dtgTourList.CurrentCell.ColumnIndex, this.dtgTourList.CurrentRow.Index));
+                    }
                 }
             }
+        }
+
+        private void dtgTourList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadTripList(int.Parse(txtTourID.Text));
+        }
 
         /*private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -347,7 +355,7 @@ namespace TourBookingApp
             Application.Restart();
         }*/
     }
-    }
+}
 
 
 

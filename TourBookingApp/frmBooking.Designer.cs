@@ -63,6 +63,8 @@ namespace TourBookingApp
             this.lbCustomer = new System.Windows.Forms.Label();
             this.btConfirm = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.lbCapacity = new System.Windows.Forms.Label();
+            this.lbCapaInfo = new System.Windows.Forms.Label();
             this.pnlTrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.pnlCustomer.SuspendLayout();
@@ -70,6 +72,8 @@ namespace TourBookingApp
             // 
             // pnlTrip
             // 
+            this.pnlTrip.Controls.Add(this.lbCapaInfo);
+            this.pnlTrip.Controls.Add(this.lbCapacity);
             this.pnlTrip.Controls.Add(this.lbStartInfo);
             this.pnlTrip.Controls.Add(this.lbEndInfo);
             this.pnlTrip.Controls.Add(this.lbAccInfo);
@@ -89,7 +93,7 @@ namespace TourBookingApp
             this.pnlTrip.Controls.Add(this.lbBooking);
             this.pnlTrip.Location = new System.Drawing.Point(4, 8);
             this.pnlTrip.Name = "pnlTrip";
-            this.pnlTrip.Size = new System.Drawing.Size(397, 270);
+            this.pnlTrip.Size = new System.Drawing.Size(397, 284);
             this.pnlTrip.TabIndex = 0;
             // 
             // lbStartInfo
@@ -127,7 +131,7 @@ namespace TourBookingApp
             this.lbDesInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbDesInfo.Location = new System.Drawing.Point(112, 136);
             this.lbDesInfo.Name = "lbDesInfo";
-            this.lbDesInfo.Size = new System.Drawing.Size(272, 69);
+            this.lbDesInfo.Size = new System.Drawing.Size(272, 61);
             this.lbDesInfo.TabIndex = 18;
             this.lbDesInfo.Text = "description";
             // 
@@ -135,7 +139,7 @@ namespace TourBookingApp
             // 
             this.lbPriceInfo.AutoSize = true;
             this.lbPriceInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbPriceInfo.Location = new System.Drawing.Point(112, 205);
+            this.lbPriceInfo.Location = new System.Drawing.Point(112, 197);
             this.lbPriceInfo.Name = "lbPriceInfo";
             this.lbPriceInfo.Size = new System.Drawing.Size(33, 15);
             this.lbPriceInfo.TabIndex = 17;
@@ -155,7 +159,7 @@ namespace TourBookingApp
             // 
             this.lbTotalInfo.AutoSize = true;
             this.lbTotalInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTotalInfo.Location = new System.Drawing.Point(288, 250);
+            this.lbTotalInfo.Location = new System.Drawing.Point(288, 264);
             this.lbTotalInfo.Name = "lbTotalInfo";
             this.lbTotalInfo.Size = new System.Drawing.Size(87, 20);
             this.lbTotalInfo.TabIndex = 10;
@@ -163,7 +167,7 @@ namespace TourBookingApp
             // 
             // numQuantity
             // 
-            this.numQuantity.Location = new System.Drawing.Point(112, 225);
+            this.numQuantity.Location = new System.Drawing.Point(112, 248);
             this.numQuantity.Maximum = new decimal(new int[] {
             10,
             0,
@@ -187,7 +191,7 @@ namespace TourBookingApp
             // lbQuantity
             // 
             this.lbQuantity.AutoSize = true;
-            this.lbQuantity.Location = new System.Drawing.Point(8, 227);
+            this.lbQuantity.Location = new System.Drawing.Point(8, 255);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(56, 15);
             this.lbQuantity.TabIndex = 7;
@@ -197,7 +201,7 @@ namespace TourBookingApp
             // 
             this.lbTotal.AutoSize = true;
             this.lbTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbTotal.Location = new System.Drawing.Point(236, 250);
+            this.lbTotal.Location = new System.Drawing.Point(236, 264);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(46, 20);
             this.lbTotal.TabIndex = 9;
@@ -206,7 +210,7 @@ namespace TourBookingApp
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
-            this.lbPrice.Location = new System.Drawing.Point(8, 205);
+            this.lbPrice.Location = new System.Drawing.Point(8, 197);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(36, 15);
             this.lbPrice.TabIndex = 6;
@@ -292,7 +296,7 @@ namespace TourBookingApp
             this.pnlCustomer.Controls.Add(this.lbCustomer);
             this.pnlCustomer.Location = new System.Drawing.Point(411, 8);
             this.pnlCustomer.Name = "pnlCustomer";
-            this.pnlCustomer.Size = new System.Drawing.Size(384, 270);
+            this.pnlCustomer.Size = new System.Drawing.Size(384, 284);
             this.pnlCustomer.TabIndex = 1;
             // 
             // btSearch
@@ -406,7 +410,7 @@ namespace TourBookingApp
             // btConfirm
             // 
             this.btConfirm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btConfirm.Location = new System.Drawing.Point(292, 292);
+            this.btConfirm.Location = new System.Drawing.Point(292, 309);
             this.btConfirm.Name = "btConfirm";
             this.btConfirm.Size = new System.Drawing.Size(75, 28);
             this.btConfirm.TabIndex = 2;
@@ -416,7 +420,7 @@ namespace TourBookingApp
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(444, 295);
+            this.btCancel.Location = new System.Drawing.Point(447, 312);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 3;
@@ -424,11 +428,29 @@ namespace TourBookingApp
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
+            // lbCapacity
+            // 
+            this.lbCapacity.AutoSize = true;
+            this.lbCapacity.Location = new System.Drawing.Point(8, 229);
+            this.lbCapacity.Name = "lbCapacity";
+            this.lbCapacity.Size = new System.Drawing.Size(76, 15);
+            this.lbCapacity.TabIndex = 22;
+            this.lbCapacity.Text = "Capacity left:";
+            // 
+            // lbCapaInfo
+            // 
+            this.lbCapaInfo.AutoSize = true;
+            this.lbCapaInfo.Location = new System.Drawing.Point(112, 229);
+            this.lbCapaInfo.Name = "lbCapaInfo";
+            this.lbCapaInfo.Size = new System.Drawing.Size(51, 15);
+            this.lbCapaInfo.TabIndex = 23;
+            this.lbCapaInfo.Text = "capacity";
+            // 
             // frmBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 342);
+            this.ClientSize = new System.Drawing.Size(800, 349);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btCancel);
@@ -485,5 +507,7 @@ namespace TourBookingApp
         private System.Windows.Forms.Label lbDesInfo;
         private System.Windows.Forms.Label lbPriceInfo;
         private System.Windows.Forms.Label lbTourInfo;
+        private System.Windows.Forms.Label lbCapaInfo;
+        private System.Windows.Forms.Label lbCapacity;
     }
 }

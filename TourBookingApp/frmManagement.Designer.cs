@@ -538,6 +538,7 @@ namespace TourBookingApp
             this.Name = "frmManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManagement_FormClosing);
             this.Load += new System.EventHandler(this.frmManagement_Load_1);
             this.tabControl1.ResumeLayout(false);
             this.TourManage.ResumeLayout(false);
