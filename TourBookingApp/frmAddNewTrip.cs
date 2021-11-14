@@ -11,6 +11,7 @@ namespace TourBookingApp
     {
         ITourRepository tourRepository = new TourRepository();
         ITripRepository tripRepository = new TripRepository();
+        IBookingRepository bookingRepository = new BookingRepository();
         int tourID;
         public bool AddOrUpdate { get; set; } // false: add, true: update
         public bool IsOutOfDate { get; set; }
@@ -257,6 +258,14 @@ namespace TourBookingApp
                         else
                         {
                             tripRepository.UpdateTrip(tripU);
+                            if (tripU.Status == false)
+                            {
+                                foreach (TblBooking booking in bookingRepository.GetBookingsByTripId(tripU.TripId))
+                                {
+                                    booking.Status = false;
+                                    bookingRepository.UpdateBooking(booking);
+                                }
+                            }                           
                             var tri = tripRepository.GetTripByID(tripU.TripId);
                             if (tri != null)
                             {

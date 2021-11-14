@@ -10,6 +10,7 @@ namespace TourBookingApp
     public partial class frmAddNewTour : Form
     {
         ITripRepository tripRepository = new TripRepository();
+        IBookingRepository bookingRepository = new BookingRepository();
         public ITourRepository tourRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
         public TblTour TourInfo { get; set; }
@@ -140,6 +141,11 @@ namespace TourBookingApp
                                 {
                                     i.Status = false;
                                     tripRepository.UpdateTrip(i);
+                                    foreach (TblBooking booking in bookingRepository.GetBookingsByTripId(i.TripId))
+                                    {
+                                        booking.Status = false;
+                                        bookingRepository.UpdateBooking(booking);
+                                    }
                                 }
                             }
                             MessageBox.Show("Tour Updated!!", "Update Tour", MessageBoxButtons.OK, MessageBoxIcon.Information);
